@@ -1,3 +1,37 @@
+# Checked Chaos — Airport Baggage Greybox
+
+The `airport-baggage` branch builds on the playable sushi foundation. Straight automatic intake → live training X-ray → locks/contents inspection → carry and sort into flight, security, biosecurity or safeguarding bays.
+
+## Play the airport
+
+```sh
+bash tools/setup-godot.sh
+godot --path .
+```
+
+Choose **Play solo / Airport baggage**, or use the template's **Host Game → Start Game** / **Join** flow on **7000/UDP**. The previous sushi concept has its own main-menu button and its existing scene/test/recording commands are preserved.
+
+**Controls:** WASD/mouse; E context interaction; 1 hands, 2 approved-lock key, 3 large pliers; O open selected bag; I take the next available item / return a held item to its source bag; G put down a bag/item/dog; K call the dog; F enlarge X-ray; TAB airport development (near terminal); 1–6 purchase while development is open; N next shift as host; ESC cursor/menu. Use the console to pause/resume intake while inspecting. Put carried bags on the desk before handling their contents.
+
+**Playable mechanics:** varied colored cabin bags, duffels, backpacks and large trunks; approved/foreign locks; visible tools and opening lids; individual contents; narcotics evidence; fruit/vegetable/seed bonuses; legal non-graphic dildo/vibrator joke props; serious adult safeguarding/rescue cases; dog scent alerts (clues, not convictions), calling/carrying/dropping and a harmless fictional non-ionizing scanner gag. The scanner displays the actual simulated contents, with labels after inspection or a scanner upgrade.
+
+**Airport progression:** correct routes and once-only milestone grants fund scanner speed/clarity, dog training, evidence bonuses, biosecurity lab, faster/larger intake and terminal expansion. Expansion requires five correctly handled cases / five reputation plus $120; it opens a real flight-C bay and new international/oversize arrivals. Flight tags determine normal routing; large legal luggage uses oversize after expansion. Progress survives shift changes within the running session; there is no disk save or Steam integration.
+
+## Airport checks and actual gameplay video
+
+```sh
+godot --headless --editor --import --quit
+godot --headless -s addons/gut/gut_cmdln.gd -gconfig=res://gutconfig.json -gexit
+python3 tools/test-airport-network.py
+bash tools/record-airport.sh
+```
+
+The opt-in tour walks the real controller and sends normal keys, earns all upgrade funds through actual cases, and writes assertion reports. Movie Maker records actual engine frames; the MP4 includes the procedural dog bark. Outputs stay in ignored `artifacts/`. The Linux network checks use private test ports 17117/17118; normal play uses 7000.
+
+Full scope: [docs/airport-baggage.md](docs/airport-baggage.md). Execution evidence: [docs/airport-verification.md](docs/airport-verification.md). This is an interactable greybox, not final art, a production customs simulator or production anti-cheat. Contraband rules are fictional game rules, not legal advice. Safeguarding figures are adults and non-graphic; the dog scanner is explicitly harmless fiction.
+
+---
+
 # Belt Behaviour — Revolving Sushi Graybox
 
 A first-person, primitive-geometry restaurant prototype built on **Friendslop Template**. Prepare salmon, tuna and cucumber sushi, carry plates to a revolving conveyor, match customer requests, wash returned plates and spend earned money on handling upgrades. The existing ENet host/join lobby and scene readiness remain in use; solo play is one click from the main menu.

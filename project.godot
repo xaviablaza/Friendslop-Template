@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Belt Behaviour — Revolving Sushi Graybox"
+config/name="Checked Chaos — Airport Baggage Greybox"
 run/main_scene="res://scenes/menu/MainMenu.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"

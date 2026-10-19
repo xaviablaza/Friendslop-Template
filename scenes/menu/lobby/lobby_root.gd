@@ -32,7 +32,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Opt-in local integration check, never used in ordinary hosting.
-	if not OS.get_cmdline_user_args().has("--sushi-net-host") or not multiplayer.is_server():
+	var args = OS.get_cmdline_user_args()
+	if not (args.has("--sushi-net-host") or args.has("--airport-net-host")) or not multiplayer.is_server():
 		return
 	var players = LobbyManager.get_all_players()
 	if players.size() < 2:
@@ -50,7 +51,9 @@ func _on_start_btn_pressed() -> void:
 	
 	# Transition to loading state
 	LobbyManager.current_lobby.state = Lobby.State.SERVER_LOADING
-	LobbyManager.current_lobby.active_scene_path = "res://scenes/level/sushi/RevolvingSushi.tscn"
+	var args = OS.get_cmdline_user_args()
+	var previous = args.has("--sushi-net-host") or args.has("--host-loss-host")
+	LobbyManager.current_lobby.active_scene_path = "res://scenes/level/sushi/RevolvingSushi.tscn" if previous else "res://scenes/level/airport/AirportBaggage.tscn"
 
 #endregion
 

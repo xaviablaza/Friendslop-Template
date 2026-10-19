@@ -41,7 +41,7 @@ theme_override_constants/separation = 10
 
 [node name="GameTitle" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "BELT BEHAVIOUR\nRevolving sushi graybox"
+text = "CHECKED CHAOS\nAirport baggage greybox"
 label_settings = SubResource("LabelSettings_kjwba")
 horizontal_alignment = 1
 vertical_alignment = 1
