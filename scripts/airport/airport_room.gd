@@ -8,6 +8,9 @@ const SCAN_POINT = Vector3(-1.2, 1.1, -2)
 const SCAN_CONSOLE = Vector3(-1.2, 1, 0.1)
 const TOOL_POINT = Vector3(-3, 1, 0.5)
 const EVIDENCE_POINT = Vector3(4.6, 1, 0)
+const FIRST_AID_POINT = Vector3(7.7, 1, 0)
+const DOG_CARE_POINT = Vector3(-7.5, 0.5, 0.5)
+const DISPOSAL_POINT = Vector3(6, 1, 0)
 # SushiRoom already owns SHOP_POINT: GDScript disallows shadowing constants.
 const AIRPORT_SHOP_POINT = Vector3(-3, 1, 3)
 const ROUTES: Dictionary = {
@@ -150,12 +153,34 @@ func _build_stations() -> void:
 	box(AIRPORT_SHOP_POINT + Vector3(0, 0.21, 0), Vector3(0.78, 0.5, 0.09), INK)
 	box(AIRPORT_SHOP_POINT + Vector3(0, 0.21, 0.055), Vector3(0.66, 0.38, 0.025), Color("5c7c80"))
 	_room_sign("AIRPORT UPGRADES", AIRPORT_SHOP_POINT + Vector3(0, 0.77, 0), 25, Color("d9c98c"))
+	_build_care_stations()
+
+func _build_care_stations() -> void:
+	# Compact worktops leave the continuous z=2 operator corridor unobstructed.
+	box(FIRST_AID_POINT - Vector3(0,0.5,0),Vector3(0.72,1.0,0.65),Color("d0d8ce"),true)
+	box(FIRST_AID_POINT + Vector3(0,0.05,0),Vector3(0.76,0.1,0.7),Color("6a9987"))
+	box(FIRST_AID_POINT + Vector3(0,0.3,0.03),Vector3(0.13,0.42,0.10),Color("b66965"))
+	box(FIRST_AID_POINT + Vector3(0,0.3,0.03),Vector3(0.42,0.13,0.10),Color("b66965"))
+	_room_sign("FIRST AID\n[E] TREAT INJURY",FIRST_AID_POINT+Vector3(0,1.05,0),23)
+	box(DISPOSAL_POINT-Vector3(0,0.5,0),Vector3(0.76,1.0,0.72),Color("9c8267"),true)
+	box(DISPOSAL_POINT+Vector3(0,0.04,0),Vector3(0.82,0.12,0.77),INK)
+	for x in [-0.24,0,0.24]:
+		var stripe = box(DISPOSAL_POINT+Vector3(x,0.12,0),Vector3(0.11,0.02,0.63),Color("d3b56b"))
+		stripe.rotation.y = 0.25
+	_room_sign("SECURE DISPOSAL\nWEAPONS / EXPLOSIVES\nDANGEROUS OBJECTS",DISPOSAL_POINT+Vector3(0,1.02,0),20,Color("e3ce91"))
+	box(Vector3(DOG_CARE_POINT.x,0.025,DOG_CARE_POINT.z),Vector3(1.6,0.05,1.35),Color("73978d"))
+	# Bed and bowls are presentation-only: no invisible obstacle to pet handling.
+	box(Vector3(-7.9,0.09,0.15),Vector3(0.65,0.16,0.75),Color("ab937b"))
+	for x in [-7.4,-7.0]:
+		cylinder(Vector3(x,0.10,0.65),0.16,0.13,AIRPORT_STEEL)
+		cylinder(Vector3(x,0.17,0.65),0.13,0.015,Color("719eaf") if x > -7.2 else Color("b3a073"))
+	_room_sign("ANIMAL CARE\n[E] FOOD / WATER / REST\nDOG & PET CARRIERS",DOG_CARE_POINT+Vector3(0,1.45,0),24,Color("cce1cb"))
 
 func _build_bays() -> void:
 	var names := {
 		"gate_a": "GATE A / NW101", "gate_b": "GATE B / SE202",
 		"security": "SECURITY / SEIZURES", "bio": "BIOSECURITY / ORGANICS",
-		"rescue": "SAFEGUARDING\nCALL RESPONSE TEAM",
+		"rescue": "ANIMAL CARE\nPET / WILDLIFE ARRIVALS",
 		"gate_c": "GATE C / INT303", "oversize": "OVERSIZE / SPECIAL HANDLING",
 	}
 	for key in ROUTES:
@@ -271,6 +296,8 @@ static func _tag(parent: Node3D, text: String, at: Vector3, size: int = 22, colo
 	return label
 
 static func bag_mesh(bag: Dictionary) -> Node3D:
+	if bool(bag.get("carrier",false)):
+		return pet_carrier_mesh(bag)
 	var root := Node3D.new()
 	root.name = "BaggageVisual"
 	var raw_color: Variant = bag.get("color", bag.get("color_index", 0))
@@ -417,20 +444,77 @@ static func item_mesh(item: Dictionary, xray: bool = false) -> Node3D:
 		"documents", "document", "passport":
 			_box(root, Vector3(0, 0.025, 0), Vector3(0.26, 0.05, 0.32), cyan if xray else Color("768795"))
 			_box(root, Vector3(0, 0.057, 0), Vector3(0.22, 0.01, 0.27), CREAM if not xray else cyan)
-		"person_at_risk", "adult_at_risk", "adult_silhouette", "person", "safeguarding":
-			# Abstract adult-scale proportions, clothed and non-graphic.
-			_capsule(root, Vector3(0, 0.38, 0), 0.11, 0.40, cyan if xray else Color("82999f"))
-			_capsule(root, Vector3(0, 0.66, 0), 0.085, 0.17, cyan if xray else Color("b6a394"))
-			for x in [-0.065, 0.065]:
-				_capsule(root, Vector3(x, 0.13, 0), 0.045, 0.27, color)
-			for x in [-0.15, 0.15]:
-				_capsule(root, Vector3(x, 0.37, 0), 0.035, 0.3, color)
-			label = "ADULT / ASSISTANCE REQUIRED"
+		"cat", "rabbit", "pet_dog", "pet_cat", "pet_rabbit", "parrot", "tortoise", "snake", "lizard", "exotic_bird", "wildlife", "wildlife_crate", "puppy", "kitten", "pet":
+			var animal = pet_mesh("cloud_lizard" if kind == "wildlife_crate" else kind)
+			animal.scale = Vector3.ONE * 0.7
+			root.add_child(animal)
+		"pistol", "handgun", "firearm", "gun", "weapon", "weapon_prop":
+			_box(root,Vector3(0,0.17,0),Vector3(0.34,0.08,0.08),color)
+			var grip = _box(root,Vector3(0.09,0.08,0),Vector3(0.08,0.17,0.08),INK if not xray else cyan)
+			grip.rotation.z = -0.2
+		"knife", "blade":
+			_box(root,Vector3(0,0.04,0),Vector3(0.40,0.03,0.06),color)
+			_box(root,Vector3(0.16,0.045,0),Vector3(0.16,0.05,0.08),INK if not xray else cyan)
+		"explosive", "explosives", "fireworks", "dynamite", "grenade", "explosive_prop":
+			for x in [-0.09,0,0.09]: _capsule(root,Vector3(x,0.13,0),0.045,0.26,cyan if xray else Color("ad7064"))
+			_box(root,Vector3(0,0.13,0.06),Vector3(0.30,0.06,0.05),color)
+		"battery", "lithium_battery", "power_bank", "chemical", "chemicals", "fuel", "aerosol", "hazmat", "hazard_canister":
+			_round(root,Vector3(0,0.14,0),0.10,0.28,cyan if xray else Color("c6ad69"))
+			_box(root,Vector3(0,0.14,0.10),Vector3(0.12,0.1,0.015),INK if not xray else cyan)
+		"cash", "currency", "gold", "gold_bar", "jewelry", "ivory", "artifact", "customs_relic", "customs_gems":
+			_box(root,Vector3(0,0.055,0),Vector3(0.28,0.11,0.18),cyan if xray else Color("c7ad6b"))
 		_:
 			_box(root, Vector3(0, 0.08, 0), Vector3(0.25, 0.16, 0.22), color)
 	# X-ray needs clean silhouettes, not floating contents text.
 	if not xray:
-		_tag(root, label, Vector3(0, 0.49 if kind not in ["person_at_risk", "adult_at_risk", "adult_silhouette", "person", "safeguarding"] else 0.86, 0), 16)
+		_tag(root, label, Vector3(0, 0.49, 0), 16)
+	return root
+
+static func pet_carrier_mesh(bag: Dictionary) -> Node3D:
+	var root = Node3D.new()
+	root.name = "PetCarrierVisual"
+	var color: Color = BAG_COLORS[posmod(int(bag.get("color",0)),BAG_COLORS.size())]
+	_box(root,Vector3(0,0.08,0),Vector3(0.86,0.16,0.68),color)
+	_box(root,Vector3(0,0.70,-0.05),Vector3(0.86,0.08,0.60),color.lightened(0.1))
+	for x in [-0.4,0.4]:
+		_box(root,Vector3(x,0.41,-0.05),Vector3(0.06,0.60,0.60),color)
+	for x in [-0.36,-0.24,-0.12,0,0.12,0.24,0.36]:
+		_box(root,Vector3(x,0.42,-0.32),Vector3(0.018,0.58,0.025),AIRPORT_STEEL)
+		if not bag.get("opened",false): _box(root,Vector3(x,0.42,0.32),Vector3(0.018,0.58,0.025),AIRPORT_STEEL)
+	_box(root,Vector3(0,0.81,-0.05),Vector3(0.24,0.09,0.05),INK)
+	var animal = pet_mesh(str(bag.get("pet",{}).get("species","cat")))
+	animal.position = Vector3(0,0.16,0)
+	animal.scale = Vector3.ONE * 0.72
+	root.add_child(animal)
+	_tag(root,"PET / " + FLIGHTS[posmod(int(bag.get("flight",0)),3)],Vector3(0,0.98,0),18)
+	return root
+
+static func pet_mesh(species: String) -> Node3D:
+	var root = Node3D.new()
+	root.name = "PetAnimalVisual"
+	var fur = Color("b6a089")
+	if "bird" in species or species == "parrot":
+		_capsule(root,Vector3(0,0.23,0),0.13,0.35,Color("709c80"))
+		_capsule(root,Vector3(0,0.45,-0.05),0.10,0.20,Color("91b299"))
+		_box(root,Vector3(0,0.44,-0.17),Vector3(0.08,0.07,0.12),Color("c9ad69"))
+		for x in [-0.08,0.08]: _box(root,Vector3(x,0.04,0),Vector3(0.06,0.08,0.14),INK)
+	elif species in ["tortoise","turtle","lizard","snake","cloud_lizard"]:
+		_capsule(root,Vector3(0,0.14,0),0.14,0.28,Color("738c6d"))
+		_capsule(root,Vector3(0,0.12,-0.22),0.07,0.14,Color("9aaa7c"))
+		for x in [-0.14,0.14]:
+			for z in [-0.12,0.12]: _box(root,Vector3(x,0.05,z),Vector3(0.10,0.08,0.1),Color("9aaa7c"))
+	else:
+		var body = _capsule(root,Vector3(0,0.24,0.04),0.14,0.48,fur)
+		body.rotation.x = PI/2
+		_capsule(root,Vector3(0,0.39,-0.21),0.13,0.26,fur.lightened(0.15))
+		_box(root,Vector3(0,0.34,-0.34),Vector3(0.10,0.07,0.07),Color("6a625c"))
+		for x in [-0.10,0.10]:
+			var ear = _capsule(root,Vector3(x,0.54,-0.20),0.035,0.26 if "rabbit" in species else 0.12,fur)
+			ear.rotation.z = signf(x)*0.15
+			_box(root,Vector3(x*0.8,0.42,-0.32),Vector3(0.025,0.028,0.025),INK)
+			for z in [-0.11,0.20]: _capsule(root,Vector3(x,0.09,z),0.04,0.18,fur)
+		var tail = _capsule(root,Vector3(0,0.29,0.34),0.035,0.25,fur)
+		tail.rotation.x = 0.8
 	return root
 
 static func dog_mesh() -> Node3D:

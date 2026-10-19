@@ -1,17 +1,29 @@
 # Checked Chaos — Airport Baggage Greybox
 
-The `airport-baggage` branch builds on the playable sushi foundation. Straight automatic intake → live training X-ray → locks/contents inspection → carry and sort into flight, security, biosecurity or safeguarding bays.
+The `airport-baggage` branch builds on the playable sushi foundation. Randomized arrivals → training X-ray clues → timed locks and contents inspection → repack, secure prohibited objects, care for animals, and sort bags into flight, security, biosecurity or animal-care bays.
+
+## Expanded airport systems
+
+- Seeded random contents and individual weights; probabilistic restricted/cleared lookalikes. Hidden truth stays on the host until inspection, rather than leaking through client snapshots or unopened X-ray labels.
+- Legal belongings, narcotics, organics, weapons, explosives, dangerous objects, protected wildlife, customs goods and pet carriers. Fictional hazardous props have a specialist-disposal station.
+- Additive shell-plus-item mass, impact damage, physical piles, throwable items, harmless cartoon dog hops, non-graphic player injury and first aid. Bags above 24 kg need two nearby operators in co-op; solo play permits slow dragging.
+- Consumable key/pliers durability, timed lock sequences, seals, explicit closing/relocking, food/water portions, and a scrollable contents browser for selecting any item and repacking into another nearby open bag.
+- Visible cats/rabbits in ventilated carriers replace the old adult silhouette. Hungry/thirsty carrier animals use supplies from the dog-care station before animal-care handoff. The detection dog has needs, training XP, stay/follow/patrol modes, probabilistic scent, and a scan prerequisite for its kennel upgrade.
+- Stamina, sprint, crouch with clearance checks, jumping, splash/main menu, controls, and persistent audio/sensitivity/fullscreen settings.
+
+Current rules and controls: [docs/airport-expansion.md](docs/airport-expansion.md). Earlier verification reports and videos describe their pinned pre-expansion versions; they are not evidence for the new mechanics.
 
 ## Weighted throws and two-player catches
 
-Bags now have mass: 8 kg light luggage, 16 kg medium loads and 28 kg heavy/dense electronics cases. **G throws a carried bag** with weight-dependent speed/range, gravity, impacts and settling. **E catches an airborne bag within reach**; **Q puts it down gently**. Heavier loads slow walking. Bags taken off the belt have a yellow silhouette outline; returning them to the belt removes it. First-person carrying uses both visible hands, and remote operators have worker avatars with matching carry poses. Dogs/items are never thrown by G.
+Bag mass now adds the shell and each item still inside; 8/16/28 kg are explicit legacy throw-test fixtures, not the randomized gameplay weight classes. **G throws a carried bag or item**, or gives the dog a gentle harmless cartoon hop. **E catches airborne bags within reach**; **Q puts held objects down gently**. Animal carriers and shared heavy bags must be handled gently. Bag outlines, first-person carry hands and remote worker carry poses remain.
 
 ```sh
-python3 tools/test-airport-throws.py          # Two actual headless ENet peers
-python3 tools/test-airport-throws.py --record --time-scale 0.5 # Both real player windows together
+python3 tools/test-airport-expansion-throws.py # Two actual peers, 8/16/23 kg relay
+# Historical pre-expansion video recipe (legacy runner expects 28 kg):
+# python3 tools/test-airport-throws.py --record --time-scale 0.25
 ```
 
-The split-screen recording uses a private Xvfb display and simultaneous native screen capture, not two fake actors or replayed network results. Warm-up collects naturally arriving bags with normal keys before capture starts; the video shows weighted ground throws and a two-way airborne relay for each weight class. It is an automated, silent gameplay recording. The CPU-rendering option slows both real simulations to half-speed during capture, then normalizes the MP4 to normal gameplay speed; unmodified capture is retained separately. `--quick` runs only the light-bag regression, not full acceptance. Test transport uses **17127/UDP**. Detailed acceptance: [docs/airport-bag-throws.md](docs/airport-bag-throws.md).
+The **historical 1080×1920 vertical recording** stacks Player 1 above Player 2, preserving both complete 4:3 views. Game title and player labels sit in added title bars outside the gameplay image; in-game branding/player badges and demo chapter overlays are hidden. Capture uses a private Xvfb display and two simultaneous native windows, not fake actors or replayed network results. Output: `artifacts/airport-bag-throws-vertical.mp4`. Warm-up collects naturally arriving bags with normal keys before capture starts; the video shows weighted ground throws and a two-way airborne relay for each weight class. It is an automated, silent gameplay recording. The CPU-rendering option slows both real simulations during capture, then normalizes the MP4 to normal gameplay speed; unmodified capture is retained separately. The quarter-speed setting provides additional headroom for software-rendered captures. `--quick` runs only the light-bag regression, not full acceptance. Test transport uses **17127/UDP**. Detailed acceptance: [docs/airport-bag-throws.md](docs/airport-bag-throws.md).
 
 ## Play the airport
 
@@ -22,9 +34,9 @@ godot --path .
 
 Choose **Play solo / Airport baggage**, or use the template's **Host Game → Start Game** / **Join** flow on **7000/UDP**. The previous sushi concept has its own main-menu button and its existing scene/test/recording commands are preserved.
 
-**Controls:** WASD/mouse; E context interaction; 1 hands, 2 approved-lock key, 3 large pliers; O open selected bag; I take the next available item / return a held item to its source bag; G throw a bag (gently place items/dog); Q gently put down a bag; K call the dog; F enlarge X-ray; TAB airport development (near terminal); 1–6 purchase while development is open; N next shift as host; ESC cursor/menu. Use the console to pause/resume intake while inspecting. Put carried bags on the desk before handling their contents.
+**Controls:** WASD/mouse; Shift sprint; Ctrl crouch; Space jump. E context interaction; 1 hands, 2 key, 3 pliers; use E on a locked bag, then enter its displayed 1/2/3 sequence (Space also enters 1 while unlocking). O open; C close; R relock with a seal; I contents browser and arbitrary repacking. G throw; Q gentle drop; H join/leave a shared carry; K call dog; P cycle dog mode; F enlarge X-ray; TAB upgrades near the terminal; 1–6 buy while the shop is open; N next shift as host; ESC close a modal/release cursor. Use station menus for first aid, tool restock, dog care/supplies and disposal.
 
-**Playable mechanics:** varied colored cabin bags, duffels, backpacks and large trunks; approved/foreign locks; visible tools and opening lids; individual contents; narcotics evidence; fruit/vegetable/seed bonuses; legal non-graphic dildo/vibrator joke props; serious adult safeguarding/rescue cases; dog scent alerts (clues, not convictions), calling/carrying/dropping and a harmless fictional non-ionizing scanner gag. The scanner displays the actual simulated contents, with labels after inspection or a scanner upgrade.
+**Inspection:** varied colored cabin bags, duffels, backpacks, trunks and ventilated animal carriers. Legal non-graphic adult personal props remain legal. Unopened scans are neutral clues, not categorical truth; opening a bag reveals the inspected contents. Routing follows the actual remaining contents after removal or repacking, not its original classification. Dog alerts are clues, never convictions.
 
 **Airport progression:** correct routes and once-only milestone grants fund scanner speed/clarity, dog training, evidence bonuses, biosecurity lab, faster/larger intake and terminal expansion. Expansion requires five correctly handled cases / five reputation plus $120; it opens a real flight-C bay and new international/oversize arrivals. Flight tags determine normal routing; large legal luggage uses oversize after expansion. Progress survives shift changes within the running session; there is no disk save or Steam integration.
 
@@ -39,7 +51,7 @@ bash tools/record-airport.sh
 
 The opt-in tour walks the real controller and sends normal keys, earns all upgrade funds through actual cases, and writes assertion reports. Movie Maker records actual engine frames; the MP4 includes the procedural dog bark. Outputs stay in ignored `artifacts/`. The Linux network checks use private test ports 17117/17118; normal play uses 7000.
 
-Full scope: [docs/airport-baggage.md](docs/airport-baggage.md). Execution evidence: [docs/airport-verification.md](docs/airport-verification.md). This is an interactable greybox, not final art, a production customs simulator or production anti-cheat. Contraband rules are fictional game rules, not legal advice. Safeguarding figures are adults and non-graphic; the dog scanner is explicitly harmless fiction.
+Current scope: [docs/airport-expansion.md](docs/airport-expansion.md). Historical baseline: [docs/airport-baggage.md](docs/airport-baggage.md), [docs/airport-verification.md](docs/airport-verification.md). This is an interactable greybox, not final art, a production customs simulator or production anti-cheat. Contraband and disposal rules are fictional game rules, not legal or real-world handling advice. Animal tossing/scanning is harmless cartoon fiction; player injury is non-graphic.
 
 ---
 

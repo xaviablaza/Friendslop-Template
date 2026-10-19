@@ -6,11 +6,26 @@ const ORIGIN = Vector3(0, 1.25, 0.55)
 
 func before_each():
 	sim = Simulation.new()
+	sim.set_fixture_mode()
 	sim.add_player(7)
 	sim.add_player(8)
 	sim.set_player_position(7, Vector3(0, 0.3, 0))
 	sim.update(50.01)
 	sim.belt_running = false
+	# Explicit additive fixtures isolate weighted physics from randomized loot.
+	for id in [1, 2, 4, 5]:
+		var target_mass: float = {1:8.0, 2:16.0, 4:28.0, 5:23.0}[id]
+		sim.bags[id].shell_mass_kg = target_mass - sim.bags[id].items.size()
+		sim.ensure_bag_physics(sim.bags[id])
+
+func _open(id: int):
+	sim.act(7, "tool", -1, 2)
+	sim.act(7, "unlock", id)
+	var sequence: Array = sim.players[7].lock_game.get("sequence", []).duplicate()
+	for value in sequence:
+		sim.act(7, "lock_input", id, value)
+	sim.act(7, "open", id)
+	assert_true(sim.bags[id].opened)
 
 func _throw(id: int = 1, peer: int = 7, origin: Vector3 = ORIGIN, direction: Vector3 = Vector3.FORWARD):
 	sim.act(peer, "pickup_bag", id)
@@ -24,15 +39,13 @@ func test_spawned_bags_have_explicit_mass_including_dense_small_electronics():
 	assert_eq(sim.bags[2].get("mass_kg", -1.0), 16.0)
 	assert_eq(sim.bags[4].get("mass_kg", -1.0), 28.0)
 	assert_eq(sim.bags[5].size, 0)
-	assert_eq(sim.bags[5].get("mass_kg", -1.0), 28.0)
+	assert_eq(sim.bags[5].get("mass_kg", -1.0), 23.0) # Co-op throwable load below shared-carry threshold.
 	for bag in sim.bags.values():
 		for key in ["velocity", "rotation", "angular_velocity", "off_belt", "flight_age", "last_thrower"]:
 			assert_true(bag.has(key), "Missing physics field: " + key)
 
 func test_throw_closes_open_bag_preserves_unlock_and_host_calculates_impulse():
-	sim.act(7, "tool", -1, 2)
-	sim.act(7, "unlock", 1)
-	sim.act(7, "open", 1)
+	_open(1)
 	sim.act(7, "pickup_bag", 1)
 	sim.act(7, "throw_bag", -1, {"origin": ORIGIN, "direction": Vector3.FORWARD, "velocity": Vector3.ONE * 999})
 	var bag: Dictionary = sim.bags[1]
@@ -118,7 +131,7 @@ func test_fallback_room_bounds_and_callback_collision_reflect_velocity():
 	assert_between(sim.bags[1].position.z, -4.9, 6.0)
 	var calls: Array = []
 	sim.collision_query = func(from: Vector3, to: Vector3, bag: Dictionary) -> Dictionary:
-		calls.append([from, to, bag.id])
+		calls.append([from, to, bag.get("id", -1)]) # Dog sweeps share this callback.
 		if from.x < 1.0 and to.x >= 1.0:
 			var contact: Vector3 = from.lerp(to, (1.0 - from.x) / (to.x - from.x))
 			return {"position": contact, "normal": Vector3.LEFT}
@@ -134,6 +147,7 @@ func test_fallback_room_bounds_and_callback_collision_reflect_velocity():
 func test_fallback_each_wall_reflects_and_ground_friction_allows_sliding():
 	for direction in [Vector3.RIGHT, Vector3.LEFT, Vector3.FORWARD, Vector3.BACK]:
 		var model = Simulation.new()
+		model.set_fixture_mode()
 		model.add_player(7)
 		var start: Vector3 = Vector3(direction.x * 9.8, 1.25, direction.z * (5.8 if direction.z > 0.0 else 4.7))
 		model.set_player_position(7, start - Vector3.UP)
@@ -247,14 +261,12 @@ func test_invalid_throw_payload_and_wrong_owner_preserve_bag_cash_and_hands():
 	assert_eq(sim.throws, 0)
 	assert_eq(sim.money, 0)
 
-func test_dog_items_and_safeguarding_are_never_throwable():
+func test_bag_throw_rejects_held_dog_item_and_pet_carrier():
 	sim.act(7, "pickup_dog")
 	sim.act(7, "throw_bag", -1, {"origin": ORIGIN, "direction": Vector3.FORWARD})
 	assert_eq(sim.dog.location, "held")
 	sim.act(7, "place_dog", -1, {"location": "floor", "position": Vector3.ZERO})
-	sim.act(7, "tool", -1, 2)
-	sim.act(7, "unlock", 1)
-	sim.act(7, "open", 1)
+	_open(1)
 	sim.act(7, "take_item", 1, 0)
 	sim.act(7, "throw_bag", -1, {"origin": ORIGIN, "direction": Vector3.FORWARD})
 	assert_eq(sim.players[7].held_kind, "item")
@@ -308,13 +320,15 @@ func test_snapshots_reject_invalid_physics_events_and_airborne_ownership_atomica
 	sim.apply_snapshot(invalid)
 	assert_eq(sim.snapshot(), original)
 
-func test_physics_helper_initializes_legacy_bag_without_overwriting_existing_mass():
+func test_physics_helper_recomputes_additive_mass_without_overwriting_shell():
 	var legacy: Dictionary = {"size": 1, "items": [], "position": Vector3.ZERO}
 	sim.ensure_bag_physics(legacy)
-	assert_eq(legacy.mass_kg, 16.0)
+	assert_eq(legacy.mass_kg, 3.5)
 	assert_eq(legacy.velocity, Vector3.ZERO)
-	legacy.mass_kg = 28.0
+	legacy.shell_mass_kg = 28.0
+	legacy.mass_kg = 999.0 # Cached totals are not host truth.
 	sim.ensure_bag_physics(legacy)
+	assert_eq(legacy.shell_mass_kg, 28.0)
 	assert_eq(legacy.mass_kg, 28.0)
 
 func test_event_history_is_bounded_with_monotonic_serials():

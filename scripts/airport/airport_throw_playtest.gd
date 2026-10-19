@@ -1,6 +1,7 @@
 extends Node
-## Coordinated normal-input demo on two actual ENet peers. No cloned actors,
-## seeded bags/currency, teleporting catches or predetermined flight outcomes.
+## Coordinated normal-input demo on two actual ENet peers.
+## Explicit additive 8/16/23 kg fixtures isolate throws below the >24 kg
+## two-person carry threshold. Currency, flight and catch outcomes are not seeded.
 var game
 var role = "host"
 var peer_id = 1
@@ -263,18 +264,21 @@ func _host() -> void:
 	check(game.sim.players.size()==2,"Two actual ENet peers joined the ordinary airport scene")
 	chapter("Warm-up: collecting real automatic arrivals")
 	while not game.sim.bags.has(1) or game.sim.bags[1].t<0.719:await wait(0.05)
+	_set_mass_fixture(1,8.0)
 	await order(1,{"type":"stage","bag":1,"at":Vector3(-7,0,2)})
 	if not quick:
 		while not game.sim.bags.has(2) or game.sim.bags[2].t<0.719:await wait(0.05)
+		_set_mass_fixture(2,16.0)
 		await order(other_peer,{"type":"stage","bag":2,"at":Vector3(-7,0,2.8)})
 		while not game.sim.bags.has(5) or not game.sim.bags[5].scanned:await wait(0.05)
+		_set_mass_fixture(5,23.0)
 		await order(1,{"type":"stage","bag":5,"at":Vector3(-7,0,1.2)})
 	await walk(Vector3(-1.2,0,1.5),AirportRoom.SCAN_CONSOLE)
 	await aim(AirportRoom.SCAN_CONSOLE)
 	if game.sim.belt_running:await key(KEY_E)
 	await synchronize(func(): return not game.sim.belt_running)
 	check(not game.sim.belt_running,"Paused intake through its normal console after collecting bags")
-	if not quick: check([game.sim.bags[1].mass_kg,game.sim.bags[2].mass_kg,game.sim.bags[5].mass_kg]==[8.0,16.0,28.0],"Actual arrivals supplied 8 / 16 / 28 kg loads")
+	if not quick: check([game.sim.bags[1].mass_kg,game.sim.bags[2].mass_kg,game.sim.bags[5].mass_kg]==[8.0,16.0,23.0],"Explicit additive fixtures supplied 8 / 16 / 23 kg throwable loads")
 	await order(1,{"type":"walk","at":Vector3(-4.8,0,2),"watch":other_peer})
 	await order(other_peer,{"type":"walk","at":Vector3(4.8,0,2.8),"watch":1})
 	chapter("Two players / yellow off-belt bags / weighted handling")
@@ -335,6 +339,13 @@ func screenshot(name: String) -> void:
 	await RenderingServer.frame_post_draw
 	DirAccess.make_dir_recursive_absolute("res://artifacts")
 	get_viewport().get_texture().get_image().save_png("res://artifacts/throw-"+role+"-"+name+".png")
+
+func _set_mass_fixture(id: int, total: float) -> void:
+	var contents_mass = 0.0
+	for item in game.sim.bags[id].items:
+		if item.location=="bag": contents_mass+=float(item.mass_kg)
+	game.sim.bags[id].shell_mass_kg = total-contents_mass
+	game.sim.ensure_bag_physics(game.sim.bags[id])
 
 func _write_report(passed: bool,message: String) -> void:
 	DirAccess.make_dir_recursive_absolute("res://artifacts")

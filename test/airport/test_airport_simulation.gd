@@ -5,18 +5,40 @@ var sim
 
 func before_each():
 	sim = Simulation.new()
+	# This suite verifies known lifecycle/economy cases; production randomness is
+	# covered by test_airport_core_expansion.gd, not overridden in the model.
+	sim.set_fixture_mode()
 	sim.add_player(7)
 
 func _arrivals():
 	sim.update(50.01)
 
 func _open(id: int):
-	sim.act(7, "tool", -1, 2)
+	sim.act(7, "tool", -1, 1 if sim.bags[id].lock == "approved" else 2)
 	sim.act(7, "unlock", id)
+	_complete_lock()
 	sim.act(7, "open", id)
+	assert_true(sim.bags[id].opened, "Inspection opened bag %d" % id)
+
+func _complete_lock():
+	if not sim.players[7].lock_game.is_empty():
+		var sequence: Array = sim.players[7].lock_game.sequence.duplicate()
+		for symbol in sequence:
+			sim.act(7, "lock_input", -1, symbol)
+
+func _scan_dog():
+	sim.act(7, "pickup_dog")
+	sim.act(7, "place_dog", -1, {"location": "belt", "t": 0.35})
+	sim.update(1.6)
+	assert_gt(sim.dog_scan_count, 0)
+	sim.act(7, "pickup_dog")
+	sim.act(7, "place_dog", -1, {"location": "floor", "position": Vector3(0, 0.3, 0)})
 
 func _route(id: int, route: String = ""):
 	_open(id)
+	if sim.bags[id].carrier:
+		sim.act(7, "feed_pet", id)
+		assert_true(sim.bags[id].pet.fed)
 	sim.bags[id].scanned = true
 	sim.act(7, "pickup_bag", id)
 	sim.act(7, "route", id, sim.expected_route(sim.bags[id]) if route == "" else route)
@@ -43,8 +65,17 @@ func test_arrival_scanner_fifo_queue_and_pause_conserve_all_bags():
 		previous = bag.t
 	sim.belt_running = false
 	var frozen: Dictionary = sim.bags.duplicate(true)
+	var arrival_left: float = sim._arrival_left
 	sim.update(15.0)
-	assert_eq(sim.bags, frozen)
+	assert_eq(sim.bags.size(), frozen.size())
+	assert_eq(sim._arrival_left, arrival_left)
+	for id in frozen:
+		assert_eq(sim.bags[id].t, frozen[id].t)
+		assert_eq(sim.bags[id].position, frozen[id].position)
+		assert_eq(sim.bags[id].scan_left, frozen[id].scan_left)
+		assert_eq(sim.bags[id].items, frozen[id].items)
+	assert_gt(sim.bags[4].pet.hunger, frozen[4].pet.hunger)
+	assert_gt(sim.bags[4].pet.thirst, frozen[4].pet.thirst)
 	sim.belt_running = true
 	sim.act(7, "pickup_bag", 1)
 	sim.update(0.1)
@@ -60,7 +91,9 @@ func test_templates_have_variety_and_all_three_organic_kinds():
 	assert_eq(sim.bags[2].lock, "foreign")
 	assert_eq(sim.bags[3].lock, "none")
 	assert_eq(sim.bags[4].size, 2)
-	assert_eq(sim.bags[4].category, "safeguarding")
+	assert_eq(sim.bags[4].category, "pet")
+	assert_true(sim.bags[4].carrier)
+	assert_eq(sim.bags[4].pet.species, "cat")
 	assert_eq(sim.bags[5].flight, 1)
 	assert_eq(sim.bags[6].category, "organic")
 	var kinds: Array = []
@@ -82,11 +115,19 @@ func test_key_and_pliers_lock_rules():
 	assert_false(sim.bags[1].unlocked)
 	sim.act(7, "tool", -1, 1)
 	sim.act(7, "unlock", 1)
+	assert_false(sim.bags[1].unlocked)
+	assert_eq(sim.players[7].key_durability, 7)
+	assert_eq(sim.players[7].lock_game.sequence.size(), 3)
+	_complete_lock()
 	assert_true(sim.bags[1].unlocked)
 	sim.act(7, "unlock", 2)
 	assert_false(sim.bags[2].unlocked)
 	sim.act(7, "tool", -1, 2)
 	sim.act(7, "unlock", 2)
+	assert_false(sim.bags[2].unlocked)
+	assert_eq(sim.players[7].pliers_durability, 4)
+	assert_eq(sim.players[7].lock_game.sequence.size(), 4)
+	_complete_lock()
 	assert_eq(sim.bags[2].lock, "cut")
 	sim.act(7, "open", 2)
 	assert_true(sim.bags[2].opened)
@@ -114,22 +155,29 @@ func test_bag_ownership_place_and_invalid_shapes():
 	sim.act(7, "tool", -1, "1")
 	assert_eq(sim.players[7].tool, 0)
 
-func test_items_remain_in_source_and_return_requires_same_open_bag():
+func test_items_repack_into_any_open_bag_and_keep_unique_identity():
 	_arrivals()
 	sim.act(7, "take_item", 1, 0)
 	assert_eq(sim.players[7].held_kind, "")
 	_open(1)
-	_open(2)
 	sim.act(7, "take_item", 1, 0)
 	var item: Dictionary = sim.bags[1].items[0]
+	var original_mass: float = sim.bags[1].shell_mass_kg + item.mass_kg + sim.bags[1].items[1].mass_kg
 	assert_eq(sim.players[7].held_id, item.id)
 	assert_eq(sim.bags[1].items.size(), 2)
+	assert_almost_eq(sim.bags[1].mass_kg, original_mass - item.mass_kg, 0.00001)
 	sim.act(7, "return_item", 2)
 	assert_eq(item.location, "held")
-	sim.act(7, "return_item", 1)
+	_open(2)
+	var target_mass: float = sim.bags[2].mass_kg
+	sim.act(7, "return_item", 2)
 	assert_eq(item.location, "bag")
 	assert_eq(sim.players[7].held_kind, "")
-	sim.act(7, "take_item", 1, 0)
+	assert_eq(sim.bags[1].items.size(), 1)
+	assert_eq(sim.bags[2].items.size(), 3)
+	assert_eq(sim.bags[2].items[2].id, item.id)
+	assert_almost_eq(sim.bags[2].mass_kg, target_mass + item.mass_kg, 0.00001)
+	sim.act(7, "take_item", 2, 2)
 	sim.act(7, "drop_item", -1, Vector3(3, 0.2, 4))
 	assert_eq(item.location, "floor")
 	sim.act(7, "pickup_item", item.id)
@@ -154,6 +202,9 @@ func test_seizure_bonus_is_once_only_and_legal_adult_props_are_ordinary():
 	assert_eq(sim.items_seized, 1)
 	assert_eq(sim.get_item(id).location, "evidence")
 	assert_true(sim.get_item(id).deposited)
+	# Evidence remains in the item ledger, but no longer determines this bag's route.
+	assert_eq(sim.bags[2].category, "legal")
+	assert_eq(sim.expected_route(sim.bags[2]), "gate_b")
 	sim.act(7, "pickup_item", id)
 	assert_eq(sim.players[7].held_kind, "")
 	assert_eq(sim.bags[5].items[0].kind, "vibrator")
@@ -203,12 +254,23 @@ func test_category_routes_override_flight_and_oversize_only_after_expansion():
 	legal.flight = 2
 	assert_eq(sim.expected_route(legal), "gate_c")
 
-func test_rescue_is_serious_silhouette_not_collectible_and_bonus_once():
+func test_pet_rescue_requires_care_is_not_collectible_and_bonus_once():
 	_arrivals()
 	_open(4)
 	sim.act(7, "take_item", 4, 0)
 	assert_eq(sim.players[7].held_kind, "")
+	assert_eq(sim.bags[4].items[0].kind, "pet_cat")
+	sim.bags[4].scanned = true
+	sim.act(7, "pickup_bag", 4)
+	sim.act(7, "route", 4, "rescue")
+	assert_eq(sim.rescues, 0)
+	assert_eq(sim.money, 0)
+	assert_eq(sim.players[7].held_id, 4)
+	var food: int = sim.players[7].food
+	var water: int = sim.players[7].water
 	_route(4)
+	assert_eq(sim.players[7].food, food - 1)
+	assert_eq(sim.players[7].water, water - 1)
 	assert_eq(sim.rescues, 1)
 	assert_eq(sim.money, 95)
 	assert_true(sim.contracts.rescue)
@@ -240,19 +302,27 @@ func test_organic_and_legal_milestones_only_once_and_bio_lab_bonus():
 
 func test_dog_alerts_once_per_bag_false_positive_never_changes_category():
 	_arrivals()
-	sim.dog.position = sim.bag_position(sim.bags[2])
+	sim.bags[2].location = "floor"
+	sim.bags[2].position = Vector3(0, 0.3, 0)
+	sim.dog.position = sim.bags[2].position
 	sim.dog_goal = sim.dog.position
-	sim.update(0.1)
+	for attempt in range(30):
+		sim.dog.scent_left = 0.0
+		sim._update_dog(0.001)
 	assert_true(sim.bags[2].dog_alert)
 	var alerts: int = sim.dog.alerts
-	sim.update(0.1)
+	for attempt in range(30):
+		sim.dog.scent_left = 0.0
+		sim._update_dog(0.001)
 	assert_eq(sim.dog.alerts, alerts)
 	sim.bags[1].location = "floor"
-	sim.bags[1].position = Vector3(20, 0.3, 0)
+	sim.bags[1].position = Vector3(8, 0.3, 0)
 	sim.bags[1].items[0].kind = "snacks"
-	sim.dog.position = Vector3(20, 0.3, 0)
+	sim.dog.position = sim.bags[1].position
 	sim.dog_goal = sim.dog.position
-	sim.update(0.1)
+	for attempt in range(60):
+		sim.dog.scent_left = 0.0
+		sim._update_dog(0.001)
 	assert_true(sim.bags[1].dog_alert)
 	assert_eq(sim.expected_route(sim.bags[1]), "gate_a")
 	_route(1, "security")
@@ -260,16 +330,22 @@ func test_dog_alerts_once_per_bag_false_positive_never_changes_category():
 	assert_eq(sim.mistakes, 1)
 
 func test_kennel_range_training_and_floor_follow():
-	sim.update(0.01)
-	sim.bags[1].category = "narcotics"
-	sim.bags[1].location = "floor"
-	sim.bags[1].position = Vector3(5, 0.3, 0)
-	sim.update(0.1)
-	assert_false(sim.bags[1].dog_alert)
+	_arrivals()
+	_scan_dog()
+	sim.bags[2].location = "floor"
+	sim.bags[2].position = Vector3(4.5, 0.3, 0)
+	sim.bags[2].dog_alert = false
+	for attempt in range(30):
+		sim.dog.scent_left = 0.0
+		sim._update_dog(0.001)
+	assert_false(sim.bags[2].dog_alert)
 	sim.money = 35
 	sim.act(7, "upgrade_kennel")
-	sim.update(0.1)
-	assert_true(sim.bags[1].dog_alert)
+	assert_eq(sim.upgrades.kennel, 1)
+	for attempt in range(30):
+		sim.dog.scent_left = 0.0
+		sim._update_dog(0.001)
+	assert_true(sim.bags[2].dog_alert)
 	sim.act(7, "call_dog", -1, Vector3(0, 0.3, 4))
 	sim.update(1.0)
 	assert_almost_eq(sim.dog.position.z, 1.8, 0.001)
@@ -300,6 +376,11 @@ func test_all_upgrades_costs_single_purchase_and_terminal_prerequisites():
 		sim.act(7, "upgrade_" + key)
 		assert_eq(sim.upgrades[key], 0)
 	sim.money = 1000
+	# Money alone cannot buy training: earn the harmless scan prerequisite.
+	sim.act(7, "upgrade_kennel")
+	assert_eq(sim.upgrades.kennel, 0)
+	assert_eq(sim.money, 1000)
+	_scan_dog()
 	sim.act(7, "upgrade_terminal")
 	assert_eq(sim.upgrades.terminal, 0)
 	sim.handled = 5
@@ -315,10 +396,10 @@ func test_all_upgrades_costs_single_purchase_and_terminal_prerequisites():
 		assert_eq(sim.upgrades[key], 1)
 	assert_eq(sim.airport_level, 2)
 	assert_eq(sim.arrival_interval, 7.5)
-	sim.update(0.01)
-	assert_eq(sim.bags[1].flight, 2)
-	assert_eq(sim.bags[1].category, "legal")
-	assert_eq(sim.expected_route(sim.bags[1]), "gate_c")
+	sim.update(10.0)
+	assert_eq(sim.bags[2].flight, 2)
+	assert_eq(sim.bags[2].category, "legal")
+	assert_eq(sim.expected_route(sim.bags[2]), "gate_c")
 
 func test_scanner_and_evidence_upgrades_have_real_effects():
 	_arrivals()
@@ -430,6 +511,7 @@ func test_shift_freezes_and_next_shift_preserves_progress_and_held_objects():
 
 func test_arrival_and_scanner_timing_are_frame_partition_independent():
 	var other = Simulation.new()
+	other.set_fixture_mode()
 	other.add_player(7)
 	sim.update(23.3)
 	for index in range(233):
@@ -459,22 +541,43 @@ func test_paused_belt_freezes_partial_scans_dog_and_arrival_clock():
 	assert_eq(sim.bags.size(), 2)
 	assert_true(sim.bags[1].scanned)
 
-func test_kennel_removes_snacks_false_positives_and_all_suspicious_categories_alert():
+func test_kennel_reduces_but_does_not_eliminate_probabilistic_false_positives():
 	_arrivals()
-	sim.money = 35
-	sim.act(7, "upgrade_kennel")
+	_scan_dog()
+	sim.belt_running = false
 	for id in range(1, 7):
 		sim.bags[id].location = "floor"
 		sim.bags[id].position = Vector3(0, 0.3, 0)
-		sim.bags[id].dog_alert = false
 	sim.bags[1].items[0].kind = "snacks"
 	sim.dog.position = Vector3(0, 0.3, 0)
 	sim.dog_goal = sim.dog.position
-	sim.update(0.1)
-	assert_false(sim.bags[1].dog_alert)
-	assert_false(sim.bags[5].dog_alert)
+	var untrained: Dictionary = {}
+	var trained: Dictionary = {}
+	for training in range(2):
+		if training == 1:
+			sim.money = 35
+			sim.act(7, "upgrade_kennel")
+			assert_eq(sim.upgrades.kennel, 1)
+			sim.dog.xp = 100
+		for id in sim.bags:
+			(untrained if training == 0 else trained)[id] = 0
+		for trial in range(200):
+			# Paired seeds sample the same rolls with different training thresholds.
+			sim.set_seed(1000 + trial)
+			sim.dog.scent_left = 0.0
+			for bag in sim.bags.values():
+				bag.dog_alert = false
+			sim._update_dog(0.001)
+			for id in sim.bags:
+				if sim.bags[id].dog_alert:
+					(untrained if training == 0 else trained)[id] += 1
+	for id in [1, 5]:
+		assert_gt(trained[id], 0, "Training is not certainty for legal bag %d" % id)
+		assert_lt(trained[id], untrained[id])
+		assert_eq(sim.bags[id].category, "legal")
 	for id in [2, 3, 4, 6]:
-		assert_true(sim.bags[id].dog_alert)
+		assert_gt(trained[id], untrained[id])
+		assert_lt(trained[id], 200, "Even trained dogs can miss bag %d" % id)
 
 func test_repeated_milestones_do_not_pay_twice_and_sorted_data_survives():
 	_arrivals()

@@ -1,5 +1,6 @@
 extends Node
-## Opt-in real-controller walkthrough. Arrivals, money and unlocks are not seeded.
+## Opt-in fixture-loot walkthrough through normal controls and actual UI buttons.
+## Money and upgrades are earned; timed locks and care requirements remain live.
 var game
 var elapsed = 0.0
 var checks: Array[String] = []
@@ -82,10 +83,32 @@ func unlock_open(id: int, tool: Key) -> void:
 	await key(tool)
 	if not game.sim.bags[id].unlocked:
 		await key(KEY_E)
-	check(game.sim.bags[id].unlocked, "Correct tool unlocked bag #%d" % id)
+		var challenge: Dictionary = game.sim.players[game.local_id].lock_game.duplicate(true)
+		check(not challenge.is_empty() and not game.sim.bags[id].unlocked,"Started timed lock challenge #%d"%id)
+		if challenge.is_empty(): return
+		for value in challenge.sequence:
+			await key(KEY_1+int(value))
+	check(game.sim.bags[id].unlocked, "Normal sequence keys unlocked bag #%d" % id)
 	await key(KEY_O)
 	check(game.sim.bags[id].opened, "Opened bag #%d to reveal actual contents" % id)
 	await key(KEY_1)
+
+func take_contents(index: int) -> void:
+	await key(KEY_I)
+	check(game.hud.browser.visible,"I opened the real contents browser")
+	var rows = game.hud.browser_rows.get_children()
+	check(index>=0 and index<rows.size(),"Contents browser exposes the selected item index")
+	if index<0 or index>=rows.size(): return
+	rows[index].pressed.emit()
+	await wait(0.15)
+	await key(KEY_I)
+
+func return_contents() -> void:
+	await key(KEY_I)
+	check(not game.hud.repack_button.disabled,"Browser offers return into the selected open bag")
+	game.hud.repack_button.pressed.emit()
+	await wait(0.15)
+	await key(KEY_I)
 
 func pick_bag(id: int) -> void:
 	var at: Vector3 = game.sim.bag_position(game.sim.bags[id])
@@ -132,15 +155,15 @@ func _run() -> void:
 	check(game.sim.bags[1].category == "legal", "Dildo prop is legal, not contraband")
 	await pick_bag(1)
 	await put_table(1)
-	await key(KEY_I)
+	await take_contents(0)
 	check(game.sim.players[game.local_id].held_kind == "item", "Picked up an individual item from an opened bag")
-	await key(KEY_G)
+	await key(KEY_Q)
 	check(game.sim.players[game.local_id].held_kind == "", "Dropped an individual item onto the floor")
 	await aim(AirportRoom.TABLE_POINT+Vector3(0,0.2,0))
-	await key(KEY_I)
+	await take_contents(1)
 	check(game.sim.players[game.local_id].held_kind == "item", "Carried the second legal personal item")
 	await screenshot("legal-item")
-	await key(KEY_I)
+	await return_contents()
 	check(game.sim.players[game.local_id].held_kind == "", "Returned carried contents to the bag")
 	await pick_bag(1)
 	await route_bag(1,"gate_a")
@@ -151,18 +174,19 @@ func _run() -> void:
 	check(not game.sim.bags[2].unlocked, "Approved-lock key could not open a non-approved lock")
 	await unlock_open(2,KEY_3)
 	check(game.sim.bags[2].lock == "cut", "Large pliers cut the non-approved lock")
-	check(game.sim.dog.alerts > 0, "Detection dog barked near suspicious baggage")
+	check(game.sim.dog.hunger>15.0 and game.sim.dog.thirst>15.0, "Detection dog has real accumulating care needs")
 	await screenshot("contraband")
 	await pick_bag(2)
 	await put_table(2)
-	await key(KEY_I)
+	await take_contents(0)
 	check(game.sim.players[game.local_id].held_kind == "item", "Removed the narcotics evidence item")
 	await walk(Vector3(4.6,0,1.45), AirportRoom.EVIDENCE_POINT)
 	await key(KEY_E)
 	check(game.sim.items_seized == 1, "Deposited narcotics into secure evidence for a real bonus")
 	await walk(Vector3(2,0,1.5), AirportRoom.TABLE_POINT+Vector3(0,0.2,0))
 	await pick_bag(2)
-	await route_bag(2,"security")
+	check(game.sim.bags[2].category=="legal", "Seizing the restricted item reclassified remaining belongings")
+	await route_bag(2,"gate_b")
 	chapter("04 / CARRY THE DOG THROUGH A HARMLESS TRAINING SCAN")
 	await walk(Vector3(0,0,1.4),Vector3(0,0.3,1.4))
 	await key(KEY_K)
@@ -195,15 +219,33 @@ func _run() -> void:
 	await pick_bag(3)
 	await route_bag(3,"bio")
 	check(game.sim.organics == 1, "Caught illegal organics and earned biosecurity bonus")
-	chapter("06 / ADULT SAFEGUARDING: ESCALATE, DO NOT EXPLOIT")
+	chapter("06 / PET CARRIER: FOOD, WATER, ANIMAL CARE")
 	await acquire_scanned(4)
 	await unlock_open(4,KEY_3)
-	check(game.sim.bags[4].category == "safeguarding", "Opened a non-graphic adult safeguarding case")
-	await screenshot("safeguarding")
-	await wait(1.5)
+	check(game.sim.bags[4].category == "pet" and game.sim.bags[4].carrier, "Opened a ventilated carrier containing a real pet")
+	await screenshot("pet-carrier")
+	await walk(Vector3(3.5,0,1.5),AirportRoom.DOG_CARE_POINT)
+	await walk(Vector3(-7.5,0,1.5),AirportRoom.DOG_CARE_POINT)
+	await key(KEY_E)
+	check(game.hud.station_panel.visible,"Opened real dog-care supply menu")
+	var food_before: int = game.sim.players[game.local_id].food
+	var water_before: int = game.sim.players[game.local_id].water
+	for row in game.hud.station_rows.get_children():
+		if row is Button and row.text in ["Collect food", "Collect water"]:
+			row.pressed.emit()
+	await key(KEY_ESCAPE)
+	check(game.sim.players[game.local_id].food==food_before+1 and game.sim.players[game.local_id].water==water_before+1,"Collected finite food and water supplies")
+	await walk(Vector3(3.5,0,1.5),game.sim.bag_position(game.sim.bags[4]))
+	await walk(Vector3(3.5,0,-0.35),game.sim.bag_position(game.sim.bags[4]))
+	await key(KEY_I)
+	check(game.hud.pet_button.visible,"Contents browser exposes carrier care")
+	game.hud.pet_button.pressed.emit()
+	await wait(0.15)
+	await key(KEY_I)
+	check(game.sim.bags[4].pet.fed and game.sim.players[game.local_id].food==food_before and game.sim.players[game.local_id].water==water_before,"Pet care consumed carried supplies")
 	await pick_bag(4)
 	await route_bag(4,"rescue")
-	check(game.sim.rescues == 1, "Safeguarding response rescued the person at risk")
+	check(game.sim.rescues == 1, "Fed and watered pet reached animal care")
 	chapter("07 / LEGAL VIBRATOR ≠ PROHIBITED ITEM")
 	await acquire_scanned(5)
 	await unlock_open(5,KEY_2)
