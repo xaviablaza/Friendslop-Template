@@ -30,7 +30,13 @@ func _ready() -> void:
 	buttons.move_child(sushi_button, 3)
 	sushi_button.pressed.connect(_play_sushi)
 	var args = OS.get_cmdline_user_args()
-	if args.has("--airport-tour"):
+	if args.has("--airport-throw-host"):
+		PeerManager.set_provider(ENetNetworkProvider.new("127.0.0.1",17127))
+		PeerManager.host_game.call_deferred()
+	elif args.has("--airport-throw-client"):
+		PeerManager.set_provider(ENetNetworkProvider.new("127.0.0.1",17127))
+		PeerManager.join_game.call_deferred()
+	elif args.has("--airport-tour"):
 		_play_solo.call_deferred()
 	elif args.has("--airport-net-host"):
 		PeerManager.set_provider(ENetNetworkProvider.new("127.0.0.1", 17117))

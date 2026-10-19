@@ -6,3 +6,4 @@
 /artifacts/
 /test_results.xml
 *.avi
+__pycache__/

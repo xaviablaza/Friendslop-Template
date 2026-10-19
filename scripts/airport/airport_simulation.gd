@@ -8,7 +8,12 @@ const BELT_SPEED: float = 0.065
 const UPGRADE_COSTS: Dictionary = {"scanner": 45, "kennel": 35, "evidence": 30, "bio_lab": 70, "belt": 55, "terminal": 120}
 const ROUTES: Array = ["gate_a", "gate_b", "gate_c", "oversize", "security", "bio", "rescue"]
 const CATEGORIES: Array = ["legal", "narcotics", "organic", "safeguarding"]
-const STATE_FIELDS: Array = ["money", "reputation", "handled", "correct", "mistakes", "organics", "narcotics", "rescues", "legals", "items_seized", "airport_level", "day", "time_left", "shift_finished", "belt_running", "arrival_interval", "last_event", "upgrades", "contracts", "dog_scan_count", "dog", "dog_goal", "_next_bag_id", "_next_item_id", "_arrival_left", "_terminal_arrival"]
+const STATE_FIELDS: Array = ["money", "reputation", "handled", "correct", "mistakes", "organics", "narcotics", "rescues", "legals", "items_seized", "airport_level", "day", "time_left", "shift_finished", "belt_running", "arrival_interval", "last_event", "upgrades", "contracts", "dog_scan_count", "dog", "dog_goal", "_next_bag_id", "_next_item_id", "_arrival_left", "_terminal_arrival", "throws", "landings", "catches", "throw_events", "catch_events", "landing_events"]
+const FLIGHT_STEP: float = 1.0 / 120.0
+const BAG_FLOOR: float = 0.04
+const GRAVITY: float = 9.81
+const RESTITUTION: float = 0.2
+const EVENT_LIMIT: int = 64
 
 var bags: Dictionary = {}
 var players: Dictionary = {}
@@ -38,6 +43,14 @@ var _next_bag_id: int = 1
 var _next_item_id: int = 1
 var _arrival_left: float = 0.0
 var _terminal_arrival: bool = false
+var throws: int = 0
+var landings: int = 0
+var catches: int = 0
+var throw_events: Array[Dictionary] = []
+var catch_events: Array[Dictionary] = []
+var landing_events: Array[Dictionary] = []
+## Host scene supplies a bag-base sweep; never part of a network snapshot.
+var collision_query: Callable
 
 func add_player(peer_id: int) -> void:
 	if peer_id > 0 and not players.has(peer_id):
@@ -57,6 +70,10 @@ func remove_player(peer_id: int) -> void:
 		entity.location = "floor"
 		entity.position = player.position
 		entity.held_by = 0
+		if player.held_kind == "bag":
+			ensure_bag_physics(entity)
+			_stop_bag(entity)
+			entity.off_belt = true
 		if player.held_kind == "dog":
 			dog_goal = player.position
 	players.erase(peer_id)
@@ -78,6 +95,10 @@ func _clear_hands(player: Dictionary) -> void:
 	player.held_id = -1
 
 func _hold(player: Dictionary, peer_id: int, kind: String, id: int, entity: Dictionary) -> void:
+	if kind == "bag":
+		ensure_bag_physics(entity)
+		_stop_bag(entity)
+		entity.off_belt = true
 	player.held_kind = kind
 	player.held_id = id
 	entity.location = "held"
@@ -85,7 +106,7 @@ func _hold(player: Dictionary, peer_id: int, kind: String, id: int, entity: Dict
 	entity.position = player.position
 
 func _accessible(bag: Dictionary, peer_id: int) -> bool:
-	return not bag.is_empty() and bag.location != "sorted" and (bag.location != "held" or int(bag.held_by) == peer_id)
+	return not bag.is_empty() and bag.location not in ["sorted", "airborne"] and (bag.location != "held" or int(bag.held_by) == peer_id)
 
 func _feedback(message: String) -> String:
 	last_event = message
@@ -108,10 +129,14 @@ func act(peer_id: int, action: String, target_id: int = -1, extra: Variant = nul
 			player.tool = extra
 			return _feedback(["Hands selected.", "Approved key selected.", "Pliers selected."][extra])
 		"pickup_bag":
-			if player.held_kind != "" or bag.is_empty() or bag.location in ["held", "sorted"]:
+			if player.held_kind != "" or bag.is_empty() or bag.location in ["held", "sorted", "airborne"]:
 				return _feedback("Need empty hands and an available bag.")
 			_hold(player, peer_id, "bag", target_id, bag)
 			return _feedback("Carrying bag %d." % target_id)
+		"throw_bag":
+			return _throw_bag(player, peer_id, target_id, extra)
+		"catch_bag":
+			return _catch_bag(player, peer_id, bag)
 		"place_bag":
 			if player.held_kind != "bag" or not _valid_placement(extra):
 				return _feedback("Choose a valid belt, table, or floor placement.")
@@ -228,6 +253,172 @@ func act(peer_id: int, action: String, target_id: int = -1, extra: Variant = nul
 			return _buy_upgrade(action.trim_prefix("upgrade_"))
 	return _feedback("Unknown airport action.")
 
+## Migration helper for scene-free fixtures; snapshots themselves remain strict.
+func ensure_bag_physics(bag: Dictionary) -> void:
+	if not bag.has("mass_kg"):
+		var mass: float = [8.0, 16.0, 28.0][clampi(int(bag.get("size", 0)), 0, 2)]
+		for item in bag.get("items", []):
+			if item.get("kind", "") == "electronics":
+				mass = 28.0
+		bag.mass_kg = mass
+	var defaults: Dictionary = {"velocity": Vector3.ZERO, "rotation": Vector3.ZERO, "angular_velocity": Vector3.ZERO, "off_belt": false, "flight_age": 0.0, "last_thrower": 0, "throw_origin": bag.get("position", Vector3.ZERO), "throw_landed": false}
+	for field in defaults:
+		if not bag.has(field):
+			bag[field] = defaults[field]
+
+func _stop_bag(bag: Dictionary) -> void:
+	bag.velocity = Vector3.ZERO
+	bag.angular_velocity = Vector3.ZERO
+
+func carry_speed(peer_id: int) -> float:
+	var player: Dictionary = players.get(peer_id, {})
+	if player.is_empty() or player.held_kind != "bag":
+		return 1.0
+	var bag: Dictionary = bags.get(player.held_id, {})
+	if bag.is_empty():
+		return 1.0
+	ensure_bag_physics(bag)
+	return clampf(1.0 - float(bag.mass_kg) / 70.0, 0.55, 0.92)
+
+func _record_event(events: Array[Dictionary], event: Dictionary) -> void:
+	events.append(event.duplicate(true))
+	if events.size() > EVENT_LIMIT:
+		events.pop_front()
+
+func _throw_bag(player: Dictionary, peer_id: int, target_id: int, extra: Variant) -> String:
+	if player.held_kind != "bag" or (target_id != -1 and target_id != int(player.held_id)):
+		return _feedback("Only carried baggage can be thrown. Place dogs and belongings gently.")
+	var bag: Dictionary = bags.get(int(player.held_id), {})
+	if bag.is_empty() or bag.location != "held" or int(bag.held_by) != peer_id:
+		return _feedback("Carry your own bag first.")
+	if bag.category == "safeguarding":
+		return _feedback("Safeguarding cases need gentle handling. Carry this bag to rescue.")
+	if not extra is Dictionary or not _valid_position(extra.get("origin")) or not _valid_position(extra.get("direction")):
+		return _feedback("Throw requires a finite origin and unit aim direction.")
+	var origin: Vector3 = extra.origin
+	var direction: Vector3 = extra.direction
+	if absf(direction.length_squared() - 1.0) > 0.001 or origin.distance_to(player.position) > 2.0:
+		return _feedback("Throw from your own position with a unit aim direction.")
+	# Fixed host strength, never a client-supplied velocity or impulse.
+	ensure_bag_physics(bag)
+	var mass: float = bag.mass_kg
+	var velocity: Vector3 = direction * minf(90.0 / mass, 9.0) + Vector3.UP * (35.0 / mass)
+	bag.position = origin
+	bag.throw_origin = origin
+	bag.velocity = velocity
+	bag.angular_velocity = Vector3(2.4, 1.1, -1.7) * (8.0 / mass)
+	bag.location = "airborne"
+	bag.held_by = 0
+	bag.opened = false
+	bag.off_belt = true
+	bag.flight_age = 0.0
+	bag.last_thrower = peer_id
+	bag.throw_landed = false
+	_clear_hands(player)
+	throws += 1
+	_record_event(throw_events, {"bag_id": int(bag.id), "peer_id": peer_id, "mass_kg": mass, "position": origin, "start_position": origin, "velocity": velocity, "serial": throws})
+	return _feedback("Threw bag %d (%.0f kg)." % [bag.id, mass])
+
+func _catch_bag(player: Dictionary, peer_id: int, bag: Dictionary) -> String:
+	if player.held_kind != "" or bag.is_empty() or bag.location != "airborne":
+		return _feedback("Catch requires empty hands and an airborne bag.")
+	if bag.position.y <= 0.12 or bag.flight_age < 0.08 or (int(bag.last_thrower) == peer_id and bag.flight_age < 0.35):
+		return _feedback("Wait for the bag to be in flight and clear of the floor.")
+	if (player.position + Vector3.UP * 0.8).distance_to(bag.position + Vector3.UP * 0.2) > 1.65:
+		return _feedback("Airborne bag is out of catch reach.")
+	var event: Dictionary = {"bag_id": int(bag.id), "peer_id": peer_id, "last_thrower": int(bag.last_thrower), "mass_kg": float(bag.mass_kg), "height": float(bag.position.y), "position": bag.position, "flight_age": float(bag.flight_age), "serial": catches + 1}
+	_hold(player, peer_id, "bag", int(bag.id), bag)
+	catches += 1
+	_record_event(catch_events, event)
+	return _feedback("Caught bag %d in mid-air." % bag.id)
+
+func _update_flights(delta: float) -> void:
+	for bag in bags.values():
+		if bag.location != "airborne":
+			continue
+		var remaining: float = delta
+		while remaining > 0.00000001 and bag.location == "airborne":
+			var step: float = minf(remaining, FLIGHT_STEP)
+			_flight_step(bag, step)
+			remaining -= step
+
+func _flight_step(bag: Dictionary, step: float) -> void:
+	var from: Vector3 = bag.position
+	var velocity: Vector3 = bag.velocity
+	var to: Vector3 = from + velocity * step + Vector3.DOWN * (0.5 * GRAVITY * step * step)
+	velocity += Vector3.DOWN * GRAVITY * step
+	bag.flight_age = float(bag.flight_age) + step
+	bag.rotation += bag.angular_velocity * step
+	var hit: Dictionary = _room_hit(from, to)
+	if collision_query.is_valid():
+		var result: Variant = collision_query.call(from, to, bag)
+		if result is Dictionary and _valid_position(result.get("position")) and _valid_position(result.get("normal")):
+			var normal: Vector3 = result.normal
+			# Ignore malformed or backwards contacts rather than corrupting state.
+			if normal.length_squared() > 0.0001 and (to - from).dot(normal) < 0.0:
+				if hit.is_empty() or from.distance_squared_to(result.position) < from.distance_squared_to(hit.position):
+					hit = {"position": result.position, "normal": normal.normalized()}
+	if not hit.is_empty():
+		var normal: Vector3 = hit.normal
+		var destination: Vector3 = to
+		to = hit.position
+		if normal.y > 0.999 and absf(from.y - to.y) < 0.00001:
+			# A supporting floor must not pin a sliding bag's horizontal position.
+			to.x = destination.x
+			to.z = destination.z
+		var incoming: float = velocity.dot(normal)
+		if incoming < 0.0:
+			velocity -= normal * ((1.0 + RESTITUTION) * incoming)
+		if normal.y > 0.5:
+			# Static friction consumes low rebounds; no endless gravity micro-bounce.
+			if absf(velocity.y) < 0.45:
+				velocity.y = 0.0
+			var lateral: Vector3 = Vector3(velocity.x, 0, velocity.z).move_toward(Vector3.ZERO, 7.0 * step)
+			velocity.x = lateral.x
+			velocity.z = lateral.z
+			bag.angular_velocity = (bag.angular_velocity as Vector3).move_toward(Vector3.ZERO, 12.0 * step)
+			if to.y <= BAG_FLOOR + 0.001:
+				_record_landing(bag, to)
+			if velocity.length_squared() < 0.0036:
+				bag.location = "floor"
+				_stop_bag(bag)
+				velocity = Vector3.ZERO
+		else:
+			# Separate from vertical walls before the next sweep.
+			to += normal * 0.0001
+	# A supporting-floor contact can win the earliest-hit test at a corner;
+	# resolve its remaining wall constraints too instead of sticking at the wall.
+	if (to.x > 10.0 and velocity.x > 0.0) or (to.x < -10.0 and velocity.x < 0.0):
+		velocity.x *= -RESTITUTION
+	if (to.z > 6.0 and velocity.z > 0.0) or (to.z < -4.9 and velocity.z < 0.0):
+		velocity.z *= -RESTITUTION
+	bag.position = Vector3(clampf(to.x, -10.0, 10.0), maxf(to.y, BAG_FLOOR), clampf(to.z, -4.9, 6.0))
+	bag.velocity = velocity
+
+func _room_hit(from: Vector3, to: Vector3) -> Dictionary:
+	# Earliest segment/plane hit in a bounded room, independent of scene physics.
+	var hit: Dictionary = {}
+	var earliest: float = 2.0
+	for plane in [[Vector3.UP, BAG_FLOOR], [Vector3.RIGHT, -10.0], [Vector3.LEFT, -10.0], [Vector3.BACK, -4.9], [Vector3.FORWARD, -6.0]]:
+		var normal: Vector3 = plane[0]
+		var start: float = from.dot(normal) - float(plane[1])
+		var end: float = to.dot(normal) - float(plane[1])
+		if end < 0.0 and end < start:
+			var fraction: float = clampf(start / (start - end), 0.0, 1.0)
+			if fraction < earliest:
+				earliest = fraction
+				hit = {"position": from.lerp(to, fraction), "normal": normal}
+	return hit
+
+func _record_landing(bag: Dictionary, position: Vector3) -> void:
+	if bag.throw_landed:
+		return
+	bag.throw_landed = true
+	landings += 1
+	var origin: Vector3 = bag.throw_origin
+	var distance: float = Vector2(position.x - origin.x, position.z - origin.z).length()
+	_record_event(landing_events, {"bag_id": int(bag.id), "last_thrower": int(bag.last_thrower), "mass_kg": float(bag.mass_kg), "distance": distance, "position": position, "ground_position": position, "serial": landings})
+
 func _valid_position(value: Variant) -> bool:
 	return typeof(value) == TYPE_VECTOR3 and value.is_finite()
 
@@ -243,6 +434,10 @@ func _valid_placement(value: Variant, for_dog: bool = false) -> bool:
 	return true
 
 func _place(entity: Dictionary, placement: Dictionary, fallback: Vector3) -> void:
+	if entity.has("items"):
+		ensure_bag_physics(entity)
+		_stop_bag(entity)
+		entity.off_belt = placement.location != "belt"
 	entity.location = placement.location
 	entity.held_by = 0
 	entity.position = placement.get("position", fallback)
@@ -380,6 +575,7 @@ func _try_arrive() -> bool:
 	if oversized_contract:
 		bags[id].size = 2
 		bags[id].kind = 3
+	ensure_bag_physics(bags[id])
 	return true
 
 func update(delta: float) -> void:
@@ -402,6 +598,7 @@ func update(delta: float) -> void:
 				_arrival_left = arrival_interval
 		for player in players.values():
 			_sync_held(player)
+		_update_flights(step)
 		_update_dog(step)
 		remaining -= step
 	time_left = maxf(0.0, time_left - elapsed)
@@ -524,14 +721,24 @@ func apply_snapshot(data: Dictionary) -> void:
 	var restored_bags: Dictionary = {}
 	var restored_players: Dictionary = {}
 	var item_ids: Dictionary = {}
-	var bag_shape: Dictionary = {"id": 0, "color": 0, "size": 0, "kind": 0, "flight": 0, "lock": "", "unlocked": false, "opened": false, "scanned": false, "scan_left": 0.0, "location": "", "t": 0.0, "position": Vector3.ZERO, "held_by": 0, "dog_alert": false, "category": "", "items": []}
+	var bag_shape: Dictionary = {"id": 0, "color": 0, "size": 0, "kind": 0, "flight": 0, "lock": "", "unlocked": false, "opened": false, "scanned": false, "scan_left": 0.0, "location": "", "t": 0.0, "position": Vector3.ZERO, "held_by": 0, "dog_alert": false, "category": "", "items": [], "mass_kg": 0.0, "velocity": Vector3.ZERO, "rotation": Vector3.ZERO, "angular_velocity": Vector3.ZERO, "off_belt": false, "flight_age": 0.0, "last_thrower": 0, "throw_origin": Vector3.ZERO, "throw_landed": false}
 	var item_shape: Dictionary = {"id": 0, "kind": "", "label": "", "category": "", "location": "", "position": Vector3.ZERO, "held_by": 0, "deposited": false}
 	for key in data.bags:
 		var id: int = _id_key(key)
 		var bag: Variant = data.bags[key]
 		if id < 1 or restored_bags.has(id) or not _has_shape(bag, bag_shape):
 			return
-		if bag.id != id or bag.color < 0 or bag.color > 5 or bag.size not in [0, 1, 2] or bag.kind not in [0, 1, 2, 3] or bag.flight not in [0, 1, 2] or bag.lock not in ["approved", "foreign", "none", "cut"] or bag.category not in CATEGORIES or bag.location not in ["belt", "table", "floor", "held", "sorted"] or bag.t < 0.0 or bag.t > 1.0 or bag.scan_left < 0.0:
+		if bag.id != id or bag.color < 0 or bag.color > 5 or bag.size not in [0, 1, 2] or bag.kind not in [0, 1, 2, 3] or bag.flight not in [0, 1, 2] or bag.lock not in ["approved", "foreign", "none", "cut"] or bag.category not in CATEGORIES or bag.location not in ["belt", "table", "floor", "held", "sorted", "airborne"] or bag.t < 0.0 or bag.t > 1.0 or bag.scan_left < 0.0:
+			return
+		if bag.mass_kg < 1.0 or bag.mass_kg > 70.0 or bag.flight_age < 0.0 or bag.last_thrower < 0:
+			return
+		if bag.location == "airborne" and (not bag.off_belt or bag.last_thrower == 0 or bag.category == "safeguarding"):
+			return
+		if bag.location == "belt" and bag.off_belt:
+			return
+		if bag.location == "held" and not bag.off_belt:
+			return
+		if bag.location != "airborne" and (bag.velocity != Vector3.ZERO or bag.angular_velocity != Vector3.ZERO):
 			return
 		for item in bag.items:
 			if not _has_shape(item, item_shape):
@@ -580,11 +787,40 @@ func apply_snapshot(data: Dictionary) -> void:
 	for id in item_ids:
 		if id >= data._next_item_id:
 			return
+	if not _valid_event_history(data.throw_events, data.throws, "throw", restored_bags) or not _valid_event_history(data.catch_events, data.catches, "catch", restored_bags) or not _valid_event_history(data.landing_events, data.landings, "landing", restored_bags):
+		return
+	if data.catches > data.throws or data.landings > data.throws:
+		return
 	bags = restored_bags
 	players = restored_players
 	for field in STATE_FIELDS:
 		var value: Variant = data[field]
 		set(field, value.duplicate(true) if value is Dictionary or value is Array else value)
+
+func _valid_event_history(events: Array, count: int, kind: String, known_bags: Dictionary) -> bool:
+	if count < 0 or events.size() != mini(count, EVENT_LIMIT):
+		return false
+	var shape: Dictionary = {"bag_id": 0, "mass_kg": 0.0, "position": Vector3.ZERO, "serial": 0}
+	match kind:
+		"throw": shape.merge({"peer_id": 0, "start_position": Vector3.ZERO, "velocity": Vector3.ZERO})
+		"catch": shape.merge({"peer_id": 0, "last_thrower": 0, "height": 0.0, "flight_age": 0.0})
+		"landing": shape.merge({"last_thrower": 0, "distance": 0.0, "ground_position": Vector3.ZERO})
+	var serial: int = count - events.size() + 1
+	for event in events:
+		if not _has_shape(event, shape):
+			return false
+		if not known_bags.has(event.bag_id) or event.serial != serial or event.mass_kg < 1.0 or event.mass_kg > 70.0:
+			return false
+		if event.has("peer_id") and event.peer_id <= 0:
+			return false
+		if event.has("last_thrower") and event.last_thrower <= 0:
+			return false
+		if kind == "catch" and (event.height <= 0.12 or event.flight_age < 0.08):
+			return false
+		if kind == "landing" and event.distance < 0.0:
+			return false
+		serial += 1
+	return true
 
 func _valid_owner(entity: Dictionary, peers: Dictionary, kind: String, id: int) -> bool:
 	if entity.location != "held":

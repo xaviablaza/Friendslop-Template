@@ -14,7 +14,7 @@ Branch from the verified revolving-sushi foundation, preserving its Godot 4.4.1 
 Airport funds and reputation come from correct sorting and seizures, not seeded demo money. Milestone contracts award once-only grants. Buy scanner clarity/speed, dog training, evidence handling, a biosecurity lab, intake capacity and a terminal expansion. Terminal expansion requires successful inspections plus funds and unlocks a real third flight/oversize contract, visibly changing the room and incoming manifests. Maintain these benefits across shifts.
 
 ## Geometry/input
-A straight belt runs X=-8..8, Z=-2, Y=1.1; scanner around X=-1.2; manual inspection desk in front; tools, evidence, upgrades and routing bays around the operator floor. Primitive meshes only. WASD/mouse first-person controls; context E, 1/2/3 hands/key/pliers, O open, I take/return contents, G drop, K call dog, TAB airport upgrades, N next shift, ESC cursor/menu. The HUD presents contents/X-ray only when legitimately scanned/opened.
+A straight belt runs X=-8..8, Z=-2, Y=1.1; scanner around X=-1.2; manual inspection desk in front; tools, evidence, upgrades and routing bays around the operator floor. Primitive meshes only. WASD/mouse first-person controls; context E, 1/2/3 hands/key/pliers, O open, I take/return contents, G throw bag / gently place items or dog, Q gently drop bag, K call dog, TAB airport upgrades, N next shift, ESC cursor/menu. The HUD presents contents/X-ray only when legitimately scanned/opened.
 
 ## Delivery gates
 1. Deterministic model tests for every named mechanic and progression prerequisite.

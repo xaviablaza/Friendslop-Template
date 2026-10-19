@@ -2,6 +2,17 @@
 
 The `airport-baggage` branch builds on the playable sushi foundation. Straight automatic intake → live training X-ray → locks/contents inspection → carry and sort into flight, security, biosecurity or safeguarding bays.
 
+## Weighted throws and two-player catches
+
+Bags now have mass: 8 kg light luggage, 16 kg medium loads and 28 kg heavy/dense electronics cases. **G throws a carried bag** with weight-dependent speed/range, gravity, impacts and settling. **E catches an airborne bag within reach**; **Q puts it down gently**. Heavier loads slow walking. Bags taken off the belt have a yellow silhouette outline; returning them to the belt removes it. First-person carrying uses both visible hands, and remote operators have worker avatars with matching carry poses. Dogs/items are never thrown by G.
+
+```sh
+python3 tools/test-airport-throws.py          # Two actual headless ENet peers
+python3 tools/test-airport-throws.py --record --time-scale 0.5 # Both real player windows together
+```
+
+The split-screen recording uses a private Xvfb display and simultaneous native screen capture, not two fake actors or replayed network results. Warm-up collects naturally arriving bags with normal keys before capture starts; the video shows weighted ground throws and a two-way airborne relay for each weight class. It is an automated, silent gameplay recording. The CPU-rendering option slows both real simulations to half-speed during capture, then normalizes the MP4 to normal gameplay speed; unmodified capture is retained separately. `--quick` runs only the light-bag regression, not full acceptance. Test transport uses **17127/UDP**. Detailed acceptance: [docs/airport-bag-throws.md](docs/airport-bag-throws.md).
+
 ## Play the airport
 
 ```sh
@@ -11,7 +22,7 @@ godot --path .
 
 Choose **Play solo / Airport baggage**, or use the template's **Host Game → Start Game** / **Join** flow on **7000/UDP**. The previous sushi concept has its own main-menu button and its existing scene/test/recording commands are preserved.
 
-**Controls:** WASD/mouse; E context interaction; 1 hands, 2 approved-lock key, 3 large pliers; O open selected bag; I take the next available item / return a held item to its source bag; G put down a bag/item/dog; K call the dog; F enlarge X-ray; TAB airport development (near terminal); 1–6 purchase while development is open; N next shift as host; ESC cursor/menu. Use the console to pause/resume intake while inspecting. Put carried bags on the desk before handling their contents.
+**Controls:** WASD/mouse; E context interaction; 1 hands, 2 approved-lock key, 3 large pliers; O open selected bag; I take the next available item / return a held item to its source bag; G throw a bag (gently place items/dog); Q gently put down a bag; K call the dog; F enlarge X-ray; TAB airport development (near terminal); 1–6 purchase while development is open; N next shift as host; ESC cursor/menu. Use the console to pause/resume intake while inspecting. Put carried bags on the desk before handling their contents.
 
 **Playable mechanics:** varied colored cabin bags, duffels, backpacks and large trunks; approved/foreign locks; visible tools and opening lids; individual contents; narcotics evidence; fruit/vegetable/seed bonuses; legal non-graphic dildo/vibrator joke props; serious adult safeguarding/rescue cases; dog scent alerts (clues, not convictions), calling/carrying/dropping and a harmless fictional non-ionizing scanner gag. The scanner displays the actual simulated contents, with labels after inspection or a scanner upgrade.
 

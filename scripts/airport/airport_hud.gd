@@ -8,6 +8,7 @@ var xray_panel: PanelContainer
 var xray_canvas: XrayCanvas
 var xray_large = false
 var route_guide: Label
+var throw_demo_label = ""
 const UPGRADE_ORDER = ["scanner", "kennel", "evidence", "bio_lab", "belt", "terminal"]
 const COSTS = [45, 35, 30, 70, 55, 120]
 
@@ -92,8 +93,8 @@ func _ready() -> void:
 	var dog_panel = panel(Vector2(18,350),Vector2(300,118))
 	dog_label = label("",15,Color("e3ce91"))
 	dog_panel.add_child(dog_label)
-	var carry_panel = panel(Vector2(18,510),Vector2(350,145))
-	inventory = label("",17)
+	var carry_panel = panel(Vector2(18,490),Vector2(350,165))
+	inventory = label("",16)
 	carry_panel.add_child(inventory)
 	prompt = label("",19)
 	prompt.position = Vector2(390,550)
@@ -118,7 +119,7 @@ func _ready() -> void:
 	center.position = Vector2(630,345)
 	add_child(center)
 	var controls = panel(Vector2(18,675),Vector2(1244,31))
-	controls.add_child(label("WASD / MOUSE  MOVE / LOOK    E  USE    1/2/3  HANDS/KEY/PLIERS    O  OPEN    I  CONTENTS    G  DROP    K  DOG    TAB  UPGRADES    ESC  CURSOR",12))
+	controls.add_child(label("WASD / MOUSE  MOVE / LOOK    E  USE    1/2/3  HANDS/KEY/PLIERS    O  OPEN    I  CONTENTS    G  THROW    Q  DROP    K  DOG    TAB  UPGRADES    ESC  CURSOR",12))
 	_build_airport_shop()
 	var shift_panel = panel(Vector2(390,285),Vector2(490,155))
 	shift_label = label("",22)
@@ -152,6 +153,14 @@ func _build_airport_shop() -> void:
 		shop_buttons.append(button)
 	shop.visible = false
 
+func set_throw_demo(label_text: String) -> void:
+	throw_demo_label = label_text
+	for node in [case_label.get_parent(),xray_panel,contents_label.get_parent(),route_guide.get_parent(),dog_label.get_parent()]:
+		node.visible = false
+	chapter.position = Vector2(170,105)
+	chapter.size = Vector2(950,65)
+	chapter.add_theme_font_size_override("font_size",22)
+
 func route_name(route: String) -> String:
 	return {"gate_a":"FLIGHT A / NW101", "gate_b":"FLIGHT B / SE202", "gate_c":"FLIGHT C / INT303", "oversize":"OVERSIZE", "security":"SECURITY HOLD", "bio":"BIOSECURITY", "rescue":"SAFEGUARDING RESPONSE"}.get(route,route.to_upper())
 
@@ -163,6 +172,11 @@ func refresh_airport(sim, peer_id: int, bag_id: int, target_text: String, feedba
 	var player: Dictionary = sim.players.get(peer_id,{"held_kind":"","held_id":-1,"tool":0})
 	var held = str(player.held_kind).to_upper() if player.held_kind != "" else "EMPTY HANDS"
 	inventory.text = "TOOL: %s\nCARRYING: %s\n%02d NARCOTICS / %02d BIO\n%02d RESCUES / %02d EVIDENCE" % [["HANDS","APPROVED KEY","LARGE PLIERS"][int(player.tool)],held,sim.narcotics,sim.organics,sim.rescues,sim.items_seized]
+	if player.held_kind == "bag" and sim.bags.has(player.held_id):
+		var mass = float(sim.bags[player.held_id].mass_kg)
+		inventory.text += "\n%.0f kg / CARRY %d%%\n[G] THROW    [Q] GENTLE DROP" % [mass,int(sim.carry_speed(peer_id)*100)]
+	if throw_demo_label != "":
+		stats.text = throw_demo_label+" / REAL ENET PEER\n%d THROWS / %d MID-AIR CATCHES" % [sim.throws,sim.catches]
 	prompt.text = target_text
 	event_label.text = feedback_text if feedback_text != "" else sim.last_event
 	dog_label.text = "DETECTION DOG\n%s\nAlerts %d  /  Training scans %d\n[K] Call  /  [E] Carry  /  [G] Put down" % ["WOOF! Inspect bag #%d" % sim.dog.alert_bag if sim.dog.bark_left > 0 else "An alert is a clue, not a conviction.",sim.dog.alerts,sim.dog_scan_count]
@@ -192,6 +206,7 @@ func refresh_airport(sim, peer_id: int, bag_id: int, target_text: String, feedba
 		xray_canvas.scanned = bool(sim.dog.scanned)
 		contents_label.text = "VERY GOOD BOY\nHarmless cartoon training scan.\nDog is safe and ready to return to work."
 	xray_canvas.queue_redraw()
+	xray_panel.visible = throw_demo_label == ""
 	xray_panel.position = Vector2(330,215) if xray_large else Vector2(900,215)
 	xray_panel.size = Vector2(550,290) if xray_large else Vector2(362,220)
 	var titles = ["Scanner II: fast scan + item labels", "Dog training: wider / more reliable alerts", "Evidence bench: double seizure bonus", "Biosecurity lab: +$20 organic recovery", "Intake upgrade: larger / faster queue", "Terminal expansion: flight C + oversize"]

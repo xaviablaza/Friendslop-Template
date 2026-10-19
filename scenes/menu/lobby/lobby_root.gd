@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# Opt-in local integration check, never used in ordinary hosting.
 	var args = OS.get_cmdline_user_args()
-	if not (args.has("--sushi-net-host") or args.has("--airport-net-host")) or not multiplayer.is_server():
+	if not (args.has("--sushi-net-host") or args.has("--airport-net-host") or args.has("--airport-throw-host")) or not multiplayer.is_server():
 		return
 	var players = LobbyManager.get_all_players()
 	if players.size() < 2:

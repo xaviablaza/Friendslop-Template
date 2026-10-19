@@ -5,6 +5,7 @@ extends CharacterBody3D
 var camera: Camera3D
 var hand: Node3D
 var input_enabled = true
+var movement_multiplier: float = 1.0
 var automated = false
 var walk_target = Vector3.ZERO
 var walking = false
@@ -30,7 +31,8 @@ func _ready() -> void:
 	hand.position = Vector3(0.38, -0.38, -0.72)
 	hand.rotation.x = 0.12
 	camera.add_child(hand)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if not automated:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not input_enabled or automated:
@@ -55,8 +57,8 @@ func _physics_process(delta: float) -> void:
 			direction = basis * Vector3(axes.x, 0, axes.y)
 			rotation.y += Input.get_axis("look_right", "look_left") * delta * 1.7
 			camera.rotation.x = clampf(camera.rotation.x + Input.get_axis("look_down", "look_up") * delta, -1.15, 1.15)
-	velocity.x = direction.x * SPEED
-	velocity.z = direction.z * SPEED
+	velocity.x = direction.x * SPEED * movement_multiplier
+	velocity.z = direction.z * SPEED * movement_multiplier
 	velocity.y -= 18.0 * delta
 	move_and_slide()
 	if automated and aiming:

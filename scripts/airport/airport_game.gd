@@ -26,6 +26,7 @@ var bark_player: AudioStreamPlayer
 var test_driver: Node
 var tool_node: Node3D
 var shown_tool = -1
+var carry_rig: Node3D
 
 func _ready() -> void:
 	local_id = multiplayer.get_unique_id()
@@ -33,8 +34,13 @@ func _ready() -> void:
 	add_child(room)
 	room.build()
 	chef = SushiChef.new()
+	# Two automated windows must not compete for the desktop mouse grab.
+	chef.automated = OS.get_cmdline_user_args().has("--airport-throw-host") or OS.get_cmdline_user_args().has("--airport-throw-client")
 	chef.position = Vector3(0 if local_id == 1 else 0.8, 0.03, 1.7)
 	add_child(chef)
+	carry_rig = AirportBagPresentation.make_hands()
+	chef.camera.add_child(carry_rig)
+	sim.collision_query = _bag_collision
 	hud = AirportHUD.new()
 	add_child(hud)
 	hud.upgrade_requested.connect(func(kind): request_action("upgrade_" + kind))
@@ -51,11 +57,14 @@ func _ready() -> void:
 		_register_chef(local_id)
 	SceneManager.mark_scene_as_loaded(self)
 	var args = OS.get_cmdline_user_args()
-	if args.has("--airport-tour"):
+	if args.has("--airport-throw-host") or args.has("--airport-throw-client"):
+		test_driver = load("res://scripts/airport/airport_throw_playtest.gd").new()
+	elif args.has("--airport-tour"):
 		test_driver = load("res://scripts/airport/airport_playtest.gd").new()
 	elif args.has("--airport-net-host") or args.has("--airport-net-client"):
 		test_driver = load("res://scripts/airport/airport_network_smoke.gd").new()
 	if test_driver:
+		test_driver.name = "PlaytestDriver"
 		test_driver.game = self
 		add_child(test_driver)
 
@@ -83,10 +92,10 @@ func _process(delta: float) -> void:
 	feedback_left = maxf(0, feedback_left - delta)
 	if multiplayer.is_server():
 		poses[local_id] = {"position": chef.position, "yaw": chef.rotation.y}
-		_update_held_positions()
-		sim.update(delta)
+
 	net_clock += delta
-	if net_clock >= 0.08:
+	var sending_flight = sim.bags.values().any(func(bag): return bag.location == "airborne")
+	if net_clock >= (0.033 if sending_flight else 0.08):
 		net_clock = 0
 		if multiplayer.is_server():
 			for id in sim.players:
@@ -108,6 +117,10 @@ func _process(delta: float) -> void:
 	if sim.belt_running: belt_clock += delta
 	room.animate_belt(belt_clock, 0.065)
 	room.set_expanded(sim.airport_level)
+	chef.movement_multiplier = sim.carry_speed(local_id)
+	var carrying: Dictionary = sim.players.get(local_id,{})
+	var held_bag: Dictionary = sim.bags.get(carrying.get("held_id",-1),{}) if carrying.get("held_kind","")=="bag" else {}
+	AirportBagPresentation.update_hands(carry_rig,held_bag,clock)
 	_update_bags()
 	_update_items()
 	_update_dog()
@@ -123,9 +136,10 @@ func _process(delta: float) -> void:
 func interaction_target() -> Dictionary:
 	var candidates: Array[Dictionary] = []
 	for bag in sim.bags.values():
-		if bag.location in ["belt", "table", "floor"]:
+		if bag.location in ["belt", "table", "floor", "airborne"]:
 			var tool = int(sim.players.get(local_id, {}).get("tool", 0))
 			var prompt = "[E] Carry bag #%d  /  [O] Open  /  [I] Contents" % bag.id if tool == 0 else "[E] Use %s on bag #%d" % ["KEY" if tool == 1 else "LARGE PLIERS", bag.id]
+			if bag.location == "airborne": prompt = "[E] CATCH BAG #%d / %.0f kg" % [bag.id,bag.mass_kg]
 			candidates.append({"kind": "bag", "id": bag.id, "point": sim.bag_position(bag) + Vector3(0, 0.2, 0), "prompt": prompt})
 		for item in bag.items:
 			if item.location == "floor":
@@ -181,6 +195,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				request_action("tool", -1, event.physical_keycode - KEY_1)
 		KEY_E:
 			if chef.input_enabled and not hud.shop.visible:
+				# Fast bags can move between display frames: use the current aim.
+				target = interaction_target()
 				interact()
 		KEY_O:
 			if chef.input_enabled and not hud.shop.visible:
@@ -189,6 +205,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			if chef.input_enabled and not hud.shop.visible:
 				handle_contents()
 		KEY_G:
+			if chef.input_enabled and not hud.shop.visible:
+				throw_held()
+		KEY_Q:
 			if chef.input_enabled and not hud.shop.visible:
 				drop_held()
 		KEY_K:
@@ -210,7 +229,8 @@ func interact() -> void:
 	var held = str(player.get("held_kind", ""))
 	match target.get("kind", ""):
 		"bag":
-			request_action("unlock" if int(player.get("tool", 0)) != 0 else "pickup_bag", int(target.id))
+			var action = "catch_bag" if sim.bags[int(target.id)].location == "airborne" else ("unlock" if int(player.get("tool",0)) != 0 else "pickup_bag")
+			request_action(action,int(target.id))
 		"item": request_action("pickup_item", int(target.id))
 		"dog": request_action("pickup_dog")
 		"table":
@@ -247,10 +267,18 @@ func handle_contents() -> void:
 	else:
 		_show_feedback("Put the bag on the desk before handling individual contents.")
 
+func throw_held() -> void:
+	var player: Dictionary = sim.players.get(local_id,{})
+	if player.get("held_kind","") == "bag":
+		request_action("throw_bag",int(player.held_id),{"direction":(-chef.camera.global_basis.z).normalized()})
+	else:
+		drop_held() # Dogs and individual items are always placed gently.
+
 func drop_held() -> void:
 	var player: Dictionary = sim.players.get(local_id, {})
 	var kind = str(player.get("held_kind", ""))
 	var at = chef.position - chef.basis.z * 0.8 + Vector3(0, 0.3, 0)
+	if kind == "bag": at.y = 0.04
 	if kind in ["bag", "dog"]:
 		request_action("place_" + kind, -1, {"location": "floor", "position": at})
 	elif kind == "item":
@@ -285,6 +313,18 @@ func _perform_action(peer: int, action: String, id: int, extra: Variant) -> void
 	var station = point
 	var player: Dictionary = sim.players[peer]
 	match action:
+		"throw_bag":
+			if not extra is Dictionary or not extra.get("direction") is Vector3: return
+			var direction: Vector3 = extra.direction
+			if not direction.is_finite() or absf(direction.length()-1.0)>0.05: return
+			extra = {"direction":direction.normalized(),"origin":poses[peer].position+Vector3(0,1.25,0)+direction.normalized()*0.55}
+		"catch_bag":
+			if not sim.bags.has(id): return
+			station = sim.bag_position(sim.bags[id])+Vector3(0,0.2,0)
+			if point.distance_to(station)>1.7:
+				print("AIRPORT_CATCH_MISS peer=",peer," reach=",point.distance_to(station)," bag=",station," player=",point)
+				_send_feedback(peer,"Bag is outside catching reach.")
+				return
 		"tool":
 			if not extra is int or extra < 0 or extra > 2:
 				return
@@ -363,14 +403,15 @@ func _update_held_positions() -> void:
 		if not poses.has(peer): continue
 		sim.set_player_position(peer, poses[peer].position + Vector3(0, 0.3, 0))
 
-func _held_transform(node: Node3D, peer: int, scale_value: float) -> void:
+func _held_transform(node: Node3D, peer: int, scale_value: float, bag: Dictionary = {}) -> void:
 	if peer == local_id:
 		node.global_transform = chef.camera.global_transform
-		node.position = chef.camera.to_global(Vector3(0.35, -0.42, -1.0))
-		node.rotation.x = 0.0
+		node.position = chef.camera.to_global(AirportBagPresentation.carry_offset(bag) if not bag.is_empty() else Vector3(0.35,-0.42,-1.0))
 	else:
-		node.position = poses.get(peer, {}).get("position", Vector3.ZERO) + Vector3(0, 1, 0)
-	node.scale = Vector3.ONE * scale_value
+		var yaw = float(poses.get(peer,{}).get("yaw",0))
+		node.position = poses.get(peer,{}).get("position",Vector3.ZERO)+Vector3(0,1.0,0)-Basis(Vector3.UP,yaw).z*0.55
+		node.rotation = Vector3(0,yaw,0)
+	node.scale = Vector3.ONE * (AirportBagPresentation.carry_scale(bag) if not bag.is_empty() else scale_value)
 
 func _update_bags() -> void:
 	for id in sim.bags:
@@ -384,11 +425,12 @@ func _update_bags() -> void:
 			bag_signatures[id] = signature
 		var node: Node3D = bag_nodes[id]
 		node.visible = bag.location != "sorted"
+		AirportBagPresentation.apply_outline(node,bool(bag.off_belt))
 		if bag.location == "held":
-			_held_transform(node, int(bag.held_by), 0.58)
+			_held_transform(node,int(bag.held_by),0.9,bag)
 		else:
 			node.position = sim.bag_position(bag)
-			node.rotation = Vector3.ZERO
+			node.rotation = bag.rotation
 			node.scale = Vector3.ONE
 
 func _update_items() -> void:
@@ -477,19 +519,41 @@ func _update_avatars() -> void:
 	for peer in poses:
 		if peer == local_id: continue
 		if not avatars.has(peer):
-			var avatar = MeshInstance3D.new()
-			var mesh = CapsuleMesh.new()
-			mesh.radius = 0.24
-			mesh.height = 1.7
-			avatar.mesh = mesh
-			avatar.material_override = SushiRoom.material(Color("d3b959"))
+			var avatar = AirportBagPresentation.make_crew("PLAYER 1" if peer==1 else "PLAYER 2",Color("d3b959") if peer==1 else Color("67a7bf"))
 			add_child(avatar)
 			avatars[peer] = avatar
-		avatars[peer].position = poses[peer].position + Vector3(0, 0.85, 0)
+		avatars[peer].position = poses[peer].position
+		avatars[peer].rotation.y = float(poses[peer].yaw)
+		var player: Dictionary = sim.players.get(peer,{})
+		var holding = player.get("held_kind","")=="bag"
+		var mass = float(sim.bags.get(player.get("held_id",-1),{}).get("mass_kg",0)) if holding else 0.0
+		AirportBagPresentation.update_crew(avatars[peer],holding,mass)
 	for peer in avatars.keys():
 		if not poses.has(peer):
 			avatars[peer].queue_free()
 			avatars.erase(peer)
+
+func _physics_process(delta: float) -> void:
+	if _session_active() and multiplayer.is_server() and is_instance_valid(chef):
+		poses[local_id] = {"position":chef.position,"yaw":chef.rotation.y}
+		_update_held_positions()
+		sim.update(delta)
+
+func _bag_collision(from: Vector3,to: Vector3,bag: Dictionary) -> Dictionary:
+	# Swept edge rays against the actual room; flight itself stays host-owned.
+	var radius = [0.23,0.3,0.39][int(bag.size)]
+	var offsets = [Vector3(0,0.04,0),Vector3(radius,0.18,0),Vector3(-radius,0.18,0),Vector3(0,0.18,radius),Vector3(0,0.18,-radius)]
+	var nearest: Dictionary = {}
+	var best = INF
+	for offset in offsets:
+		var query = PhysicsRayQueryParameters3D.create(from+offset,to+offset,1,[chef.get_rid()])
+		var hit = get_world_3d().direct_space_state.intersect_ray(query)
+		if hit.is_empty(): continue
+		var distance = (hit.position-(from+offset)).length_squared()
+		if distance < best:
+			best = distance
+			nearest = {"position":hit.position-offset+hit.normal*0.025,"normal":hit.normal}
+	return nearest
 
 func _bark_sound() -> AudioStreamWAV:
 	var wave = AudioStreamWAV.new()
