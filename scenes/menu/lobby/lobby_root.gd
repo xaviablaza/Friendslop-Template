@@ -30,6 +30,19 @@ func _ready() -> void:
 
 #endregion
 
+func _process(_delta: float) -> void:
+	# Opt-in local integration check, never used in ordinary hosting.
+	if not OS.get_cmdline_user_args().has("--sushi-net-host") or not multiplayer.is_server():
+		return
+	var players = LobbyManager.get_all_players()
+	if players.size() < 2:
+		return
+	for player in players:
+		if not LobbyManager.is_player_ready_for_gameplay(player.peer_id):
+			return
+	set_process(false)
+	_on_start_btn_pressed()
+
 #region UI Interaction
 
 func _on_start_btn_pressed() -> void:
@@ -37,7 +50,7 @@ func _on_start_btn_pressed() -> void:
 	
 	# Transition to loading state
 	LobbyManager.current_lobby.state = Lobby.State.SERVER_LOADING
-	LobbyManager.current_lobby.active_scene_path = "res://scenes/level/2d/Demo2DMap.tscn"
+	LobbyManager.current_lobby.active_scene_path = "res://scenes/level/sushi/RevolvingSushi.tscn"
 
 #endregion
 

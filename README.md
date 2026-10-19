@@ -1,4 +1,34 @@
-# Friendslop Template 🎮
+# Belt Behaviour — Revolving Sushi Graybox
+
+A first-person, primitive-geometry restaurant prototype built on **Friendslop Template**. Prepare salmon, tuna and cucumber sushi, carry plates to a revolving conveyor, match customer requests, wash returned plates and spend earned money on handling upgrades. The existing ENet host/join lobby and scene readiness remain in use; solo play is one click from the main menu.
+
+## Run this branch
+
+- Requires **Godot 4.4.1** and **Git LFS**. GUT is already vendored in `addons/gut` (there is no npm install).
+- Linux setup: install `git-lfs curl unzip` and OpenGL/audio runtime libraries, then run `bash tools/setup-godot.sh`. This installs the pinned engine under `~/.local/share/godot/4.4.1` and fetches the repository's real LFS assets. Opening pointer files without `git lfs pull` causes misleading image/font import failures.
+- Launch: `godot --path .`, or open `project.godot` in the editor and press F6/F5 as appropriate.
+- Choose **Play solo / Revolving sushi**, or **Host Game → Start Game**. Other players join the host IP using the template's ENet port **7000/UDP**. LAN/IP co-op, not Steam matchmaking.
+
+**Controls:** WASD move; mouse or arrows look; E use the station you look at; F clear the oldest stale dish at the loading point; TAB open/close upgrades beside the terminal; 1/2/3 purchase while the terminal is open; N starts the next shift as host; ESC releases the cursor and exposes the main-menu button. The world does not pause while the cursor is released.
+
+**Loop:** ingredient stations on the left → loading point at the far side → customers take matching dishes → plate return on the right → upgrades. Tray capacity starts at one; the $24 serving tray carries three. Plates become stale after 32 seconds and cannot be sold; clearing/discarding them returns dirty plates for washing. Each shift lasts two minutes; $80 is a soft target, not a hard game-over.
+
+## Verification and real gameplay recording
+
+```sh
+godot --headless --editor --import --quit
+godot --headless -s addons/gut/gut_cmdln.gd -gconfig=res://gutconfig.json -gexit
+python3 tools/test-sushi-network.py
+bash tools/record-sushi.sh
+```
+
+The recording uses Godot's actual Movie Maker renderer and an opt-in automated player that walks the normal controller and sends E/1/TAB/N key events. It earns its money through customer purchases: no seeded cash or fake HUD. Output, screenshots and machine-readable checks are saved in ignored `artifacts/`. On headless Linux, recording additionally needs `xvfb` and `ffmpeg`; it uses a private virtual display and software OpenGL. The MP4 is silent graybox gameplay, not a trailer or a human playtest.
+
+Design/scope: [docs/revolving-sushi.md](docs/revolving-sushi.md). Recorded execution results: [docs/verification.md](docs/verification.md). This is a disposable gameplay concept, not final art/audio, production anti-cheat, saved progression or a Steam build. The original 2D demo remains at `scenes/level/2d/Demo2DMap.tscn`.
+
+---
+
+# Original Friendslop Template 🎮
 
 > [!IMPORTANT]
 > To me, **Friendslop** means a game prioritizes fun moments with friends over everything else.

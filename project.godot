@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="FriendslopTemplate"
-run/main_scene="uid://kfp8o5wcwdn0"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/name="Belt Behaviour — Revolving Sushi Graybox"
+run/main_scene="res://scenes/menu/MainMenu.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +20,18 @@ config/icon="res://icon.svg"
 PeerManager="*res://scripts/multiplayer/network/peer_manager.gd"
 LobbyManager="*res://scripts/multiplayer/lobby/lobby_manager.gd"
 SceneManager="*res://scripts/core/scene_manager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
 
 [editor_plugins]
 
