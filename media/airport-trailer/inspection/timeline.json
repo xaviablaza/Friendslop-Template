@@ -1,0 +1,221 @@
+{
+  "fps": 24,
+  "native_size": [
+    1280,
+    720
+  ],
+  "video": "inspection-complete.mp4",
+  "shot_count": 17,
+  "duration": 126.91666666666667,
+  "disclosure": "Automated actual Godot gameplay with scripted catalogue cases, positions and cameras; separate supplemental scenarios appended after main. No fabricated UI, seeded money, or invented outcomes. Silent footage; external trailer captions must disclose scripted scenarios.",
+  "source_trim_frames": {
+    "inspection-native.avi": 8,
+    "supplement-native.avi": 7
+  },
+  "shots": [
+    {
+      "crop_suggestion": "Full width; belt action center and manifest upper-right",
+      "end": 13.0,
+      "end_frame": 312,
+      "id": "random_arrivals",
+      "start": 0.0,
+      "start_frame": 0,
+      "visible_result": "Ordinary seeded random arrivals enter the actual moving intake; distinct bag manifests and true computed masses.",
+      "source": "inspection-native.avi",
+      "timecode_start": "00:00.000",
+      "timecode_end": "00:13.000"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 21.833333333333332,
+      "end_frame": 524,
+      "id": "neutral_xray_legal_lookalike",
+      "start": 13.0,
+      "start_frame": 312,
+      "visible_result": "Unopened scan shows identical neutral unknown shapes, not categorical truth; approved-key timed challenge reveals cleared legal lookalike.",
+      "source": "inspection-native.avi",
+      "timecode_start": "00:13.000",
+      "timecode_end": "00:21.833"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 31.291666666666668,
+      "end_frame": 751,
+      "id": "wrong_sequence_worn_key",
+      "start": 21.833333333333332,
+      "start_frame": 524,
+      "visible_result": "Wrong input consumes tool durability; repeated genuine wrong attempts wear the key to zero; exhausted key refuses a challenge.",
+      "source": "inspection-native.avi",
+      "timecode_start": "00:21.833",
+      "timecode_end": "00:31.292"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 39.375,
+      "end_frame": 945,
+      "id": "pliers_and_close_relock",
+      "start": 31.291666666666668,
+      "start_frame": 751,
+      "visible_result": "Four-input timed pliers challenge cuts lock; bag opens, then closes and relocks with a seal.",
+      "source": "inspection-native.avi",
+      "timecode_start": "00:31.292",
+      "timecode_end": "00:39.375"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 47.666666666666664,
+      "end_frame": 1144,
+      "id": "nonfirst_item_crossbag_repack",
+      "start": 39.375,
+      "start_frame": 945,
+      "visible_result": "Real item browser picks second item (electronics), dropdown chooses another open bag, repack adds exact item mass to destination and subtracts from source.",
+      "source": "inspection-native.avi",
+      "timecode_start": "00:39.375",
+      "timecode_end": "00:47.667"
+    },
+    {
+      "crop_suggestion": "Center action plus inventory left; no HUD-only crop",
+      "end": 53.25,
+      "end_frame": 1278,
+      "id": "individual_item_throw",
+      "start": 47.666666666666664,
+      "start_frame": 1144,
+      "visible_result": "Real browser picks folded clothes; normal G launches them onto an actual route-station surface. The appended clear_individual_item_flight shot is preferred for editing.",
+      "source": "inspection-native.avi",
+      "timecode_start": "00:47.667",
+      "timecode_end": "00:53.250"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 60.833333333333336,
+      "end_frame": 1460,
+      "id": "taxonomy_dispose_weapons",
+      "start": 53.25,
+      "start_frame": 1278,
+      "visible_result": "Real browser identifies weapons training prop; second item picked up, carried to secure disposal station; real button disposes object and earns $10.",
+      "source": "inspection-native.avi",
+      "timecode_start": "00:53.250",
+      "timecode_end": "01:00.833"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 68.41666666666667,
+      "end_frame": 1642,
+      "id": "taxonomy_dispose_explosives",
+      "start": 60.833333333333336,
+      "start_frame": 1460,
+      "visible_result": "Real browser identifies explosives training prop; second item picked up, carried to secure disposal station; real button disposes object and earns $10.",
+      "source": "inspection-native.avi",
+      "timecode_start": "01:00.833",
+      "timecode_end": "01:08.417"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 76.0,
+      "end_frame": 1824,
+      "id": "taxonomy_dispose_dangerous",
+      "start": 68.41666666666667,
+      "start_frame": 1642,
+      "visible_result": "Real browser identifies dangerous training prop; second item picked up, carried to secure disposal station; real button disposes object and earns $10.",
+      "source": "inspection-native.avi",
+      "timecode_start": "01:08.417",
+      "timecode_end": "01:16.000"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 79.25,
+      "end_frame": 1902,
+      "id": "taxonomy_narcotics_organics_customs",
+      "start": 76.0,
+      "start_frame": 1824,
+      "visible_result": "Actual scrollable browser lists narcotics, organic moon fruit, and customs relic with masses and categories in one open inspected case.",
+      "source": "inspection-native.avi",
+      "timecode_start": "01:16.000",
+      "timecode_end": "01:19.250"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 83.54166666666667,
+      "end_frame": 2005,
+      "id": "taxonomy_wildlife",
+      "start": 79.25,
+      "start_frame": 1902,
+      "visible_result": "Protected fictional cloud-lizard wildlife item is visible in real browser; attempting removal is safely refused, remains in its carrier.",
+      "source": "inspection-native.avi",
+      "timecode_start": "01:19.250",
+      "timecode_end": "01:23.542"
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 89.75,
+      "end_frame": 2154,
+      "id": "earned_funds_restock",
+      "start": 83.54166666666667,
+      "start_frame": 2005,
+      "visible_result": "$30 earned only by three actual specialist disposals funds a real $12 station restock; worn key restored to eight, pliers to five, seals to three.",
+      "source": "inspection-native.avi",
+      "timecode_start": "01:23.542",
+      "timecode_end": "01:29.750"
+    },
+    {
+      "crop_suggestion": "Keep center stack and right damage manifest",
+      "end": 97.0,
+      "end_frame": 2328,
+      "id": "physical_stack_impact_damage",
+      "start": 89.75,
+      "start_frame": 2154,
+      "visible_result": "Three actual bag bodies settle into a supported stack; E removes bottom, remaining bags visibly fall. Damage is asserted here but the appended top-bag close aim shows actual DAMAGE 4% legibly.",
+      "source": "inspection-native.avi",
+      "timecode_start": "01:29.750",
+      "timecode_end": "01:37.000"
+    },
+    {
+      "crop_suggestion": "Full frame for incoming luggage and health; first-aid menu centered",
+      "end": 105.41666666666667,
+      "end_frame": 2530,
+      "id": "nongraphic_impact_and_firstaid",
+      "start": 97.0,
+      "start_frame": 2328,
+      "visible_result": "Staged airborne luggage falls into operator; real collision reduces health without gore; nearby first-aid station button restores it to 100.",
+      "source": "inspection-native.avi",
+      "timecode_start": "01:37.000",
+      "timecode_end": "01:45.417"
+    },
+    {
+      "crop_suggestion": "Central game action plus left held-item inventory",
+      "end_frame": 2734,
+      "id": "clear_individual_item_flight",
+      "start_frame": 2530,
+      "visible_result": "Real browser chooses holiday books; visible held book, G launch through open aisle, actual gravity landing; no equipped tool obscures action.",
+      "start": 105.41666666666667,
+      "end": 113.91666666666667,
+      "source": "supplement-native.avi (scripted independent scenario)",
+      "timecode_start": "01:45.417",
+      "timecode_end": "01:53.917"
+    },
+    {
+      "crop_suggestion": "Center stack AND top-right manifest",
+      "end_frame": 2902,
+      "id": "visible_top_bag_impact_damage",
+      "start_frame": 2734,
+      "visible_result": "Top bag falls on genuine stack; camera aims at top so actual damage value is readable in top-right manifest (not middle bag).",
+      "start": 113.91666666666667,
+      "end": 120.91666666666667,
+      "source": "supplement-native.avi (scripted independent scenario)",
+      "timecode_start": "01:53.917",
+      "timecode_end": "02:00.917"
+    },
+    {
+      "crop_suggestion": "Left health panel plus landed luggage at center",
+      "end_frame": 3046,
+      "id": "injury_health_after_actual_impact",
+      "start_frame": 2902,
+      "visible_result": "Independent scripted scenario: gravity-driven falling bag hits local operator; follow-down view holds actual HEALTH 89 and landed bag. Main capture separately includes the real first-aid recovery.",
+      "start": 120.91666666666667,
+      "end": 126.91666666666667,
+      "source": "supplement-native.avi (scripted independent scenario)",
+      "timecode_start": "02:00.917",
+      "timecode_end": "02:06.917"
+    }
+  ]
+}

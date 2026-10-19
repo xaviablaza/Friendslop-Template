@@ -1,0 +1,19 @@
+{
+  "head": "663cb3a2fc8f61a664f3b1075cfd86485ad9cf37",
+  "worktree": "/home/administrator/.hermes/cache/scratch/airport-trailer-v2-coop",
+  "original_checkout_not_modified": true,
+  "new_files": {
+    "scripts/airport/airport_coop_capture.gd": "b5e158307aaea3c5cf1bef48abcb7985c2b9ad0d8d65a75f25e13b773b6fb1e5",
+    "tools/capture-airport-coop.py": "ec938b2f78763ec15838f3b05639c14d1c3bff2c0c0923004be0f997bc3adaa0",
+    "tools/package-airport-coop.py": "420eacd9d92b5269ed6e772b142f2f5534dd3258c46978ad7f88223655713167"
+  },
+  "engine": "4.4.1.stable.official.49a5bc7b6",
+  "capture_command": "LP_NUM_THREADS=4 python3 tools/capture-airport-coop.py --record --time-scale 0.5",
+  "normal_speed_check": "python3 tools/capture-airport-coop.py",
+  "video_sha256": {
+    "heavy-shared-walk.mp4": "7ce55ffa15a71499988dc3f3e98f7b5becf2376a7d5afb18fc41b95fa122a87c",
+    "airport-bag-throws-capture.mp4": "1ab905218cdc15918cfa3b6de52e11ffc8faa97d9e04c98b0f307f2e2662a88f",
+    "airport-bag-throws.mp4": "54bb469b714ac4422e51948fdb7e513b7eee1d1231048d4fc9e0b227cd98fc4d",
+    "airborne-relay.mp4": "41ef756fc61561e9cff3eddd892d6dd666ea2f79e61761c98365030eb135d8f1"
+  }
+}

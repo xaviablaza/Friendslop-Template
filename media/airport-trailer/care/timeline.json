@@ -1,0 +1,104 @@
+{
+	"disclosures": [
+		"Automated single-player inputs, HEAD 663cb3a; scene staging teleports operator/camera and positions catalogue fixture bags between takes.",
+		"Cat/rabbit and two organic + one legal reward fixtures use known catalogue objects and unlocked locks. Each fixture is staged before the real scanner and scanned through normal intake controls before inspection. Rewards, contracts and purchases are live, not pre-awarded.",
+		"Initial food/water explicitly empty to exercise shortage. Currency, rewards, reputation, training XP and purchases are never seeded.",
+		"Dog starts at the actual care station with default live needs; follow/patrol/throw/scanner and care all run the real simulation and interaction gateway.",
+		"Scent scene uses known legal/restricted fixtures; actual live RNG is not replaced, selected or rerolled to manufacture an outcome.",
+		"MovieMaker real OpenGL rendering, 1280x720 at 24fps; silent source footage; no chapter/title overlays."
+	],
+	"fps": 24,
+	"scenes": [
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "Known catalogue cat carrier staged on real inspection desk; empty carried portions fixture.",
+			"end": 10.9583333333333,
+			"name": "cat_closed_open_and_empty_supplies",
+			"start": 0.166666666666667
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "",
+			"end": 15.7916666666667,
+			"name": "shared_care_station_finite_portions",
+			"start": 10.9583333333333
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "",
+			"end": 23.2083333333333,
+			"name": "cat_food_water_and_animal_care_handoff",
+			"start": 15.7916666666667
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "Known catalogue rabbit fixture; real care and reward.",
+			"end": 36.25,
+			"name": "rabbit_closed_open_food_water_handoff",
+			"start": 23.2083333333333
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "",
+			"end": 40.375,
+			"name": "kennel_gated_before_training_scan",
+			"start": 36.25
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "",
+			"end": 48.7083333333333,
+			"name": "dog_live_needs_feed_water_and_rest",
+			"start": 40.375
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "Operator restaged into open lane; dog walks autonomously from care station with live collision sweep.",
+			"end": 61.2916666666667,
+			"name": "dog_autonomous_follow_and_patrol",
+			"start": 48.7083333333333
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "",
+			"end": 66.5416666666667,
+			"name": "dog_carry_and_harmless_capped_G_throw",
+			"start": 61.2916666666667
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "",
+			"end": 74.0833333333333,
+			"name": "real_dog_scanner_crossing_LIVE_animal_Xray_XP",
+			"start": 66.5416666666667
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "Three known catalogue baggage fixtures staged in reach, ordinary O/E input and route gateway; no money injection.",
+			"end": 94.4583333333333,
+			"name": "earn_remaining_funds_through_real_routes",
+			"start": 74.0833333333333
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "",
+			"end": 101.916666666667,
+			"name": "earned_scanner_kennel_terminal_purchases",
+			"start": 94.4583333333333
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "Next arrival scheduled immediately after upgrade to avoid dead time; normal catalogue arrival, scanner, open and route.",
+			"end": 119.875,
+			"name": "new_international_route_used",
+			"start": 101.916666666667
+		},
+		{
+			"crop_suggestion": "Full 1280x720 preserves live HUD; center action can be cropped editorially.",
+			"disclosure": "Eight known catalogue scent fixtures (four legal, four organic) and dog staged in clear lane. One ordinary live RNG scent pulse is observed; no alert flags or RNG rolls are assigned.",
+			"end": 126.875,
+			"name": "probabilistic_scent_clues_not_verdicts",
+			"start": 119.875
+		}
+	]
+}

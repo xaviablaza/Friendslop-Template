@@ -6,3 +6,6 @@
 *.jpeg filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.mp3 filter=lfs diff=lfs merge=lfs -text
+
+# Archived unified diffs retain their required space-plus-tab context prefixes.
+media/airport-trailer/coop/provenance/*.patch -whitespace

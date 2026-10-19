@@ -1,0 +1,175 @@
+{
+	"fps": 24.0,
+	"scenes": [
+		{
+			"crop_xywh": [],
+			"description": "Fresh first-entry airport splash",
+			"end": 2.33333333333333,
+			"end_frame": 56,
+			"id": "splash",
+			"start": 0.0,
+			"start_frame": 0
+		},
+		{
+			"crop_xywh": [],
+			"description": "Play solo / Host co-op / Join / Settings / Controls are actual menu options",
+			"end": 4.16666666666667,
+			"end_frame": 100,
+			"id": "main_menu",
+			"start": 2.33333333333333,
+			"start_frame": 56
+		},
+		{
+			"crop_xywh": [],
+			"description": "Actual saved settings panel, before slider adjustments",
+			"end": 5.16666666666667,
+			"end_frame": 124,
+			"id": "settings_before",
+			"start": 4.16666666666667,
+			"start_frame": 100
+		},
+		{
+			"crop_xywh": [],
+			"description": "Actual sensitivity 1.45x and master volume 55%, applied and saved to isolated capture config",
+			"end": 6.95833333333333,
+			"end_frame": 167,
+			"id": "settings_adjusted",
+			"start": 5.16666666666667,
+			"start_frame": 124
+		},
+		{
+			"crop_xywh": [],
+			"description": "Actual controls page: sprint, crouch, jump and full game bindings",
+			"end": 10.25,
+			"end_frame": 246,
+			"id": "controls",
+			"start": 6.95833333333333,
+			"start_frame": 167
+		},
+		{
+			"crop_xywh": [],
+			"description": "Actual Play solo button and normal airport scene loading",
+			"end": 11.0,
+			"end_frame": 264,
+			"id": "solo_transition",
+			"start": 10.25,
+			"start_frame": 246
+		},
+		{
+			"crop_xywh": [],
+			"description": "Live airport first-person view, real unmodified HUD and normal random arrivals",
+			"end": 12.7916666666667,
+			"end_frame": 307,
+			"id": "airport_establish",
+			"start": 11.0,
+			"start_frame": 264
+		},
+		{
+			"crop_xywh": [
+				18,
+				490,
+				350,
+				110
+			],
+			"description": "W held: ordinary walking along clear operator aisle",
+			"end": 14.2083333333333,
+			"end_frame": 341,
+			"id": "walk",
+			"start": 12.7916666666667,
+			"start_frame": 307
+		},
+		{
+			"crop_xywh": [
+				18,
+				490,
+				350,
+				110
+			],
+			"description": "W + Shift held: faster motion with actual authoritative stamina dropping",
+			"end": 16.125,
+			"end_frame": 387,
+			"id": "sprint_out",
+			"start": 14.2083333333333,
+			"start_frame": 341
+		},
+		{
+			"crop_xywh": [
+				18,
+				490,
+				350,
+				110
+			],
+			"description": "Continued actual Shift sprint in opposite direction; no stamina overrides",
+			"end": 18.625,
+			"end_frame": 447,
+			"id": "sprint_back",
+			"start": 16.125,
+			"start_frame": 387
+		},
+		{
+			"crop_xywh": [
+				18,
+				490,
+				350,
+				110
+			],
+			"description": "Standing rest: real stamina regeneration on existing HUD",
+			"end": 21.0416666666667,
+			"end_frame": 505,
+			"id": "recover",
+			"start": 18.625,
+			"start_frame": 447
+		},
+		{
+			"crop_xywh": [],
+			"description": "Standing reference at inspection desk; camera 1.62m",
+			"end": 22.125,
+			"end_frame": 531,
+			"id": "stand_before_crouch",
+			"start": 21.0416666666667,
+			"start_frame": 505
+		},
+		{
+			"crop_xywh": [],
+			"description": "Ctrl held: real physical capsule and first-person camera lower",
+			"end": 23.9166666666667,
+			"end_frame": 574,
+			"id": "crouch",
+			"start": 22.125,
+			"start_frame": 531
+		},
+		{
+			"crop_xywh": [],
+			"description": "Ctrl released: capsule and camera return to standing",
+			"end": 25.0,
+			"end_frame": 600,
+			"id": "stand_after_crouch",
+			"start": 23.9166666666667,
+			"start_frame": 574
+		},
+		{
+			"crop_xywh": [
+				18,
+				490,
+				350,
+				110
+			],
+			"description": "Ordinary Space key: physical jump, model stamina cost, then actual landing",
+			"end": 27.2916666666667,
+			"end_frame": 655,
+			"id": "jump",
+			"start": 25.0,
+			"start_frame": 600
+		},
+		{
+			"crop_xywh": [],
+			"description": "Second ordinary Space jump and complete landing for editorial choice",
+			"end": 30.0416666666667,
+			"end_frame": 721,
+			"id": "jump_second",
+			"start": 27.2916666666667,
+			"start_frame": 655
+		}
+	],
+	"time_origin": "Movie Maker frame 0; frame indices from Engine.get_process_frames()"
+}

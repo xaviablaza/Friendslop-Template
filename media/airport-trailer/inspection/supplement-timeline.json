@@ -1,0 +1,28 @@
+{
+	"end_frame": 516,
+	"fixture_provenance": "Same exact bag fixture helper as main: _random_bag with certain catalogue contents; positions/lock/size explicitly in supplement.gd; seed20261020; no money or health seeded; no gameplay results overwritten.",
+	"fps": 24,
+	"shots": [
+		{
+			"crop_suggestion": "Central game action plus left held-item inventory",
+			"end_frame": 204,
+			"id": "clear_individual_item_flight",
+			"start_frame": 0,
+			"visible_result": "Real browser chooses holiday books; visible held book, G launch through open aisle, actual gravity landing; no equipped tool obscures action."
+		},
+		{
+			"crop_suggestion": "Center stack AND top-right manifest",
+			"end_frame": 372,
+			"id": "visible_top_bag_impact_damage",
+			"start_frame": 204,
+			"visible_result": "Top bag falls on genuine stack; camera aims at top so actual damage value is readable in top-right manifest (not middle bag)."
+		},
+		{
+			"crop_suggestion": "Left health panel plus landed luggage at center",
+			"end_frame": 516,
+			"id": "injury_health_after_actual_impact",
+			"start_frame": 372,
+			"visible_result": "Falling bag hits player; follow-down view holds actual reduced health and landed bag before first aid in main capture."
+		}
+	]
+}

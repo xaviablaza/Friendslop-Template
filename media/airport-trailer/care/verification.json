@@ -1,0 +1,73 @@
+{
+  "media_verified": true,
+  "full_decode_errors": "",
+  "assertions_passed": 74,
+  "assertions_failed": 0,
+  "scenes": 13,
+  "duration": "126.958333",
+  "sha256": "4b8f0344644a27c6aaf5a2e034d332250858e2f5fe297f48ddba8fafb1e144a9",
+  "scent_results": {
+    "correct_silence": 3,
+    "false_positive": 1,
+    "correct_alert": 3,
+    "missed": 1
+  },
+  "money_ledger": [
+    {
+      "after": 95,
+      "bag": 101,
+      "before": 0,
+      "delta": 95,
+      "route": "rescue",
+      "time": 21.2083333333333
+    },
+    {
+      "after": 145,
+      "bag": 102,
+      "before": 95,
+      "delta": 50,
+      "route": "rescue",
+      "time": 34.25
+    },
+    {
+      "after": 185,
+      "bag": 103,
+      "before": 145,
+      "delta": 40,
+      "route": "bio",
+      "time": 78.875
+    },
+    {
+      "after": 260,
+      "bag": 104,
+      "before": 185,
+      "delta": 75,
+      "route": "bio",
+      "time": 85.6666666666667
+    },
+    {
+      "after": 278,
+      "bag": 105,
+      "before": 260,
+      "delta": 18,
+      "route": "gate_a",
+      "time": 92.4583333333333
+    },
+    {
+      "after": 96,
+      "bag": 2,
+      "before": 78,
+      "delta": 18,
+      "route": "gate_c",
+      "time": 115.375
+    }
+  ],
+  "disclosures": [
+    "Automated single-player inputs, HEAD 663cb3a; scene staging teleports operator/camera and positions catalogue fixture bags between takes.",
+    "Cat/rabbit and two organic + one legal reward fixtures use known catalogue objects and unlocked locks. Each fixture is staged before the real scanner and scanned through normal intake controls before inspection. Rewards, contracts and purchases are live, not pre-awarded.",
+    "Initial food/water explicitly empty to exercise shortage. Currency, rewards, reputation, training XP and purchases are never seeded.",
+    "Dog starts at the actual care station with default live needs; follow/patrol/throw/scanner and care all run the real simulation and interaction gateway.",
+    "Scent scene uses known legal/restricted fixtures; actual live RNG is not replaced, selected or rerolled to manufacture an outcome.",
+    "MovieMaker real OpenGL rendering, 1280x720 at 24fps; silent source footage; no chapter/title overlays."
+  ]
+}

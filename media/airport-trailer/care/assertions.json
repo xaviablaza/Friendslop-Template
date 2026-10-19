@@ -1,0 +1,497 @@
+{
+	"checks": [
+		{
+			"ok": true,
+			"text": "No currency or reputation seeded",
+			"time": 0.166666666666667
+		},
+		{
+			"ok": true,
+			"text": "Real conveyor scanner processes staged bag #101",
+			"time": 2.625
+		},
+		{
+			"ok": true,
+			"text": "Target actual bag #101",
+			"time": 2.83333333333333
+		},
+		{
+			"ok": true,
+			"text": "O opened visible cat carrier",
+			"time": 5.5
+		},
+		{
+			"ok": true,
+			"text": "Real carrier care browser visible #101",
+			"time": 8.16666666666667
+		},
+		{
+			"ok": true,
+			"text": "Empty supplies rejected pet care",
+			"time": 10.9583333333333
+		},
+		{
+			"ok": true,
+			"text": "E opened actual shared dog/pet care station",
+			"time": 11.25
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Collect food",
+			"time": 12.25
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Collect water",
+			"time": 12.375
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Collect food",
+			"time": 12.5
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Collect water",
+			"time": 12.625
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Collect food",
+			"time": 12.75
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Collect water",
+			"time": 12.875
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Collect food",
+			"time": 13.0
+		},
+		{
+			"ok": true,
+			"text": "Carried food/water capped at three portions",
+			"time": 13.125
+		},
+		{
+			"ok": true,
+			"text": "Target actual bag #101",
+			"time": 16.0
+		},
+		{
+			"ok": true,
+			"text": "Real carrier care browser visible #101",
+			"time": 16.1666666666667
+		},
+		{
+			"ok": true,
+			"text": "Cat care consumes one shared food and water portion",
+			"time": 18.9583333333333
+		},
+		{
+			"ok": true,
+			"text": "E picked up bag #101",
+			"time": 20.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "Actual route target rescue",
+			"time": 21.0416666666667
+		},
+		{
+			"ok": true,
+			"text": "Real handoff #101 via rescue",
+			"time": 21.2083333333333
+		},
+		{
+			"ok": true,
+			"text": "Real conveyor scanner processes staged bag #102",
+			"time": 25.6666666666667
+		},
+		{
+			"ok": true,
+			"text": "Target actual bag #102",
+			"time": 25.875
+		},
+		{
+			"ok": true,
+			"text": "Real carrier care browser visible #102",
+			"time": 30.2083333333333
+		},
+		{
+			"ok": true,
+			"text": "Rabbit care consumes same finite supplies",
+			"time": 33.0
+		},
+		{
+			"ok": true,
+			"text": "E picked up bag #102",
+			"time": 33.3333333333333
+		},
+		{
+			"ok": true,
+			"text": "Actual route target rescue",
+			"time": 34.0833333333333
+		},
+		{
+			"ok": true,
+			"text": "Real handoff #102 via rescue",
+			"time": 34.25
+		},
+		{
+			"ok": true,
+			"text": "Kennel disabled despite earned funds until a dog scan",
+			"time": 37.5416666666667
+		},
+		{
+			"ok": true,
+			"text": "Real kennel action rejected before dog training scan",
+			"time": 37.7083333333333
+		},
+		{
+			"ok": true,
+			"text": "Live dog hunger and thirst rise during gameplay",
+			"time": 42.5
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Feed detection dog",
+			"time": 42.6666666666667
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Water detection dog",
+			"time": 44.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "Actual station button: Rest detection dog",
+			"time": 45.9166666666667
+		},
+		{
+			"ok": true,
+			"text": "Dog consumed final portions, lowered real needs and started actual rest",
+			"time": 46.0416666666667
+		},
+		{
+			"ok": true,
+			"text": "P selects autonomous follow",
+			"time": 50.875
+		},
+		{
+			"ok": true,
+			"text": "Dog autonomously followed through world",
+			"time": 56.0
+		},
+		{
+			"ok": true,
+			"text": "P selects autonomous patrol",
+			"time": 56.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "Dog autonomously patrols actual lane",
+			"time": 61.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "Actual E picks up detection dog",
+			"time": 61.75
+		},
+		{
+			"ok": true,
+			"text": "G produced actual dog flight",
+			"time": 64.0416666666667
+		},
+		{
+			"ok": true,
+			"text": "Dog throw uses gentle capped velocity",
+			"time": 64.0416666666667
+		},
+		{
+			"ok": true,
+			"text": "Gentle dog flight lands safely",
+			"time": 66.5416666666667
+		},
+		{
+			"ok": true,
+			"text": "Picked up dog for actual training belt",
+			"time": 66.8333333333333
+		},
+		{
+			"ok": true,
+			"text": "E puts actual dog onto conveyor",
+			"time": 67.125
+		},
+		{
+			"ok": true,
+			"text": "E resumes actual conveyor",
+			"time": 67.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "Actual scanner crossing awards +10 dog XP",
+			"time": 69.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "LIVE X-ray displays real scanned animal",
+			"time": 69.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "Paused conveyor with trained dog still on it",
+			"time": 72.0833333333333
+		},
+		{
+			"ok": true,
+			"text": "Real conveyor scanner processes staged bag #103",
+			"time": 76.5416666666667
+		},
+		{
+			"ok": true,
+			"text": "Target actual bag #103",
+			"time": 76.75
+		},
+		{
+			"ok": true,
+			"text": "E picked up bag #103",
+			"time": 77.9583333333333
+		},
+		{
+			"ok": true,
+			"text": "Actual route target bio",
+			"time": 78.7083333333333
+		},
+		{
+			"ok": true,
+			"text": "Real handoff #103 via bio",
+			"time": 78.875
+		},
+		{
+			"ok": true,
+			"text": "Real conveyor scanner processes staged bag #104",
+			"time": 83.3333333333333
+		},
+		{
+			"ok": true,
+			"text": "Target actual bag #104",
+			"time": 83.5416666666667
+		},
+		{
+			"ok": true,
+			"text": "E picked up bag #104",
+			"time": 84.75
+		},
+		{
+			"ok": true,
+			"text": "Actual route target bio",
+			"time": 85.5
+		},
+		{
+			"ok": true,
+			"text": "Real handoff #104 via bio",
+			"time": 85.6666666666667
+		},
+		{
+			"ok": true,
+			"text": "Real conveyor scanner processes staged bag #105",
+			"time": 90.125
+		},
+		{
+			"ok": true,
+			"text": "Target actual bag #105",
+			"time": 90.3333333333333
+		},
+		{
+			"ok": true,
+			"text": "E picked up bag #105",
+			"time": 91.5416666666667
+		},
+		{
+			"ok": true,
+			"text": "Actual route target gate_a",
+			"time": 92.2916666666667
+		},
+		{
+			"ok": true,
+			"text": "Real handoff #105 via gate_a",
+			"time": 92.4583333333333
+		},
+		{
+			"ok": true,
+			"text": "Five real rewarded handoffs fund all three upgrades",
+			"time": 94.4583333333333
+		},
+		{
+			"ok": true,
+			"text": "Earned $200 purchases scanner, trained kennel and terminal",
+			"time": 99.25
+		},
+		{
+			"ok": true,
+			"text": "Terminal unlocks actual airport level 2",
+			"time": 99.25
+		},
+		{
+			"ok": true,
+			"text": "Terminal generates actual flight C arrival",
+			"time": 112.0
+		},
+		{
+			"ok": true,
+			"text": "New arrival crosses real upgraded scanner",
+			"time": 112.0
+		},
+		{
+			"ok": true,
+			"text": "E picked up bag #2",
+			"time": 114.458333333333
+		},
+		{
+			"ok": true,
+			"text": "Actual route target gate_c",
+			"time": 115.208333333333
+		},
+		{
+			"ok": true,
+			"text": "Real handoff #2 via gate_c",
+			"time": 115.375
+		},
+		{
+			"ok": true,
+			"text": "Observed eight actual probabilistic scent decisions; alerts are clues not verdicts",
+			"time": 121.583333333333
+		},
+		{
+			"ok": true,
+			"text": "Real false-positive alert resolves to legal contents on inspection",
+			"time": 124.375
+		}
+	],
+	"disclosures": [
+		"Automated single-player inputs, HEAD 663cb3a; scene staging teleports operator/camera and positions catalogue fixture bags between takes.",
+		"Cat/rabbit and two organic + one legal reward fixtures use known catalogue objects and unlocked locks. Each fixture is staged before the real scanner and scanned through normal intake controls before inspection. Rewards, contracts and purchases are live, not pre-awarded.",
+		"Initial food/water explicitly empty to exercise shortage. Currency, rewards, reputation, training XP and purchases are never seeded.",
+		"Dog starts at the actual care station with default live needs; follow/patrol/throw/scanner and care all run the real simulation and interaction gateway.",
+		"Scent scene uses known legal/restricted fixtures; actual live RNG is not replaced, selected or rerolled to manufacture an outcome.",
+		"MovieMaker real OpenGL rendering, 1280x720 at 24fps; silent source footage; no chapter/title overlays."
+	],
+	"dog_scans": 1,
+	"dog_xp": 10,
+	"duration_seconds": 126.875,
+	"handled": 6,
+	"money": 96,
+	"money_ledger": [
+		{
+			"after": 95,
+			"bag": 101,
+			"before": 0,
+			"delta": 95,
+			"route": "rescue",
+			"time": 21.2083333333333
+		},
+		{
+			"after": 145,
+			"bag": 102,
+			"before": 95,
+			"delta": 50,
+			"route": "rescue",
+			"time": 34.25
+		},
+		{
+			"after": 185,
+			"bag": 103,
+			"before": 145,
+			"delta": 40,
+			"route": "bio",
+			"time": 78.875
+		},
+		{
+			"after": 260,
+			"bag": 104,
+			"before": 185,
+			"delta": 75,
+			"route": "bio",
+			"time": 85.6666666666667
+		},
+		{
+			"after": 278,
+			"bag": 105,
+			"before": 260,
+			"delta": 18,
+			"route": "gate_a",
+			"time": 92.4583333333333
+		},
+		{
+			"after": 96,
+			"bag": 2,
+			"before": 78,
+			"delta": 18,
+			"route": "gate_c",
+			"time": 115.375
+		}
+	],
+	"passed": true,
+	"rescues": 2,
+	"scent_results": [
+		{
+			"alert": false,
+			"bag": 201,
+			"result": "correct_silence",
+			"truth": "legal"
+		},
+		{
+			"alert": false,
+			"bag": 202,
+			"result": "correct_silence",
+			"truth": "legal"
+		},
+		{
+			"alert": true,
+			"bag": 203,
+			"result": "false_positive",
+			"truth": "legal"
+		},
+		{
+			"alert": false,
+			"bag": 204,
+			"result": "correct_silence",
+			"truth": "legal"
+		},
+		{
+			"alert": true,
+			"bag": 205,
+			"result": "correct_alert",
+			"truth": "organic"
+		},
+		{
+			"alert": true,
+			"bag": 206,
+			"result": "correct_alert",
+			"truth": "organic"
+		},
+		{
+			"alert": false,
+			"bag": 207,
+			"result": "missed",
+			"truth": "organic"
+		},
+		{
+			"alert": true,
+			"bag": 208,
+			"result": "correct_alert",
+			"truth": "organic"
+		}
+	],
+	"upgrades": {
+		"belt": 0,
+		"bio_lab": 0,
+		"evidence": 0,
+		"kennel": 1,
+		"scanner": 1,
+		"terminal": 1
+	}
+}

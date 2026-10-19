@@ -1,0 +1,771 @@
+[
+	{
+		"camera": "scripted position/aim cuts; controller physics disabled to hold compositions",
+		"dog": "staged stay away from inspection desk",
+		"fixture_mode": false,
+		"hidden": "static branding, chapter label, irrelevant dog HUD only",
+		"money_seeded": false,
+		"seed": 20261019,
+		"type": "capture_setup"
+	},
+	{
+		"id": 1,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"id": 2,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(2.0, 1.1, 0.0)",
+		"id": 101,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10001,
+				"kind": "clothes",
+				"label": "Folded clothes",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 1.9,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.72319096326828
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10002,
+				"kind": "narcotics",
+				"label": "Cleared legal lookalike — Fictional violet-dust training packet",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.39,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "narcotics",
+					"probability": 0.72,
+					"restricted": false,
+					"roll": 0.974888443946838
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 2,
+		"kinds": [
+			"clothes",
+			"narcotics"
+		],
+		"legal_lookalike_rejection_sampling": true,
+		"lock": "approved",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"id": 101,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(2.0, 1.1, 0.0)",
+		"id": 102,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10003,
+				"kind": "clothes",
+				"label": "Folded clothes",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 1.79,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.47259396314621
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10004,
+				"kind": "electronics",
+				"label": "Personal electronics",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 3.85,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.732510387897491
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10005,
+				"kind": "books",
+				"label": "Holiday books",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 1.43,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.829073846340179
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 0,
+		"kinds": [
+			"clothes",
+			"electronics",
+			"books"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"at": "(2.9, 1.1, 0.0)",
+		"id": 103,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10006,
+				"kind": "socks",
+				"label": "Travel socks",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.23,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.452401161193848
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 1,
+		"kinds": [
+			"socks"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"id": 103,
+		"inspected": true,
+		"opened": true,
+		"type": "initial_open_bag",
+		"unlocked": true
+	},
+	{
+		"id": 102,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"id": 103,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(2.0, 1.1, 0.0)",
+		"id": 110,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10007,
+				"kind": "clothes",
+				"label": "Folded clothes",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.54,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.978936731815338
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "weapons",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10008,
+				"kind": "weapon_prop",
+				"label": "Fictional restricted weapon training prop",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 4.38,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "weapons",
+					"probability": 0.8,
+					"restricted": true,
+					"roll": 0.601633787155151
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 2,
+		"kinds": [
+			"clothes",
+			"weapon_prop"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"id": 110,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(2.0, 1.1, 0.0)",
+		"id": 111,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10009,
+				"kind": "clothes",
+				"label": "Folded clothes",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.49,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.563717067241669
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "explosives",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10010,
+				"kind": "explosive_prop",
+				"label": "Fictional inert explosive training block",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 3.33,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "explosives",
+					"probability": 0.8,
+					"restricted": true,
+					"roll": 0.418273776769638
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 0,
+		"kinds": [
+			"clothes",
+			"explosive_prop"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"id": 111,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(2.0, 1.1, 0.0)",
+		"id": 112,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10011,
+				"kind": "clothes",
+				"label": "Folded clothes",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 2.63,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.0341031141579151
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "dangerous",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10012,
+				"kind": "hazard_canister",
+				"label": "Fictional hazardous glow-canister prop",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 1.5,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "dangerous",
+					"probability": 0.75,
+					"restricted": true,
+					"roll": 0.300389587879181
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 1,
+		"kinds": [
+			"clothes",
+			"hazard_canister"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"id": 112,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(2.0, 1.1, 0.0)",
+		"id": 120,
+		"items": [
+			{
+				"category": "narcotics",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10013,
+				"kind": "narcotics",
+				"label": "Fictional violet-dust training packet",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.62,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "narcotics",
+					"probability": 0.72,
+					"restricted": true,
+					"roll": 0.102809630334377
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "organic",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10014,
+				"kind": "fruit",
+				"label": "Undeclared moon fruit",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.84,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "organic",
+					"probability": 0.85,
+					"restricted": true,
+					"roll": 0.218941226601601
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "customs",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10015,
+				"kind": "customs_relic",
+				"label": "Undeclared fictional museum relic",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 3.43,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "customs",
+					"probability": 0.8,
+					"restricted": true,
+					"roll": 0.0760434716939926
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 0,
+		"kinds": [
+			"narcotics",
+			"fruit",
+			"customs_relic"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"id": 120,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(2.0, 1.1, 0.0)",
+		"id": 121,
+		"items": [
+			{
+				"category": "wildlife",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10016,
+				"kind": "wildlife_crate",
+				"label": "Protected fictional cloud-lizard carrier",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 4.3,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "wildlife",
+					"probability": 1.0,
+					"restricted": true,
+					"roll": 0.486540824174881
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10017,
+				"kind": "documents",
+				"label": "Travel documents",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.18,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.103561744093895
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 1,
+		"kinds": [
+			"wildlife_crate",
+			"documents"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"id": 121,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(-0.5, 0.04, 2.0)",
+		"id": 130,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10018,
+				"kind": "clothes",
+				"label": "Folded clothes",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 2.12,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.59869909286499
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 1,
+		"kinds": [
+			"clothes"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"at": "(-0.5, 0.8, 2.0)",
+		"id": 131,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10019,
+				"kind": "books",
+				"label": "Holiday books",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 0.55,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.759640455245972
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 2,
+		"kinds": [
+			"books"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"at": "(-0.5, 2.3, 2.0)",
+		"id": 132,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10020,
+				"kind": "electronics",
+				"label": "Personal electronics",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 2.05,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.118487015366554
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 0,
+		"kinds": [
+			"electronics"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"base": "floor y0.04",
+		"ids": [
+			130,
+			131,
+			132
+		],
+		"middle": "floor y0.8 initially unsupported",
+		"top": "airborne y2.3 velocity0; actual gravity landing and damage",
+		"type": "pile_gravity_setup"
+	},
+	{
+		"id": 130,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"id": 131,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"id": 132,
+		"location": "sorted",
+		"note": "NOT routed; excluded from earnings and handled count",
+		"type": "staging_cleanup"
+	},
+	{
+		"at": "(7.2, 3.2, 2.0)",
+		"id": 140,
+		"items": [
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10021,
+				"kind": "books",
+				"label": "Holiday books",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 4.1,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.248659163713455
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			{
+				"category": "legal",
+				"deposited": false,
+				"flight_age": 0.0,
+				"held_by": 0,
+				"id": 10022,
+				"kind": "electronics",
+				"label": "Personal electronics",
+				"last_thrower": 0,
+				"location": "bag",
+				"mass_kg": 5.53,
+				"position": "(-8.0, 1.14, -2.0)",
+				"truth": {
+					"declared_category": "legal",
+					"probability": 1.0,
+					"restricted": false,
+					"roll": 0.381814986467361
+				},
+				"velocity": "(0.0, 0.0, 0.0)"
+			}
+		],
+		"kind": 2,
+		"kinds": [
+			"books",
+			"electronics"
+		],
+		"legal_lookalike_rejection_sampling": false,
+		"lock": "none",
+		"note": "New _random_bag fixture; replaced contents with actual catalogue instantiate(certain=true), except legal lookalike sampled normally until cleared; staged table/scanned; outcomes via real gateway.",
+		"scanned": true,
+		"shell_mass_kg": 3.0,
+		"size": 1,
+		"type": "catalogue_case"
+	},
+	{
+		"flight_age": 1,
+		"health_seeded": false,
+		"id": 140,
+		"last_thrower": 0,
+		"note": "Actual gravity and host collision cause non-graphic injury",
+		"position": "(7.2,3.2,2)",
+		"type": "injury_drop_setup",
+		"velocity": "zero"
+	}
+]

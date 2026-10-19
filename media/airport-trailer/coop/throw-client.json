@@ -1,0 +1,78 @@
+{
+	"automated_inputs": true,
+	"catch_events": [
+		{
+			"bag_id": 1.0,
+			"flight_age": 0.416666666666667,
+			"height": 1.77625799179077,
+			"last_thrower": 1.0,
+			"mass_kg": 8.0,
+			"peer_id": 737347135.0,
+			"position": "(3.540009, 1.776258, 2.006909)",
+			"serial": 1.0
+		},
+		{
+			"bag_id": 1.0,
+			"flight_age": 0.35,
+			"height": 1.79744172096252,
+			"last_thrower": 737347135.0,
+			"mass_kg": 8.0,
+			"peer_id": 1.0,
+			"position": "(0.576302, 1.797442, 2.035494)",
+			"serial": 2.0
+		}
+	],
+	"catches": 2.0,
+	"checks": [
+		"Walked to (0.8, 0.0, 2.0)",
+		"Walked to (-1.8, 0.0, 2.0)",
+		"Walked to (-1.8, 0.0, 2.8)",
+		"Walked to (-1.9, 0.0, 2.0)",
+		"Normal H joined the real primary carrier",
+		"Walked to (1.3, 0.0, 2.0)",
+		"Shared carry stayed linked after collision-aware walking",
+		"Walked to (4.5, 0.0, 2.0)",
+		"Shared carry stayed linked after collision-aware walking",
+		"Normal Q lowered shared baggage gently",
+		"Walked to (4.2, 0.0, 2.0)",
+		"PLAYER 2 caught bag #1 before it reached the floor",
+		"Authoritative catch event recorded positive airborne height",
+		"G sent a real weighted airborne bag to the other player",
+		"Client observed all real mid-air ownership transfers"
+	],
+	"elapsed_seconds": 36.7647823888888,
+	"fixture_disclosure": "Only additive shell masses (8kg / 32kg) and initial floor staging. Actual normal E/H/G/Q input, controller walking, ENet transport, authoritative flight and catch outcomes.",
+	"landing_events": [],
+	"landings": 0.0,
+	"markers": [],
+	"message": "Weighted ground throws and both players catching",
+	"passed": true,
+	"peer_id": 737347135.0,
+	"quick_regression": true,
+	"range_measurements": [],
+	"real_enet_peers": true,
+	"role": "client",
+	"shared_samples": [],
+	"simulation_time_scale": 0.5,
+	"throw_events": [
+		{
+			"bag_id": 1.0,
+			"mass_kg": 8.0,
+			"peer_id": 1.0,
+			"position": "(-0.189645, 1.193325, 2.042874)",
+			"serial": 1.0,
+			"start_position": "(-0.189645, 1.193325, 2.042874)",
+			"velocity": "(8.951175, 3.442783, -0.086317)"
+		},
+		{
+			"bag_id": 1.0,
+			"mass_kg": 8.0,
+			"peer_id": 737347135.0,
+			"position": "(3.709213, 1.193326, 2.005283)",
+			"serial": 2.0,
+			"start_position": "(3.709213, 1.193326, 2.005283)",
+			"velocity": "(-8.951176, 3.44279, 0.086317)"
+		}
+	],
+	"throws": 2.0
+}

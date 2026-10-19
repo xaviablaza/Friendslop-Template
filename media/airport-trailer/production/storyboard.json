@@ -1,0 +1,1738 @@
+[
+  {
+    "id": "hook",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 63.15,
+    "duration": 2.25,
+    "title": "JUST SORT\nTHE BAGS.",
+    "copy": "Easy shift.\nComplicated luggage.",
+    "features": [
+      "throw_dog"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          330,
+          195,
+          570,
+          385
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "HARMLESS CARTOON DOG HOP / NO ANIMAL HARM",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "splash",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/movement/movement-source.mp4",
+    "start": 0.15,
+    "duration": 1.8,
+    "title": "CLOCK IN.",
+    "copy": "A fresh shift starts here.",
+    "features": [
+      "splash"
+    ],
+    "panes": [
+      {
+        "crop": [
+          240,
+          30,
+          800,
+          660
+        ],
+        "rect": [
+          48,
+          400,
+          984,
+          1050
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "menu",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/movement/movement-source.mp4",
+    "start": 2.35,
+    "duration": 1.75,
+    "title": "SOLO OR\nCREW UP.",
+    "copy": "Play solo. Host. Join the crew.",
+    "features": [
+      "menu"
+    ],
+    "panes": [
+      {
+        "crop": [
+          240,
+          30,
+          800,
+          660
+        ],
+        "rect": [
+          48,
+          400,
+          984,
+          1050
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "settings",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/movement/movement-source.mp4",
+    "start": 5.22,
+    "duration": 1.6,
+    "title": "YOUR SHIFT.\nYOUR SETUP.",
+    "copy": "Saved audio and mouse settings.\nControls when you need them.",
+    "features": [],
+    "panes": [
+      {
+        "crop": [
+          240,
+          30,
+          800,
+          660
+        ],
+        "rect": [
+          48,
+          400,
+          984,
+          1050
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "sprint",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/movement/movement-source.mp4",
+    "start": 14.25,
+    "duration": 3.9,
+    "title": "MOVE FAST.\nPACE YOURSELF.",
+    "copy": "Sprint burns stamina.\nCatch your breath before the next bag.",
+    "features": [
+      "sprint",
+      "stamina"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          18,
+          490,
+          350,
+          110
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "crouch",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/movement/movement-source.mp4",
+    "start": 21.45,
+    "duration": 3.4,
+    "title": "GET LOW.",
+    "copy": "Crouch changes your physical height.\nStand when there is room.",
+    "features": [
+      "crouch"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          330,
+          180,
+          580,
+          420
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "jump",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/movement/movement-source.mp4",
+    "start": 25.02,
+    "duration": 2.0,
+    "title": "TAKE A\nSHORTCUT.",
+    "copy": "Jump. Land. Keep moving.",
+    "features": [
+      "jump"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          340,
+          170,
+          560,
+          440
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "random",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 9.8,
+    "duration": 3.0,
+    "title": "NO TWO BAGS\nTHE SAME.",
+    "copy": "Random belongings. Individual weights.\nA different shift, every time.",
+    "features": [
+      "random_loot",
+      "random_weights"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          890,
+          10,
+          380,
+          220
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "neutral",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 13.05,
+    "duration": 2.3,
+    "title": "A SCAN IS\nJUST A CLUE.",
+    "copy": "Hidden truth stays hidden\nuntil you inspect.",
+    "features": [
+      "hidden_probabilistic_truth"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          330,
+          215,
+          550,
+          290
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "key",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 15.55,
+    "duration": 3.5,
+    "title": "BEAT\nTHE LOCK.",
+    "copy": "Use the right tool.\nEnter the sequence before time runs out.",
+    "features": [
+      "timed_locks"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          365,
+          220,
+          555,
+          230
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "lookalike",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 19.2,
+    "duration": 2.4,
+    "title": "SUSPICIOUS?\nMAYBE NOT.",
+    "copy": "A legal lookalike is still legal.\nInspection beats assumptions.",
+    "features": [
+      "hidden_probabilistic_truth"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          170,
+          650,
+          400
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "durability",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 27.1,
+    "duration": 3.1,
+    "title": "TOOLS\nWEAR OUT.",
+    "copy": "Failed attempts use real durability.\nA worn key will not save the shift.",
+    "features": [
+      "consumable_tools",
+      "tool_durability"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          18,
+          485,
+          350,
+          155
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "pliers",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 32.0,
+    "duration": 3.35,
+    "title": "NEED A\nBIGGER TOOL?",
+    "copy": "Pliers cut the lock.\nFour inputs. One ticking clock.",
+    "features": [
+      "timed_locks",
+      "tool_durability"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          365,
+          220,
+          555,
+          230
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "close_relock",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 36.9,
+    "duration": 2.3,
+    "title": "CLOSE IT.\nSEAL IT.",
+    "copy": "Close inspected luggage.\nSpend a seal to relock it.",
+    "features": [
+      "close_bag",
+      "relock"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          890,
+          10,
+          380,
+          220
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "browser",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 39.7,
+    "duration": 3.0,
+    "title": "CHOOSE\nANY ITEM.",
+    "copy": "Browse the contents.\nTake the item you actually want.",
+    "features": [
+      "item_browser"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          160,
+          650,
+          420
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "repack",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 43.8,
+    "duration": 3.6,
+    "title": "REPACK IT.\nFEEL THE WEIGHT.",
+    "copy": "Move belongings between open bags.\nEvery item adds its own mass.",
+    "features": [
+      "arbitrary_repacking",
+      "additive_mass"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          160,
+          650,
+          420
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "taxonomy",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 76.15,
+    "duration": 3.0,
+    "title": "KNOW\nTHE DIFFERENCE.",
+    "copy": "Narcotics. Organics. Customs goods.\nInspect the actual contents.",
+    "features": [
+      "contraband_taxonomy"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          160,
+          650,
+          420
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "wildlife",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 79.6,
+    "duration": 2.4,
+    "title": "SOME CARGO\nNEEDS CARE.",
+    "copy": "Protected wildlife is not a souvenir.\nKeep it safely in its carrier.",
+    "features": [
+      "contraband_taxonomy"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          160,
+          650,
+          420
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "weapons",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 54.0,
+    "duration": 4.0,
+    "title": "SECURE\nTHE WEAPONS.",
+    "copy": "Identify the training prop.\nHand it to specialist disposal.",
+    "features": [
+      "weapon_disposal",
+      "contraband_taxonomy"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          190,
+          650,
+          370
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "FICTIONAL TRAINING PROPS / 1.6x EDIT",
+    "rate": 1.6,
+    "care": false
+  },
+  {
+    "id": "explosives",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 61.4,
+    "duration": 4.0,
+    "title": "EXPLOSIVES?\nSPECIALIST DESK.",
+    "copy": "A separate disposal path.\nNot the departure gate.",
+    "features": [
+      "explosive_disposal",
+      "contraband_taxonomy"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          190,
+          650,
+          370
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "INERT FICTIONAL TRAINING PROPS / 1.6x EDIT",
+    "rate": 1.6,
+    "care": false
+  },
+  {
+    "id": "dangerous",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 69.0,
+    "duration": 4.0,
+    "title": "DANGEROUS\nDOES NOT FLY.",
+    "copy": "Secure hazardous training objects.\nEarn the disposal reward once.",
+    "features": [
+      "dangerous_disposal",
+      "contraband_taxonomy"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          190,
+          650,
+          370
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "FICTIONAL TRAINING PROPS / 1.6x EDIT",
+    "rate": 1.6,
+    "care": false
+  },
+  {
+    "id": "restock",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 85.45,
+    "duration": 4.0,
+    "title": "RESTOCK.\nBACK TO WORK.",
+    "copy": "Spend earned disposal money\non fresh tools and seals.",
+    "features": [
+      "consumable_tools",
+      "tool_durability"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          320,
+          190,
+          650,
+          370
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "item_throw",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 109.0,
+    "duration": 2.8,
+    "title": "LOOSE ITEMS.\nREAL MOMENTUM.",
+    "copy": "Throw individual belongings.\nWatch where they land.",
+    "features": [
+      "throw_items"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          500,
+          300,
+          370,
+          280
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL ITEM FLIGHT / 0.8x SLOW MOTION",
+    "rate": 0.8,
+    "care": false
+  },
+  {
+    "id": "pile",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 94.1,
+    "duration": 2.8,
+    "title": "THAT PILE\nWAS SUPPORTING IT.",
+    "copy": "Remove the bottom bag.\nThe rest really falls.",
+    "features": [
+      "physical_piles"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          340,
+          170,
+          590,
+          460
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "damage",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 116.9,
+    "duration": 2.7,
+    "title": "HANDLE\nWITH CARE.",
+    "copy": "Hard impacts damage baggage.\nThe damage stays with the case.",
+    "features": [
+      "bag_damage"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          890,
+          10,
+          380,
+          220
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "injury",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 122.7,
+    "duration": 3.4,
+    "title": "MIND\nYOUR HEAD.",
+    "copy": "Falling luggage can hurt operators.\nNon-graphic workplace chaos.",
+    "features": [
+      "player_injury"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          18,
+          485,
+          350,
+          155
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "first_aid",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/inspection/inspection-complete.mp4",
+    "start": 101.25,
+    "duration": 3.7,
+    "title": "FIRST AID.\nSECOND CHANCE.",
+    "copy": "Visit the first-aid station.\nGet back on baggage duty.",
+    "features": [
+      "first_aid"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          18,
+          485,
+          350,
+          155
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "cat",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 4.05,
+    "duration": 3.6,
+    "title": "PRECIOUS\nCARGO.",
+    "copy": "Ventilated carriers.\nActual animals inside.",
+    "features": [
+      "pet_carriers"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          340,
+          170,
+          560,
+          420
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "rabbit",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 26.2,
+    "duration": 3.3,
+    "title": "CATS.\nRABBITS.",
+    "copy": "Not another confiscation.\nAn animal-care handoff.",
+    "features": [
+      "pet_carriers"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          340,
+          170,
+          560,
+          420
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "supplies",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 11.25,
+    "duration": 4.0,
+    "title": "ONE SHARED\nCARE STATION.",
+    "copy": "Collect finite food and water portions\nfor pets and your detection dog.",
+    "features": [
+      "shared_food_water"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          330,
+          120,
+          620,
+          470
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "pet_feed",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 16.1,
+    "duration": 3.8,
+    "title": "FEED THEM.\nWATER THEM.",
+    "copy": "Hungry carrier animals need care\nbefore their handoff.",
+    "features": [
+      "pet_feeding"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          330,
+          170,
+          620,
+          430
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "dog_care",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 41.1,
+    "duration": 5.35,
+    "title": "GOOD DOGS\nNEED BREAKS.",
+    "copy": "Hunger. Thirst. Food. Water. Rest.\nCare is part of the shift.",
+    "features": [
+      "dog_hunger"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          18,
+          335,
+          305,
+          150
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "follow",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 52.2,
+    "duration": 3.6,
+    "title": "YOUR PARTNER\nFOLLOWS YOU.",
+    "copy": "Autonomous following\nthrough the real room.",
+    "features": [
+      "follow"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          330,
+          170,
+          580,
+          430
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "patrol",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 56.5,
+    "duration": 3.8,
+    "title": "OR WORKS\nTHE PATROL.",
+    "copy": "Send the dog around the operator lane.\nIt navigates on its own.",
+    "features": [
+      "patrol"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          330,
+          170,
+          580,
+          430
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "scent",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 122.1,
+    "duration": 4.4,
+    "title": "A BARK IS\nNOT A VERDICT.",
+    "copy": "Scent can miss. It can false-alarm.\nInspect before you decide.",
+    "features": [
+      "probabilistic_scent"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          900,
+          450,
+          362,
+          150
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "dog_scan",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 68.25,
+    "duration": 4.5,
+    "title": "TRAINING\nPAYS OFF.",
+    "copy": "A harmless training scan earns XP.\nNow kennel training can unlock.",
+    "features": [
+      "training_xp",
+      "scan_kennel"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          900,
+          210,
+          362,
+          245
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "FICTIONAL NON-IONIZING SCAN / NO ANIMAL HARM",
+    "rate": 1.0,
+    "care": true
+  },
+  {
+    "id": "upgrades",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 95.9,
+    "duration": 5.5,
+    "title": "EARN IT.\nUPGRADE IT.",
+    "copy": "Buy scanner, kennel and terminal upgrades\nwith actual handoff earnings.",
+    "features": [
+      "scan_kennel"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          340,
+          175,
+          555,
+          440
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "new_route",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/care/care-source.mp4",
+    "start": 115.6,
+    "duration": 4.0,
+    "title": "BUILD A\nBIGGER SHIFT.",
+    "copy": "Open flight C and oversize routing.\nPut the new terminal to work.",
+    "features": [],
+    "panes": [
+      {
+        "crop": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "rect": [
+          48,
+          425,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          300,
+          170,
+          680,
+          440
+        ],
+        "rect": [
+          48,
+          1050,
+          984,
+          400
+        ]
+      }
+    ],
+    "tag": "ACTUAL PROTOTYPE GAMEPLAY",
+    "rate": 1.0,
+    "care": false
+  },
+  {
+    "id": "heavy_coop",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/heavy-shared-walk.mp4",
+    "start": 0,
+    "duration": 7.25,
+    "title": "TOO HEAVY?\nTEAM LIFT.",
+    "tag": "TWO ACTUAL ENET PLAYERS / NORMALIZED GAME SPEED",
+    "copy": "32 kg. Two operators. Six metres together.\nStay close, then lower the bag safely.",
+    "coop": true,
+    "features": [
+      "two_person_carry",
+      "additive_mass"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          60,
+          640,
+          360
+        ],
+        "rect": [
+          48,
+          400,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          640,
+          60,
+          640,
+          360
+        ],
+        "rect": [
+          48,
+          1010,
+          984,
+          554
+        ]
+      }
+    ],
+    "provenance": "Two real windows, captured at identical 0.5 simulation speed, normalized to normal gameplay speed; original raw capture and recorded-session assertions retained."
+  },
+  {
+    "id": "relay_coop",
+    "source": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/airborne-relay.mp4",
+    "start": 0,
+    "duration": 6.916666666666667,
+    "title": "PASS IT ON.\nCATCH IT BACK.",
+    "tag": "TWO REAL PERSPECTIVES / TWO MID-AIR CATCHES",
+    "copy": "Throw to your teammate. Catch the return.\nKeep the shift moving together.",
+    "coop": true,
+    "features": [
+      "co_op_relay",
+      "weighted_bag_throws"
+    ],
+    "panes": [
+      {
+        "crop": [
+          0,
+          60,
+          640,
+          360
+        ],
+        "rect": [
+          48,
+          400,
+          984,
+          554
+        ]
+      },
+      {
+        "crop": [
+          640,
+          60,
+          640,
+          360
+        ],
+        "rect": [
+          48,
+          1010,
+          984,
+          554
+        ]
+      }
+    ],
+    "provenance": "Two real windows and authoritative positive-height catches; same capture normalization as heavy carry."
+  },
+  {
+    "id": "end",
+    "duration": 4.0,
+    "title": "A CO-OP\nAIRPORT PROTOTYPE.",
+    "tag": "CHECKED CHAOS / WORKING TITLE",
+    "copy": "Real prototype footage.\nMore baggage. More ways to help your crew.",
+    "features": [],
+    "end": true
+  }
+]

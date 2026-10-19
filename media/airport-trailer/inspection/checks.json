@@ -1,0 +1,320 @@
+{
+	"assertion_count": 37,
+	"automated": true,
+	"checks": [
+		{
+			"assertion": "Real random intake generated multiple arrivals",
+			"data": {
+				"masses": [
+					7.18,
+					21.76
+				]
+			},
+			"frame": 312,
+			"passed": true
+		},
+		{
+			"assertion": "Unopened X-ray is neutral and unidentified",
+			"data": {
+
+			},
+			"frame": 362,
+			"passed": true
+		},
+		{
+			"assertion": "Timed challenge exists before normal numeric inputs",
+			"data": {
+
+			},
+			"frame": 416,
+			"passed": true
+		},
+		{
+			"assertion": "Approved key sequence unlocks actual bag",
+			"data": {
+				"key_durability": 7
+			},
+			"frame": 446,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 450,
+			"passed": true
+		},
+		{
+			"assertion": "Probabilistic legal lookalike explicitly shown in real browser",
+			"data": {
+				"declared_category": "narcotics",
+				"probability": 0.72,
+				"restricted": false,
+				"roll": 0.974888443946838
+			},
+			"frame": 522,
+			"passed": true
+		},
+		{
+			"assertion": "C closes and R relocks using one real seal",
+			"data": {
+
+			},
+			"frame": 528,
+			"passed": true
+		},
+		{
+			"assertion": "Genuine failed sequences wear out key and reject unlock at zero",
+			"data": {
+
+			},
+			"frame": 703,
+			"passed": true
+		},
+		{
+			"assertion": "Timed challenge exists before normal numeric inputs",
+			"data": {
+
+			},
+			"frame": 803,
+			"passed": true
+		},
+		{
+			"assertion": "Pliers sequence cuts lock, consumes durability, O opens",
+			"data": {
+
+			},
+			"frame": 845,
+			"passed": true
+		},
+		{
+			"assertion": "Explicit close/relock after pliers",
+			"data": {
+
+			},
+			"frame": 945,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 949,
+			"passed": true
+		},
+		{
+			"assertion": "Second item button selects exact electronics, not first",
+			"data": {
+
+			},
+			"frame": 1046,
+			"passed": true
+		},
+		{
+			"assertion": "Cross-bag repack conserves exact additive mass",
+			"data": {
+				"item_kg": 3.85,
+				"source_after": 6.22,
+				"source_before": 10.07,
+				"target_after": 7.08,
+				"target_before": 3.23
+			},
+			"frame": 1142,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 1146,
+			"passed": true
+		},
+		{
+			"assertion": "G sends individual item into authoritative flight",
+			"data": {
+
+			},
+			"frame": 1199,
+			"passed": true
+		},
+		{
+			"assertion": "Thrown individual item physically lands",
+			"data": {
+
+			},
+			"frame": 1278,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 1284,
+			"passed": true
+		},
+		{
+			"assertion": "Actual secure disposal station opens: weapons",
+			"data": {
+
+			},
+			"frame": 1409,
+			"passed": true
+		},
+		{
+			"assertion": "Specialist disposal removes weapons and earns real $10",
+			"data": {
+
+			},
+			"frame": 1458,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 1466,
+			"passed": true
+		},
+		{
+			"assertion": "Actual secure disposal station opens: explosives",
+			"data": {
+
+			},
+			"frame": 1591,
+			"passed": true
+		},
+		{
+			"assertion": "Specialist disposal removes explosives and earns real $10",
+			"data": {
+
+			},
+			"frame": 1640,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 1648,
+			"passed": true
+		},
+		{
+			"assertion": "Actual secure disposal station opens: dangerous",
+			"data": {
+
+			},
+			"frame": 1773,
+			"passed": true
+		},
+		{
+			"assertion": "Specialist disposal removes dangerous and earns real $10",
+			"data": {
+
+			},
+			"frame": 1822,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 1828,
+			"passed": true
+		},
+		{
+			"assertion": "Visible real browser covers narcotics / organic / customs",
+			"data": {
+
+			},
+			"frame": 1900,
+			"passed": true
+		},
+		{
+			"assertion": "Real item browser opened by I",
+			"data": {
+
+			},
+			"frame": 1906,
+			"passed": true
+		},
+		{
+			"assertion": "Wildlife stays safe in bag after prohibited removal attempt",
+			"data": {
+
+			},
+			"frame": 1955,
+			"passed": true
+		},
+		{
+			"assertion": "Earned disposal money funds authoritative tool station restock without seeded funds",
+			"data": {
+				"after": 18,
+				"before": 30
+			},
+			"frame": 2152,
+			"passed": true
+		},
+		{
+			"assertion": "Physical bags settle into genuine supported stack",
+			"data": {
+				"base": "(-0.5, 0.04, 2.0)",
+				"middle": "(-0.5, 0.62, 2.0)",
+				"top": "(-0.5, 1.2, 2.0)"
+			},
+			"frame": 2226,
+			"passed": true
+		},
+		{
+			"assertion": "Gravity impact damages top bag",
+			"data": {
+				"damage": 3.05408187151511
+			},
+			"frame": 2226,
+			"passed": true
+		},
+		{
+			"assertion": "E physically removes supporting bottom bag",
+			"data": {
+
+			},
+			"frame": 2278,
+			"passed": true
+		},
+		{
+			"assertion": "Unsupported stack physically falls after support removed",
+			"data": {
+				"after": 0.620000004768372,
+				"before": 1.20000004768372,
+				"middle": "(-0.5, 0.04, 2.0)",
+				"top_location": "floor"
+			},
+			"frame": 2326,
+			"passed": true
+		},
+		{
+			"assertion": "Actual falling-bag physics injures player non-graphically",
+			"data": {
+				"health_after_impact": 85.7219834098426
+			},
+			"frame": 2383,
+			"passed": true
+		},
+		{
+			"assertion": "Actual first-aid station button restores authoritative health to 100",
+			"data": {
+
+			},
+			"frame": 2530,
+			"passed": true
+		}
+	],
+	"passed": true,
+	"scripted_scenarios": true
+}

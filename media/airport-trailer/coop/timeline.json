@@ -1,0 +1,251 @@
+{
+  "source_mp4": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/airport-bag-throws.mp4",
+  "raw_half_speed_capture": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/airport-bag-throws-capture.mp4",
+  "normal_speed_fps": 24,
+  "geometry": {
+    "canvas": [
+      1280,
+      480
+    ],
+    "host_window": [
+      0,
+      0,
+      640,
+      480
+    ],
+    "client_window": [
+      640,
+      0,
+      640,
+      480
+    ],
+    "active_gameplay_each": [
+      640,
+      360
+    ],
+    "letterbox_y": 60
+  },
+  "capture": {
+    "real_process_count": 2,
+    "transport": "ENet localhost through ordinary lobby/readiness",
+    "automated_inputs": true,
+    "simulation_time_scale": 0.5,
+    "video_normalization": "setpts=0.5*PTS,fps=24",
+    "audio": "silent Dummy audio; no audio test",
+    "fixture_disclosure": "Only additive shell masses (8kg / 32kg) and initial floor staging. Actual normal E/H/G/Q input, controller walking, ENet transport, authoritative flight and catch outcomes."
+  },
+  "clips": [
+    {
+      "path": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/heavy-shared-walk.mp4",
+      "description": "32kg shared carry: helper joins, both walk >6m, gentle Q release",
+      "source_in_frame": 110,
+      "source_out_frame_exclusive": 284,
+      "source_in_seconds": 4.583333333333333,
+      "source_out_seconds": 11.833333333333334,
+      "duration_seconds": 7.25,
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 480,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "24/1",
+            "nb_read_frames": "174"
+          }
+        ],
+        "format": {
+          "duration": "7.250000",
+          "size": "1923529"
+        }
+      },
+      "source_in_timecode_24fps": "00:00:04:14",
+      "source_out_timecode_24fps_exclusive": "00:00:11:20"
+    },
+    {
+      "path": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/airborne-relay.mp4",
+      "description": "8kg G/E airborne throw and catch, host to client and client to host",
+      "source_in_frame": 392,
+      "source_out_frame_exclusive": 558,
+      "source_in_seconds": 16.333333333333332,
+      "source_out_seconds": 23.25,
+      "duration_seconds": 6.916666666666667,
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 480,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "24/1",
+            "nb_read_frames": "166"
+          }
+        ],
+        "format": {
+          "duration": "6.916667",
+          "size": "683952"
+        }
+      },
+      "source_in_timecode_24fps": "00:00:16:08",
+      "source_out_timecode_24fps_exclusive": "00:00:23:06"
+    }
+  ],
+  "event_markers": [
+    {
+      "game_elapsed": 14.4169413333333,
+      "label": "capture_cue",
+      "ticks_msec": 31745,
+      "normal_seconds": 0.573501,
+      "nearest_frame": 14
+    },
+    {
+      "game_elapsed": 15.1193955555556,
+      "label": "heavy_pickup",
+      "ticks_msec": 33156,
+      "normal_seconds": 1.279001,
+      "nearest_frame": 31
+    },
+    {
+      "game_elapsed": 16.1504309090909,
+      "label": "primary_waiting_for_helper",
+      "ticks_msec": 35275,
+      "normal_seconds": 2.338501,
+      "nearest_frame": 56
+    },
+    {
+      "game_elapsed": 17.6148293333333,
+      "label": "helper_join_start",
+      "ticks_msec": 38140,
+      "normal_seconds": 3.771001,
+      "nearest_frame": 91
+    },
+    {
+      "game_elapsed": 19.0011988333333,
+      "label": "shared_walking_start",
+      "ticks_msec": 40913,
+      "normal_seconds": 5.157501,
+      "nearest_frame": 124
+    },
+    {
+      "game_elapsed": 24.0452565,
+      "label": "shared_walking_end",
+      "ticks_msec": 51019,
+      "normal_seconds": 10.210501,
+      "nearest_frame": 245
+    },
+    {
+      "game_elapsed": 24.8626813333333,
+      "label": "gentle_drop",
+      "ticks_msec": 52641,
+      "normal_seconds": 11.021501,
+      "nearest_frame": 265
+    },
+    {
+      "game_elapsed": 25.7666218333333,
+      "label": "relay_setup",
+      "ticks_msec": 54443,
+      "normal_seconds": 11.922501,
+      "nearest_frame": 286
+    },
+    {
+      "game_elapsed": 30.2721133333333,
+      "label": "relay_outbound",
+      "ticks_msec": 63455,
+      "normal_seconds": 16.428501,
+      "nearest_frame": 394
+    },
+    {
+      "game_elapsed": 32.3222343333333,
+      "label": "client_airborne_catch",
+      "ticks_msec": 67572,
+      "normal_seconds": 18.487001,
+      "nearest_frame": 444
+    },
+    {
+      "game_elapsed": 33.3433024124579,
+      "label": "relay_return",
+      "ticks_msec": 69602,
+      "normal_seconds": 19.502001,
+      "nearest_frame": 468
+    },
+    {
+      "game_elapsed": 35.2881614999999,
+      "label": "host_airborne_catch",
+      "ticks_msec": 73506,
+      "normal_seconds": 21.454001,
+      "nearest_frame": 515
+    },
+    {
+      "game_elapsed": 36.8134738333332,
+      "label": "complete",
+      "ticks_msec": 76546,
+      "normal_seconds": 22.974001,
+      "nearest_frame": 551
+    }
+  ],
+  "marker_alignment_note": "Event markers mapped from host monotonic ticks and recorder launch/cue clock. Approximate within a rendered frame plus ffmpeg startup latency. Editorial selects have exact encoded frame boundaries.",
+  "assertions": {
+    "captured_session_passed": true,
+    "independent_normal_speed_session_passed": true,
+    "host_checks": 49,
+    "client_checks": 15,
+    "linked_walking_samples": 81,
+    "sampled_displacements_metres": {
+      "primary": 6.159284195625495,
+      "helper": 6.318015943920211
+    },
+    "catch_events": [
+      {
+        "bag_id": 1.0,
+        "flight_age": 0.416666666666667,
+        "height": 1.77625799179077,
+        "last_thrower": 1.0,
+        "mass_kg": 8.0,
+        "peer_id": 737347135.0,
+        "position": "(3.540009, 1.776258, 2.006909)",
+        "serial": 1.0
+      },
+      {
+        "bag_id": 1.0,
+        "flight_age": 0.35,
+        "height": 1.79744172096252,
+        "last_thrower": 737347135.0,
+        "mass_kg": 8.0,
+        "peer_id": 1.0,
+        "position": "(0.576302, 1.797442, 2.035494)",
+        "serial": 2.0
+      }
+    ],
+    "runtime_errors": 0
+  },
+  "verified_evidence_frames": [
+    {
+      "label": "heavy-walking",
+      "source_frame": 180,
+      "normal_seconds": 7.5,
+      "path": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/heavy-walking.png"
+    },
+    {
+      "label": "heavy-helper",
+      "source_frame": 216,
+      "normal_seconds": 9.0,
+      "path": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/heavy-helper.png"
+    },
+    {
+      "label": "airborne-outbound",
+      "source_frame": 438,
+      "normal_seconds": 18.25,
+      "path": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/airborne-outbound.png"
+    },
+    {
+      "label": "airborne-return",
+      "source_frame": 513,
+      "normal_seconds": 21.375,
+      "path": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/coop/airborne-return.png"
+    }
+  ]
+}

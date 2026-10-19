@@ -1,0 +1,48 @@
+{
+  "head": "663cb3a2fc8f61a664f3b1075cfd86485ad9cf37",
+  "tracked_worktree_status": " M tools/test-airport-throws.py\n?? docs/airport-gameplay-reference.md\n",
+  "engine": "4.4.1.stable.official.49a5bc7b6",
+  "sources": {
+    "scripts/airport/airport_room.gd": "f1800b87f6449c557533548875621bffb504ab77632402d24e6316498376a0fe",
+    "scripts/airport/airport_network_smoke.gd": "bc8010239d328c43ec7ec2c8e631447b34e8314c16eff42905909e8d8e48f623",
+    "scripts/airport/airport_bag_presentation.gd": "f011cb2cf15de44cbbe2f1fee0c0c0358a59a291d79ec74bdcae7a7fb5e15f12",
+    "scripts/airport/airport_hud.gd": "8217c05c2aad41b161f3abbe7d71705cc0a361b261359d9e521a1d76cce0524e",
+    "scripts/airport/airport_chef.gd": "ad360f523a6007536873219653b3032afc06b39a4741855c81209f2766711a21",
+    "scripts/airport/airport_catalog.gd": "4248f9f08fbc2fbdaef60ea1907cbbfa24be87f035e0bf57fd75ade7b6e7532b",
+    "scripts/airport/airport_throw_playtest.gd": "e8b68ed4ca928d0c8a3f747c18511def4a69db2cdbd1cc48d1a941797952b6a6",
+    "scripts/airport/airport_systems.gd": "f0787d942f72724e27d6d90f31707a0addb53a8cb67a361d02130601c6dded06",
+    "scripts/airport/airport_simulation.gd": "aff9eff033f8719e5339be12776fbd90cf942a8f1dc99f9aece45be9fe6ceee3",
+    "scripts/airport/airport_presentation_smoke.gd": "35e522f7868b420327c65b04a4387e93a1da349877750d86fa8a6a8bb140cf22",
+    "scripts/airport/airport_game.gd": "ad3ec59df7ab0eac182fe3689b06cdc78f7f117d3d32b876183fc1ce9dcec488",
+    "scripts/airport/airport_playtest.gd": "3a98b8526b4b2b6ea5802f44d909d691337277c4af4bf598f19060a0e9539df4",
+    "project.godot": "14ca374b039341912bec2f6554ef6cc91d8fbc9adecc57db07b7bd9422d60706",
+    "scenes/level/airport/AirportBaggage.tscn": "a9df62993a440fd455a90cb8b7af1b174bd17b8949ea407b419e245032de9896",
+    "artifacts/trailer-v2/inspection/capture.gd": "c29f0ae4d844a074310ae6df07fe07d79ee94e78739e7dfd5012098d7d19e43b",
+    "artifacts/trailer-v2/inspection/supplement.gd": "620f499da6353f3080015ec3493038c4361b70d92784098152a93edfe954aaf5"
+  },
+  "videos": {
+    "inspection-complete.mp4": "801d8a882855057278c38c15a06fe74dbf1cd5bb6ca151a6a192fe9acf41c159",
+    "inspection-native.avi": "eeb04516d48f6eec32835d59615a84936451722b309e59055ae0ee159835ddc8",
+    "supplement-native.avi": "ec592dc38057da4856252a3893cba9bf708a3586abd65289ad81a24c86a583b0"
+  },
+  "recording": "Godot MovieMaker native 1280x720 24fps, private xvfb-run, software OpenGL llvmpipe, LP_NUM_THREADS=3. Encoded H.264 yuv420p; silent. No UI reconstruction or generated frames.",
+  "input": "Input.parse_input_event physical keys; actual browser/station pressed and dropdown signals connected to original gameplay gateway.",
+  "fixtures": "fixtures.json plus exact scripted supplemental fixture edits in supplement.gd; RNG seeds 20261019 and 20261020. Catalogue contents certain=true for rare category staging, normal rejection-sampled cleared legal lookalike. No seeded funds/health; initial bags staged scanned; cleanup marked sorted directly and not counted as routing.",
+  "verification": {
+    "headless_and_render_pass": true,
+    "assertions": 41,
+    "runtime_errors": {
+      "headless.log": [],
+      "render.log": [],
+      "supplement-headless.log": [],
+      "supplement-render.log": []
+    },
+    "fully_decoded": true
+  },
+  "application_edits": false,
+  "issues": [
+    "One expected unsupported V-Sync warning under Xvfb/Mesa.",
+    "Main item throw lands quickly on a station; supplemental flight is preferable.",
+    "Main pile targets middle bag manifest; supplemental close aim shows top DAMAGE 4%."
+  ]
+}

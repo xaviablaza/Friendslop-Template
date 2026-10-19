@@ -1,0 +1,7 @@
+{
+  "source_revision": "663cb3a2fc8f61a664f3b1075cfd86485ad9cf37",
+  "format": {"width":1080,"height":1920,"fps":24,"audio":"original synth score, AAC stereo 48 kHz"},
+  "disclosure":"Automated gameplay / scripted scenarios. Real engine actions and outcomes; staged rare-item fixtures. No invented UI, duplicate co-op actors or seeded upgrade money.",
+  "required_features":["random_loot","random_weights","hidden_probabilistic_truth","contraband_taxonomy","weapon_disposal","explosive_disposal","dangerous_disposal","additive_mass","bag_damage","throw_dog","throw_items","player_injury","first_aid","physical_piles","two_person_carry","consumable_tools","tool_durability","timed_locks","close_bag","relock","stamina","sprint","crouch","jump","item_browser","arbitrary_repacking","pet_carriers","pet_feeding","shared_food_water","dog_hunger","training_xp","patrol","follow","probabilistic_scent","scan_kennel","splash","menu"],
+  "story_order":["co_op_payoff","clock_in_splash_menu","move_sprint_jump_crouch","random_arrivals_hidden_xray","timed_locks_close_relock","tool_wear_restock","free_item_browser_repack_mass","taxonomy_inspection","three_specialist_disposals","bag_piles_damage_item_throw","injury_first_aid","pet_carriers_care_handoff","dog_food_water_rest","dog_follow_patrol_scent","harmless_dog_throw_scan_xp","earned_kennel_expansion","two_person_heavy_move_and_lower","airborne_relay","end_card"]
+}

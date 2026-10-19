@@ -1,0 +1,40 @@
+{
+	"assertion_count": 4,
+	"checks": [
+		{
+			"assertion": "Individual holiday books launched by normal G",
+			"data": {
+				"mass_kg": 0.86
+			},
+			"frame": 104,
+			"passed": true
+		},
+		{
+			"assertion": "Individual item completes real flight and surface landing",
+			"data": {
+				"position": "(-4.149817, 0.04, 2.0)"
+			},
+			"frame": 156,
+			"passed": true
+		},
+		{
+			"assertion": "Impact damage shown on selected TOP bag manifest",
+			"data": {
+				"damage": 4.02929832785191,
+				"manifest": "BAG #04  /  8.8 kg\nCABIN / MEDIUM / FLIGHT B / SE202\nLOCK: NONE / UNLOCKED\nCLOSED / DAMAGE 4%\n[O] OPEN / [C] CLOSE / [R] RELOCK\n[I] CONTENTS / [H] HEAVY CARRY",
+				"selected_id": 4
+			},
+			"frame": 324,
+			"passed": true
+		},
+		{
+			"assertion": "Health visibly reduced after real luggage impact",
+			"data": {
+				"health": 89.3628516544001
+			},
+			"frame": 468,
+			"passed": true
+		}
+	],
+	"passed": true
+}

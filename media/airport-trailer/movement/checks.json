@@ -1,0 +1,211 @@
+{
+	"automation": "Actual menu Button signals, real HSlider value_changed, normal InputEventKey held input; AirportChef.automated=false during movement.",
+	"checks": [
+		{
+			"claim": "Real first-entry splash displayed",
+			"frame": 0,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 0.0
+		},
+		{
+			"claim": "Splash timer opens real main menu",
+			"frame": 56,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 2.33333333333333
+		},
+		{
+			"claim": "Visible actual button: Solo",
+			"frame": 56,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 2.33333333333333
+		},
+		{
+			"claim": "Visible actual button: StartGame",
+			"frame": 56,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 2.33333333333333
+		},
+		{
+			"claim": "Visible actual button: JoinHBox/JoinGame",
+			"frame": 56,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 2.33333333333333
+		},
+		{
+			"claim": "Visible actual button: Settings",
+			"frame": 56,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 2.33333333333333
+		},
+		{
+			"claim": "Visible actual button: Controls",
+			"frame": 56,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 2.33333333333333
+		},
+		{
+			"claim": "Actual settings saved and reloaded",
+			"frame": 167,
+			"observed": {
+				"sensitivity": 1.45,
+				"volume": 0.55
+			},
+			"passed": true,
+			"time": 6.95833333333333
+		},
+		{
+			"claim": "Settings change real engine input metadata and audio bus gain",
+			"frame": 167,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 6.95833333333333
+		},
+		{
+			"claim": "Controls button opens real controls page",
+			"frame": 167,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 6.95833333333333
+		},
+		{
+			"claim": "Actual Solo initializes OfflineMultiplayerPeer",
+			"frame": 246,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 10.25
+		},
+		{
+			"claim": "Normal local controller enabled and physically grounded",
+			"frame": 307,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 12.7916666666667
+		},
+		{
+			"claim": "W moves real collision-aware actor at ordinary walk pace",
+			"frame": 341,
+			"observed": {
+				"distance": 4.81667613983154,
+				"speed": 3.40000009536743
+			},
+			"passed": true,
+			"time": 14.2083333333333
+		},
+		{
+			"claim": "Shift increases real pace and drains authoritative stamina",
+			"frame": 387,
+			"observed": {
+				"sprint_speed": 5.44000005722046,
+				"stamina_before": 100.0,
+				"stamina_now": 63.9000000000004,
+				"walk_speed": 3.40000009536743
+			},
+			"passed": true,
+			"time": 16.125
+		},
+		{
+			"claim": "Sustained actual sprint visibly reduces stamina below 30",
+			"frame": 447,
+			"observed": {
+				"stamina": 16.4000000000001
+			},
+			"passed": true,
+			"time": 18.625
+		},
+		{
+			"claim": "Rest regenerates real model stamina",
+			"frame": 495,
+			"observed": {
+				"after": 41.3333333333324,
+				"before": 16.4000000000001
+			},
+			"passed": true,
+			"time": 20.625
+		},
+		{
+			"claim": "Ctrl changes real capsule to 1.0m and camera to 0.92m",
+			"frame": 574,
+			"observed": {
+				"camera_height": 0.920000016689301,
+				"capsule_height": 1.0
+			},
+			"passed": true,
+			"time": 23.9166666666667
+		},
+		{
+			"claim": "Ctrl release restores physical standing height",
+			"frame": 600,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 25.0
+		},
+		{
+			"claim": "Normal Space creates actual airborne controller jump and model cost",
+			"frame": 607,
+			"observed": {
+				"height": 0.945902585983276,
+				"model_jump_left": 0.533333333333333,
+				"stamina_after": 89.9999999999996,
+				"stamina_before": 98.0999999999996
+			},
+			"passed": true,
+			"time": 25.2916666666667
+		},
+		{
+			"claim": "Physical jump lands back on actual airport floor",
+			"frame": 636,
+			"observed": {
+				"grounded": true,
+				"y": 0.000902339816093445
+			},
+			"passed": true,
+			"time": 26.5
+		},
+		{
+			"claim": "Second normal jump completes landing",
+			"frame": 702,
+			"observed": {
+
+			},
+			"passed": true,
+			"time": 29.25
+		}
+	],
+	"config": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/movement/capture-settings.cfg",
+	"fps": 24.0,
+	"passed": true,
+	"revision": "663cb3a2fc8f61a664f3b1075cfd86485ad9cf37",
+	"staging": "Safe aisle starting position/yaw and a desk-facing crouch/jump starting position only. No model health/stamina/cash counters set; random ordinary arrivals remain enabled.",
+	"user_preferences_untouched": true
+}

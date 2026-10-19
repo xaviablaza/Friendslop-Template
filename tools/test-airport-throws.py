@@ -17,6 +17,31 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "artifacts"
 ENGINE = os.environ.get("GODOT", "godot")
+CAPTURE = OUT / "airport-bag-throws-vertical-capture.mp4"
+VIDEO = OUT / "airport-bag-throws-vertical.mp4"
+FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+
+
+def vertical_filter(time_scale):
+    """Stack complete 4:3 views; all headings occupy added canvas, not game pixels."""
+    def text(value, y, size, color="white"):
+        return (f"drawtext=fontfile={FONT}:text='{value}':fontsize={size}:"
+                f"fontcolor={color}:x=(w-text_w)/2:y={y}")
+    captions = [
+        text("AIRPORT BAGGAGE", 24, 44, "0xe2c77d"),
+        text("Weighted Throws & Mid-Air Catches", 80, 30),
+        text("8 / 16 / 28 kg  |  AUTOMATED TWO-PLAYER PLAYTEST", 126, 19, "0xacbdcc"),
+        text("PLAYER 1", 170, 26, "0xe2c77d"),
+        text("PLAYER 2", 1050, 26, "0x80c8e2"),
+    ]
+    return (
+        f"[0:v]setpts={time_scale}*PTS,fps=24,split=2[a][b];"
+        "[a]crop=640:480:0:0,scale=1080:810,setsar=1,"
+        "pad=1080:1018:0:208:color=0x101c27[p1];"
+        "[b]crop=640:480:640:0,scale=1080:810,setsar=1,"
+        "pad=1080:902:0:92:color=0x101c27[p2];"
+        "[p1][p2]vstack=inputs=2," + ",".join(captions) + "[video]"
+    )
 
 
 def stop(process):
@@ -80,7 +105,7 @@ def run(record=False, quick=False, time_scale=1.0):
             display_log = (OUT / "throw-xvfb.log").open("w")
             logs.append(display_log)
             xvfb = subprocess.Popen(
-                ["Xvfb", "-displayfd", str(write_fd), "-screen", "0", "1920x540x24", "-nolisten", "tcp"],
+                ["Xvfb", "-displayfd", str(write_fd), "-screen", "0", "1280x480x24", "-nolisten", "tcp"],
                 pass_fds=(write_fd,), stdout=display_log, stderr=subprocess.STDOUT,
             )
             os.close(write_fd)
@@ -97,7 +122,7 @@ def run(record=False, quick=False, time_scale=1.0):
             logs.append(log)
             command = [ENGINE, "--path", str(ROOT), "--time-scale", str(time_scale)]
             if record:
-                command += ["--windowed", "--resolution", "960x540", "--position", f"{index * 960},0",
+                command += ["--windowed", "--resolution", "640x480", "--position", f"{index * 640},0",
                             "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy",
                             "--disable-vsync", "--max-fps", "30"]
             else:
@@ -128,15 +153,15 @@ def run(record=False, quick=False, time_scale=1.0):
         if record:
             subprocess.run([
                 "ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "x11grab", "-draw_mouse", "0",
-                "-video_size", "1920x540", "-i", env["DISPLAY"], "-frames:v", "1", str(OUT / "throw-dual-ready.png")
+                "-video_size", "1280x480", "-i", env["DISPLAY"], "-frames:v", "1", str(OUT / "throw-dual-ready.png")
             ], check=True)
             recorder_log = (OUT / "throw-recorder.log").open("w")
             logs.append(recorder_log)
             recorder = subprocess.Popen([
                 "ffmpeg", "-hide_banner", "-loglevel", "warning", "-y", "-f", "x11grab", "-draw_mouse", "0",
-                "-framerate", "24", "-video_size", "1920x540", "-i", env["DISPLAY"], "-an",
+                "-framerate", "24", "-video_size", "1280x480", "-i", env["DISPLAY"], "-an",
                 "-c:v", "libx264", "-preset", "veryfast", "-threads", "4", "-crf", "20", "-pix_fmt", "yuv420p",
-                "-movflags", "+faststart", "-progress", "pipe:1", "-nostats", str(OUT / "airport-bag-throws.mp4")
+                "-movflags", "+faststart", "-progress", "pipe:1", "-nostats", str(CAPTURE)
             ], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=recorder_log)
             assert recorder.stdout is not None and recorder.stdin is not None
             progress = b""
@@ -167,19 +192,21 @@ def run(record=False, quick=False, time_scale=1.0):
             if recorder.wait(timeout=30):
                 raise RuntimeError("Recorder failed to finalize MP4")
         reports = validate(quick)
-        if record and time_scale != 1.0:
-            # Preserve captured source; normalize slow simulation to normal game speed.
-            raw = OUT / "airport-bag-throws-capture.mp4"
-            raw.unlink(missing_ok=True)
-            (OUT / "airport-bag-throws.mp4").rename(raw)
-            subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(raw),
-                            "-vf", f"setpts={time_scale}*PTS,fps=24", "-an", "-c:v", "libx264",
-                            "-preset", "veryfast", "-threads", "4", "-crf", "20", "-pix_fmt", "yuv420p",
-                            "-movflags", "+faststart", str(OUT / "airport-bag-throws.mp4")], check=True)
         if record:
-            subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(OUT / "airport-bag-throws.mp4"), "-f", "null", "-"], check=True)
-            subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration,size:stream=codec_name,width,height,r_frame_rate", "-of", "json", str(OUT / "airport-bag-throws.mp4")], check=True)
-            print(f"Verified simultaneous two-player recording: {OUT / 'airport-bag-throws.mp4'}")
+            # Preserve both full native views; compose on external title-bar canvas.
+            subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(CAPTURE),
+                            "-filter_complex", vertical_filter(time_scale), "-map", "[video]", "-an",
+                            "-c:v", "libx264", "-preset", "veryfast", "-threads", "4", "-crf", "21",
+                            "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(VIDEO)], check=True)
+            subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(VIDEO), "-f", "null", "-"], check=True)
+            probe = json.loads(subprocess.check_output([
+                "ffprobe", "-v", "error", "-show_entries",
+                "format=duration,size:stream=codec_name,width,height,r_frame_rate", "-of", "json", str(VIDEO)
+            ], text=True))
+            stream = probe["streams"][0]
+            assert (stream["width"], stream["height"]) == (1080, 1920), probe
+            print(json.dumps(probe, indent=2))
+            print(f"Verified vertical two-player recording: {VIDEO}")
         return reports
     finally:
         stop(recorder)

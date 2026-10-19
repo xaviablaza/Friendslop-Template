@@ -1,0 +1,370 @@
+{
+  "passed_media_checks": true,
+  "video": "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/airport-baggage-expanded-trailer-vertical.mp4",
+  "source_revision": "663cb3a2fc8f61a664f3b1075cfd86485ad9cf37",
+  "sha256": "610f9f831067f9546af17ce83d47a0fb028f093f635af3553275daf684955284",
+  "duration_seconds": 144.0,
+  "file_bytes": 13851241,
+  "shots": 41,
+  "expected_features": 37,
+  "covered_features": 37,
+  "missing_features": [],
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "frames": "3456",
+  "audio": {
+    "sample_rate": "48000",
+    "channels": 2,
+    "decoded_pcm_peak": 29100,
+    "rms": 4514.4050508306655,
+    "clipped_samples": 0
+  },
+  "full_decode_stderr": "",
+  "feature_timecodes": {
+    "additive_mass": [
+      {
+        "scene": "repack",
+        "start": 39.625,
+        "end": 43.208333333333336
+      },
+      {
+        "scene": "heavy_coop",
+        "start": 125.83333333333334,
+        "end": 133.08333333333334
+      }
+    ],
+    "arbitrary_repacking": [
+      {
+        "scene": "repack",
+        "start": 39.625,
+        "end": 43.208333333333336
+      }
+    ],
+    "bag_damage": [
+      {
+        "scene": "damage",
+        "start": 70.20833333333334,
+        "end": 72.91666666666667
+      }
+    ],
+    "close_bag": [
+      {
+        "scene": "close_relock",
+        "start": 34.333333333333336,
+        "end": 36.625
+      }
+    ],
+    "co_op_relay": [
+      {
+        "scene": "relay_coop",
+        "start": 133.08333333333334,
+        "end": 140.0
+      }
+    ],
+    "consumable_tools": [
+      {
+        "scene": "durability",
+        "start": 27.916666666666668,
+        "end": 31.0
+      },
+      {
+        "scene": "restock",
+        "start": 60.625,
+        "end": 64.625
+      }
+    ],
+    "contraband_taxonomy": [
+      {
+        "scene": "taxonomy",
+        "start": 43.208333333333336,
+        "end": 46.208333333333336
+      },
+      {
+        "scene": "wildlife",
+        "start": 46.208333333333336,
+        "end": 48.625
+      },
+      {
+        "scene": "weapons",
+        "start": 48.625,
+        "end": 52.625
+      },
+      {
+        "scene": "explosives",
+        "start": 52.625,
+        "end": 56.625
+      },
+      {
+        "scene": "dangerous",
+        "start": 56.625,
+        "end": 60.625
+      }
+    ],
+    "crouch": [
+      {
+        "scene": "crouch",
+        "start": 11.291666666666666,
+        "end": 14.708333333333332
+      }
+    ],
+    "dangerous_disposal": [
+      {
+        "scene": "dangerous",
+        "start": 56.625,
+        "end": 60.625
+      }
+    ],
+    "dog_hunger": [
+      {
+        "scene": "dog_care",
+        "start": 94.70833333333334,
+        "end": 100.04166666666667
+      }
+    ],
+    "explosive_disposal": [
+      {
+        "scene": "explosives",
+        "start": 52.625,
+        "end": 56.625
+      }
+    ],
+    "first_aid": [
+      {
+        "scene": "first_aid",
+        "start": 76.33333333333334,
+        "end": 80.04166666666667
+      }
+    ],
+    "follow": [
+      {
+        "scene": "follow",
+        "start": 100.04166666666667,
+        "end": 103.625
+      }
+    ],
+    "hidden_probabilistic_truth": [
+      {
+        "scene": "neutral",
+        "start": 19.708333333333332,
+        "end": 22.0
+      },
+      {
+        "scene": "lookalike",
+        "start": 25.5,
+        "end": 27.916666666666668
+      }
+    ],
+    "item_browser": [
+      {
+        "scene": "browser",
+        "start": 36.625,
+        "end": 39.625
+      }
+    ],
+    "jump": [
+      {
+        "scene": "jump",
+        "start": 14.708333333333332,
+        "end": 16.708333333333332
+      }
+    ],
+    "menu": [
+      {
+        "scene": "menu",
+        "start": 4.041666666666667,
+        "end": 5.791666666666667
+      }
+    ],
+    "patrol": [
+      {
+        "scene": "patrol",
+        "start": 103.625,
+        "end": 107.41666666666667
+      }
+    ],
+    "pet_carriers": [
+      {
+        "scene": "cat",
+        "start": 80.04166666666667,
+        "end": 83.625
+      },
+      {
+        "scene": "rabbit",
+        "start": 83.625,
+        "end": 86.91666666666667
+      }
+    ],
+    "pet_feeding": [
+      {
+        "scene": "pet_feed",
+        "start": 90.91666666666667,
+        "end": 94.70833333333334
+      }
+    ],
+    "physical_piles": [
+      {
+        "scene": "pile",
+        "start": 67.41666666666667,
+        "end": 70.20833333333334
+      }
+    ],
+    "player_injury": [
+      {
+        "scene": "injury",
+        "start": 72.91666666666667,
+        "end": 76.33333333333334
+      }
+    ],
+    "probabilistic_scent": [
+      {
+        "scene": "scent",
+        "start": 107.41666666666667,
+        "end": 111.83333333333334
+      }
+    ],
+    "random_loot": [
+      {
+        "scene": "random",
+        "start": 16.708333333333332,
+        "end": 19.708333333333332
+      }
+    ],
+    "random_weights": [
+      {
+        "scene": "random",
+        "start": 16.708333333333332,
+        "end": 19.708333333333332
+      }
+    ],
+    "relock": [
+      {
+        "scene": "close_relock",
+        "start": 34.333333333333336,
+        "end": 36.625
+      }
+    ],
+    "scan_kennel": [
+      {
+        "scene": "dog_scan",
+        "start": 111.83333333333334,
+        "end": 116.33333333333334
+      },
+      {
+        "scene": "upgrades",
+        "start": 116.33333333333334,
+        "end": 121.83333333333334
+      }
+    ],
+    "shared_food_water": [
+      {
+        "scene": "supplies",
+        "start": 86.91666666666667,
+        "end": 90.91666666666667
+      }
+    ],
+    "splash": [
+      {
+        "scene": "splash",
+        "start": 2.25,
+        "end": 4.041666666666667
+      }
+    ],
+    "sprint": [
+      {
+        "scene": "sprint",
+        "start": 7.375,
+        "end": 11.291666666666666
+      }
+    ],
+    "stamina": [
+      {
+        "scene": "sprint",
+        "start": 7.375,
+        "end": 11.291666666666666
+      }
+    ],
+    "throw_dog": [
+      {
+        "scene": "hook",
+        "start": 0,
+        "end": 2.25
+      }
+    ],
+    "throw_items": [
+      {
+        "scene": "item_throw",
+        "start": 64.625,
+        "end": 67.41666666666667
+      }
+    ],
+    "timed_locks": [
+      {
+        "scene": "key",
+        "start": 22.0,
+        "end": 25.5
+      },
+      {
+        "scene": "pliers",
+        "start": 31.0,
+        "end": 34.333333333333336
+      }
+    ],
+    "tool_durability": [
+      {
+        "scene": "durability",
+        "start": 27.916666666666668,
+        "end": 31.0
+      },
+      {
+        "scene": "pliers",
+        "start": 31.0,
+        "end": 34.333333333333336
+      },
+      {
+        "scene": "restock",
+        "start": 60.625,
+        "end": 64.625
+      }
+    ],
+    "training_xp": [
+      {
+        "scene": "dog_scan",
+        "start": 111.83333333333334,
+        "end": 116.33333333333334
+      }
+    ],
+    "two_person_carry": [
+      {
+        "scene": "heavy_coop",
+        "start": 125.83333333333334,
+        "end": 133.08333333333334
+      }
+    ],
+    "weapon_disposal": [
+      {
+        "scene": "weapons",
+        "start": 48.625,
+        "end": 52.625
+      }
+    ],
+    "weighted_bag_throws": [
+      {
+        "scene": "relay_coop",
+        "start": 133.08333333333334,
+        "end": 140.0
+      }
+    ]
+  },
+  "review_sheets": [
+    "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/final-review-sheet-01.jpg",
+    "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/final-review-sheet-02.jpg",
+    "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/final-review-sheet-03.jpg",
+    "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/final-review-sheet-04.jpg",
+    "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/final-review-sheet-05.jpg",
+    "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/final-review-sheet-06.jpg",
+    "/home/administrator/Friendslop-Template-airport-baggage/artifacts/trailer-v2/production/final-review-sheet-07.jpg"
+  ],
+  "visual_review": "Exact final-file midpoint frames inspected for all 41 shots, plus late-shot disposal, healing, care, training, installed-upgrade, follow and relay outcomes. External titles/player labels remain outside gameplay; same-frame crops preserve aspect ratio."
+}

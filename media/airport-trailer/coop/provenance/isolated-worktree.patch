@@ -1,0 +1,13 @@
+diff --git a/scripts/airport/airport_game.gd b/scripts/airport/airport_game.gd
+index 04421a1..0614c66 100644
+--- a/scripts/airport/airport_game.gd
++++ b/scripts/airport/airport_game.gd
+@@ -70,7 +70,7 @@ func _ready() -> void:
+ 	SceneManager.mark_scene_as_loaded(self)
+ 	var args = OS.get_cmdline_user_args()
+ 	if args.has("--airport-throw-host") or args.has("--airport-throw-client"):
+-		test_driver = load("res://scripts/airport/airport_throw_playtest.gd").new()
++		test_driver = load("res://scripts/airport/airport_coop_capture.gd").new() if args.has("--airport-coop-capture") else load("res://scripts/airport/airport_throw_playtest.gd").new()
+ 	elif args.has("--airport-tour"):
+ 		test_driver = load("res://scripts/airport/airport_playtest.gd").new()
+ 	elif args.has("--airport-net-host") or args.has("--airport-net-client"):

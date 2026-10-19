@@ -1,0 +1,875 @@
+{
+	"automated_inputs": true,
+	"catch_events": [
+		{
+			"bag_id": 1.0,
+			"flight_age": 0.383333333333334,
+			"height": 1.79256415367126,
+			"last_thrower": 1.0,
+			"mass_kg": 8.0,
+			"peer_id": 2017095179.0,
+			"position": "(3.258235, 1.792564, 2.005507)",
+			"serial": 1.0
+		},
+		{
+			"bag_id": 1.0,
+			"flight_age": 0.35,
+			"height": 1.79772365093231,
+			"last_thrower": 2017095179.0,
+			"mass_kg": 8.0,
+			"peer_id": 1.0,
+			"position": "(0.589522, 1.797724, 2.020015)",
+			"serial": 2.0
+		}
+	],
+	"catches": 2.0,
+	"checks": [
+		"Two independent ENet processes joined ordinary readiness",
+		"Walked to (-1.2, 0.0, 1.5)",
+		"Normal console action paused intake",
+		"Walked to (-3.0, 0.0, 2.0)",
+		"Both peers acknowledged action 1",
+		"Both peers acknowledged action 2",
+		"Walked to (-2.923835, 0.0, 2.0)",
+		"Walked to (-3.0, 0.0, 2.0)",
+		"Walked to (-3.0, 0.0, 2.0)",
+		"Look target selected bag #2",
+		"Picked up bag #2 through E",
+		"Belt-removed bag retained yellow-outline state",
+		"Two-hand camera rig is visible while carrying",
+		"32kg primary correctly waits for helper",
+		"Both peers acknowledged action 3",
+		"Both peers acknowledged action 4",
+		"32kg bag has one distinct real ENet helper",
+		"Walked to (0.2, 0.0, 2.0)",
+		"Shared carry stayed linked after collision-aware walking",
+		"Both peers acknowledged action 5",
+		"Both peers acknowledged action 6",
+		"Walked to (3.4, 0.0, 2.0)",
+		"Shared carry stayed linked after collision-aware walking",
+		"Both peers acknowledged action 7",
+		"Both peers acknowledged action 8",
+		"Primary walked over six metres with shared 32kg bag",
+		"Independent helper walked over six metres alongside primary",
+		"Recorded walking samples retained real held ownership and helper link",
+		"Both peers acknowledged action 9",
+		"Gentle shared drop cleared both carrier links",
+		"Walked to (3.328131, 0.0, 2.0)",
+		"Walked to (-1.5, 0.0, 2.0)",
+		"Walked to (-1.5, 0.0, 3.1)",
+		"Look target selected bag #1",
+		"Picked up bag #1 through E",
+		"Belt-removed bag retained yellow-outline state",
+		"Two-hand camera rig is visible while carrying",
+		"Walked to (-0.7, 0.0, 2.0)",
+		"Both peers acknowledged action 10",
+		"Both peers acknowledged action 11",
+		"G sent a real weighted airborne bag to the other player",
+		"Both peers acknowledged action 13",
+		"Both peers acknowledged action 12",
+		"Both peers acknowledged action 15",
+		"PLAYER 1 caught bag #1 before it reached the floor",
+		"Authoritative catch event recorded positive airborne height",
+		"Both peers acknowledged action 14",
+		"Both distinct real peers caught the 8kg relay in mid-air",
+		"Both peers acknowledged action 16"
+	],
+	"elapsed_seconds": 35.9939110000014,
+	"fixture_disclosure": "Only additive shell masses (8kg / 32kg) and initial floor staging. Actual normal E/H/G/Q input, controller walking, ENet transport, authoritative flight and catch outcomes.",
+	"landing_events": [],
+	"landings": 0.0,
+	"markers": [
+		{
+			"game_elapsed": 13.8281310000004,
+			"label": "capture_cue",
+			"ticks_msec": 15280
+		},
+		{
+			"game_elapsed": 14.5364360000005,
+			"label": "heavy_pickup",
+			"ticks_msec": 15990
+		},
+		{
+			"game_elapsed": 15.5863940000005,
+			"label": "primary_waiting_for_helper",
+			"ticks_msec": 17046
+		},
+		{
+			"game_elapsed": 17.0613350000006,
+			"label": "helper_join_start",
+			"ticks_msec": 18515
+		},
+		{
+			"game_elapsed": 18.3696160000006,
+			"label": "shared_walking_start",
+			"ticks_msec": 19823
+		},
+		{
+			"game_elapsed": 23.4777450000008,
+			"label": "shared_walking_end",
+			"ticks_msec": 24931
+		},
+		{
+			"game_elapsed": 24.2860460000009,
+			"label": "gentle_drop",
+			"ticks_msec": 25739
+		},
+		{
+			"game_elapsed": 25.1610110000009,
+			"label": "relay_setup",
+			"ticks_msec": 26613
+		},
+		{
+			"game_elapsed": 29.6941630000011,
+			"label": "relay_outbound",
+			"ticks_msec": 31147
+		},
+		{
+			"game_elapsed": 31.6190860000012,
+			"label": "client_airborne_catch",
+			"ticks_msec": 33072
+		},
+		{
+			"game_elapsed": 32.6273790000012,
+			"label": "relay_return",
+			"ticks_msec": 34079
+		},
+		{
+			"game_elapsed": 34.4523060000013,
+			"label": "host_airborne_catch",
+			"ticks_msec": 35906
+		},
+		{
+			"game_elapsed": 35.9605790000014,
+			"label": "complete",
+			"ticks_msec": 37414
+		}
+	],
+	"message": "Visible 32kg shared walking and real two-way 8kg airborne relay",
+	"passed": true,
+	"peer_id": 1.0,
+	"quick_regression": true,
+	"range_measurements": [],
+	"real_enet_peers": true,
+	"role": "host",
+	"shared_samples": [
+		{
+			"bag": "(-2.870853, 0.300834, 1.979679)",
+			"helper": "(-1.891407, 0.300076, 2.060499)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.870853, 0.300834, 1.979679)",
+			"time": 18.4279470000006
+		},
+		{
+			"bag": "(-2.764888, 0.300831, 1.98038)",
+			"helper": "(-1.78546, 0.300837, 2.058491)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.764888, 0.300831, 1.98038)",
+			"time": 18.4862780000006
+		},
+		{
+			"bag": "(-2.685415, 0.300815, 1.980906)",
+			"helper": "(-1.653025, 0.300837, 2.05598)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.685415, 0.300815, 1.980906)",
+			"time": 18.5446090000006
+		},
+		{
+			"bag": "(-2.57945, 0.30074, 1.981608)",
+			"helper": "(-1.653025, 0.300837, 2.05598)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.57945, 0.30074, 1.981608)",
+			"time": 18.6029400000006
+		},
+		{
+			"bag": "(-2.499978, 0.300666, 1.982134)",
+			"helper": "(-1.520591, 0.300837, 2.05347)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.499978, 0.300666, 1.982134)",
+			"time": 18.6612710000006
+		},
+		{
+			"bag": "(-2.394013, 0.300831, 1.982835)",
+			"helper": "(-1.388156, 0.30084, 2.050959)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.394013, 0.300831, 1.982835)",
+			"time": 18.7196020000006
+		},
+		{
+			"bag": "(-2.31454, 0.300819, 1.983361)",
+			"helper": "(-1.388156, 0.30084, 2.050959)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.31454, 0.300819, 1.983361)",
+			"time": 18.7779330000006
+		},
+		{
+			"bag": "(-2.208575, 0.300811, 1.984062)",
+			"helper": "(-1.255722, 0.300837, 2.048449)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.208575, 0.300811, 1.984062)",
+			"time": 18.8362640000006
+		},
+		{
+			"bag": "(-2.129102, 0.300795, 1.984588)",
+			"helper": "(-1.123288, 0.30084, 2.045938)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.129102, 0.300795, 1.984588)",
+			"time": 18.8945950000006
+		},
+		{
+			"bag": "(-2.023137, 0.300771, 1.985289)",
+			"helper": "(-0.990853, 0.300837, 2.043428)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-2.023137, 0.300771, 1.985289)",
+			"time": 18.9529260000006
+		},
+		{
+			"bag": "(-1.943664, 0.300773, 1.985815)",
+			"helper": "(-0.990853, 0.300837, 2.043428)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.943664, 0.300773, 1.985815)",
+			"time": 19.0112570000007
+		},
+		{
+			"bag": "(-1.8377, 0.300825, 1.986516)",
+			"helper": "(-0.858418, 0.30084, 2.040917)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.8377, 0.300825, 1.986516)",
+			"time": 19.0695880000007
+		},
+		{
+			"bag": "(-1.758227, 0.300837, 1.987042)",
+			"helper": "(-0.725984, 0.30084, 2.038407)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.758227, 0.300837, 1.987042)",
+			"time": 19.1279190000007
+		},
+		{
+			"bag": "(-1.652262, 0.300838, 1.987743)",
+			"helper": "(-0.725984, 0.30084, 2.038407)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.652262, 0.300838, 1.987743)",
+			"time": 19.1862500000007
+		},
+		{
+			"bag": "(-1.572789, 0.30084, 1.988269)",
+			"helper": "(-0.593549, 0.30084, 2.035896)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.572789, 0.30084, 1.988269)",
+			"time": 19.2445810000007
+		},
+		{
+			"bag": "(-1.466824, 0.300837, 1.98897)",
+			"helper": "(-0.461114, 0.30084, 2.033386)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.466824, 0.300837, 1.98897)",
+			"time": 19.3029120000007
+		},
+		{
+			"bag": "(-1.387351, 0.300837, 1.989496)",
+			"helper": "(-0.461114, 0.30084, 2.033386)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.387351, 0.300837, 1.989496)",
+			"time": 19.3612430000007
+		},
+		{
+			"bag": "(-1.281387, 0.300837, 1.990197)",
+			"helper": "(-0.32868, 0.30084, 2.030875)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.281387, 0.300837, 1.990197)",
+			"time": 19.4195740000007
+		},
+		{
+			"bag": "(-1.201914, 0.300837, 1.990723)",
+			"helper": "(-0.196245, 0.30084, 2.028364)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.201914, 0.300837, 1.990723)",
+			"time": 19.4779050000007
+		},
+		{
+			"bag": "(-1.09595, 0.300837, 1.991424)",
+			"helper": "(-0.063811, 0.30084, 2.025854)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.09595, 0.300837, 1.991424)",
+			"time": 19.5362360000007
+		},
+		{
+			"bag": "(-1.016476, 0.30084, 1.99195)",
+			"helper": "(-0.063811, 0.30084, 2.025854)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-1.016476, 0.30084, 1.99195)",
+			"time": 19.5945670000007
+		},
+		{
+			"bag": "(-0.910512, 0.30084, 1.992651)",
+			"helper": "(0.068624, 0.30084, 2.023343)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.910512, 0.30084, 1.992651)",
+			"time": 19.6528980000007
+		},
+		{
+			"bag": "(-0.831039, 0.30084, 1.993178)",
+			"helper": "(0.201058, 0.30084, 2.020833)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.831039, 0.30084, 1.993178)",
+			"time": 19.7112290000007
+		},
+		{
+			"bag": "(-0.725075, 0.30084, 1.993879)",
+			"helper": "(0.201058, 0.30084, 2.020833)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.725075, 0.30084, 1.993879)",
+			"time": 19.7695600000007
+		},
+		{
+			"bag": "(-0.645601, 0.30084, 1.994405)",
+			"helper": "(0.333493, 0.30084, 2.018322)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.645601, 0.30084, 1.994405)",
+			"time": 19.8278910000007
+		},
+		{
+			"bag": "(-0.539637, 0.30084, 1.995106)",
+			"helper": "(0.465927, 0.30084, 2.015812)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.539637, 0.30084, 1.995106)",
+			"time": 19.8862220000007
+		},
+		{
+			"bag": "(-0.460164, 0.30084, 1.995632)",
+			"helper": "(0.465927, 0.30084, 2.015812)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.460164, 0.30084, 1.995632)",
+			"time": 19.9445530000007
+		},
+		{
+			"bag": "(-0.3542, 0.30084, 1.996333)",
+			"helper": "(0.598362, 0.30084, 2.013301)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.3542, 0.30084, 1.996333)",
+			"time": 20.0028840000007
+		},
+		{
+			"bag": "(-0.274727, 0.30084, 1.996859)",
+			"helper": "(0.730797, 0.30084, 2.010791)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.274727, 0.30084, 1.996859)",
+			"time": 20.0612150000007
+		},
+		{
+			"bag": "(-0.168762, 0.30084, 1.99756)",
+			"helper": "(0.863231, 0.30084, 2.00828)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.168762, 0.30084, 1.99756)",
+			"time": 20.1195460000007
+		},
+		{
+			"bag": "(-0.089289, 0.30084, 1.998086)",
+			"helper": "(0.863231, 0.30084, 2.00828)",
+			"linked": true,
+			"location": "held",
+			"primary": "(-0.089289, 0.30084, 1.998086)",
+			"time": 20.1778770000007
+		},
+		{
+			"bag": "(0.016675, 0.30084, 1.998787)",
+			"helper": "(0.995666, 0.30084, 2.005769)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.016675, 0.30084, 1.998787)",
+			"time": 20.2362080000007
+		},
+		{
+			"bag": "(0.096149, 0.30084, 1.999313)",
+			"helper": "(1.128101, 0.30084, 2.003259)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.096149, 0.30084, 1.999313)",
+			"time": 20.2945390000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.128101, 0.30084, 2.003259)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.3528700000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.4112010000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.4695320000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.5278630000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.5861940000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.6445250000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.7028560000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.7611870000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.8195180000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.8778490000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.9361800000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 20.9945110000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 21.0528420000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 21.1111730000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 21.1695040000007
+		},
+		{
+			"bag": "(0.12264, 0.30084, 1.999488)",
+			"helper": "(1.234048, 0.300837, 2.001251)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.12264, 0.30084, 1.999488)",
+			"time": 21.2278350000007
+		},
+		{
+			"bag": "(0.228607, 0.30084, 1.999505)",
+			"helper": "(1.340015, 0.30084, 2.00121)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.228607, 0.30084, 1.999505)",
+			"time": 21.2861660000008
+		},
+		{
+			"bag": "(0.308082, 0.30084, 1.999517)",
+			"helper": "(1.340015, 0.30084, 2.00121)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.308082, 0.30084, 1.999517)",
+			"time": 21.3444970000008
+		},
+		{
+			"bag": "(0.414048, 0.30084, 1.999534)",
+			"helper": "(1.472473, 0.30084, 2.00116)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.414048, 0.30084, 1.999534)",
+			"time": 21.4028280000008
+		},
+		{
+			"bag": "(0.493523, 0.30084, 1.999547)",
+			"helper": "(1.604931, 0.30084, 2.00111)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.493523, 0.30084, 1.999547)",
+			"time": 21.4611590000008
+		},
+		{
+			"bag": "(0.59949, 0.30084, 1.999563)",
+			"helper": "(1.604931, 0.30084, 2.00111)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.59949, 0.30084, 1.999563)",
+			"time": 21.5194900000008
+		},
+		{
+			"bag": "(0.678965, 0.30084, 1.999576)",
+			"helper": "(1.737389, 0.300647, 2.00106)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.678965, 0.30084, 1.999576)",
+			"time": 21.5778210000008
+		},
+		{
+			"bag": "(0.784932, 0.30084, 1.999592)",
+			"helper": "(1.869848, 0.300834, 2.001009)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.784932, 0.30084, 1.999592)",
+			"time": 21.6361520000008
+		},
+		{
+			"bag": "(0.864407, 0.30084, 1.999605)",
+			"helper": "(1.869848, 0.300834, 2.001009)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.864407, 0.30084, 1.999605)",
+			"time": 21.6944830000008
+		},
+		{
+			"bag": "(0.970374, 0.300837, 1.999622)",
+			"helper": "(2.002306, 0.300829, 2.000959)",
+			"linked": true,
+			"location": "held",
+			"primary": "(0.970374, 0.300837, 1.999622)",
+			"time": 21.7528140000008
+		},
+		{
+			"bag": "(1.049849, 0.30084, 1.999634)",
+			"helper": "(2.134765, 0.300807, 2.000908)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.049849, 0.30084, 1.999634)",
+			"time": 21.8111450000008
+		},
+		{
+			"bag": "(1.155815, 0.300839, 1.999651)",
+			"helper": "(2.267223, 0.300811, 2.000858)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.155815, 0.300839, 1.999651)",
+			"time": 21.8694760000008
+		},
+		{
+			"bag": "(1.23529, 0.300837, 1.999663)",
+			"helper": "(2.267223, 0.300811, 2.000858)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.23529, 0.300837, 1.999663)",
+			"time": 21.9278070000008
+		},
+		{
+			"bag": "(1.341257, 0.300837, 1.99968)",
+			"helper": "(2.399681, 0.300828, 2.000807)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.341257, 0.300837, 1.99968)",
+			"time": 21.9861380000008
+		},
+		{
+			"bag": "(1.420732, 0.300837, 1.999692)",
+			"helper": "(2.53214, 0.300827, 2.000756)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.420732, 0.300837, 1.999692)",
+			"time": 22.0444690000008
+		},
+		{
+			"bag": "(1.526698, 0.300837, 1.999709)",
+			"helper": "(2.53214, 0.300827, 2.000756)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.526698, 0.300837, 1.999709)",
+			"time": 22.1028000000008
+		},
+		{
+			"bag": "(1.606173, 0.300837, 1.999722)",
+			"helper": "(2.664598, 0.300837, 2.000705)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.606173, 0.300837, 1.999722)",
+			"time": 22.1611310000008
+		},
+		{
+			"bag": "(1.712139, 0.300643, 1.999738)",
+			"helper": "(2.797056, 0.300805, 2.000654)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.712139, 0.300643, 1.999738)",
+			"time": 22.2194620000008
+		},
+		{
+			"bag": "(1.791615, 0.300837, 1.999751)",
+			"helper": "(2.797056, 0.300805, 2.000654)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.791615, 0.300837, 1.999751)",
+			"time": 22.2777930000008
+		},
+		{
+			"bag": "(1.897581, 0.300832, 1.999767)",
+			"helper": "(2.929515, 0.300804, 2.000603)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.897581, 0.300832, 1.999767)",
+			"time": 22.3361240000008
+		},
+		{
+			"bag": "(1.977056, 0.300811, 1.999779)",
+			"helper": "(3.061973, 0.300635, 2.000552)",
+			"linked": true,
+			"location": "held",
+			"primary": "(1.977056, 0.300811, 1.999779)",
+			"time": 22.3944550000008
+		},
+		{
+			"bag": "(2.083023, 0.300776, 1.999796)",
+			"helper": "(3.194432, 0.300809, 2.000501)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.083023, 0.300776, 1.999796)",
+			"time": 22.4527860000008
+		},
+		{
+			"bag": "(2.162498, 0.300794, 1.999808)",
+			"helper": "(3.194432, 0.300809, 2.000501)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.162498, 0.300794, 1.999808)",
+			"time": 22.5111170000008
+		},
+		{
+			"bag": "(2.268465, 0.300811, 1.999825)",
+			"helper": "(3.326891, 0.300835, 2.000451)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.268465, 0.300811, 1.999825)",
+			"time": 22.5694480000008
+		},
+		{
+			"bag": "(2.34794, 0.296763, 1.999837)",
+			"helper": "(3.459349, 0.300835, 2.0004)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.34794, 0.296763, 1.999837)",
+			"time": 22.6277790000008
+		},
+		{
+			"bag": "(2.453907, 0.300835, 1.999853)",
+			"helper": "(3.459349, 0.300835, 2.0004)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.453907, 0.300835, 1.999853)",
+			"time": 22.6861100000008
+		},
+		{
+			"bag": "(2.533382, 0.300831, 1.999866)",
+			"helper": "(3.591807, 0.300806, 2.000349)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.533382, 0.300831, 1.999866)",
+			"time": 22.7444410000008
+		},
+		{
+			"bag": "(2.639348, 0.300837, 1.999882)",
+			"helper": "(3.724265, 0.30084, 2.000298)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.639348, 0.300837, 1.999882)",
+			"time": 22.8027720000008
+		},
+		{
+			"bag": "(2.718823, 0.300826, 1.999895)",
+			"helper": "(3.724265, 0.30084, 2.000298)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.718823, 0.300826, 1.999895)",
+			"time": 22.8611030000008
+		},
+		{
+			"bag": "(2.82479, 0.300806, 1.999911)",
+			"helper": "(3.856724, 0.300819, 2.000247)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.82479, 0.300806, 1.999911)",
+			"time": 22.9194340000008
+		},
+		{
+			"bag": "(2.904264, 0.300804, 1.999923)",
+			"helper": "(3.989182, 0.30084, 2.000197)",
+			"linked": true,
+			"location": "held",
+			"primary": "(2.904264, 0.300804, 1.999923)",
+			"time": 22.9777650000008
+		},
+		{
+			"bag": "(3.010231, 0.300831, 1.99994)",
+			"helper": "(4.121641, 0.30084, 2.000146)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.010231, 0.300831, 1.99994)",
+			"time": 23.0360960000008
+		},
+		{
+			"bag": "(3.089706, 0.300816, 1.999952)",
+			"helper": "(4.121641, 0.30084, 2.000146)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.089706, 0.300816, 1.999952)",
+			"time": 23.0944270000008
+		},
+		{
+			"bag": "(3.195673, 0.30081, 1.999968)",
+			"helper": "(4.254099, 0.30084, 2.000095)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.195673, 0.30081, 1.999968)",
+			"time": 23.1527580000008
+		},
+		{
+			"bag": "(3.275148, 0.300831, 1.999981)",
+			"helper": "(4.386558, 0.30084, 2.000044)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.275148, 0.300831, 1.999981)",
+			"time": 23.2110890000008
+		},
+		{
+			"bag": "(3.328131, 0.299681, 1.999989)",
+			"helper": "(4.386558, 0.30084, 2.000044)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.328131, 0.299681, 1.999989)",
+			"time": 23.2694200000008
+		},
+		{
+			"bag": "(3.328131, 0.299681, 1.999989)",
+			"helper": "(4.439541, 0.30084, 2.000024)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.328131, 0.299681, 1.999989)",
+			"time": 23.3277510000008
+		},
+		{
+			"bag": "(3.328131, 0.299681, 1.999989)",
+			"helper": "(4.439541, 0.30084, 2.000024)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.328131, 0.299681, 1.999989)",
+			"time": 23.3860820000008
+		},
+		{
+			"bag": "(3.328131, 0.299681, 1.999989)",
+			"helper": "(4.439541, 0.30084, 2.000024)",
+			"linked": true,
+			"location": "held",
+			"primary": "(3.328131, 0.299681, 1.999989)",
+			"time": 23.4444130000008
+		}
+	],
+	"simulation_time_scale": 1.0,
+	"throw_events": [
+		{
+			"bag_id": 1.0,
+			"mass_kg": 8.0,
+			"peer_id": 1.0,
+			"position": "(-0.173133, 1.193833, 2.024162)",
+			"serial": 1.0,
+			"start_position": "(-0.173133, 1.193833, 2.024162)",
+			"velocity": "(8.951392, 3.442151, -0.048674)"
+		},
+		{
+			"bag_id": 1.0,
+			"mass_kg": 8.0,
+			"peer_id": 2017095179.0,
+			"position": "(3.722511, 1.193833, 2.002982)",
+			"serial": 2.0,
+			"start_position": "(3.722511, 1.193833, 2.002982)",
+			"velocity": "(-8.951392, 3.442147, 0.048675)"
+		}
+	],
+	"throws": 2.0
+}

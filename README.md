@@ -13,6 +13,8 @@ The `airport-baggage` branch builds on the playable sushi foundation. Randomized
 
 Current rules and controls: [docs/airport-expansion.md](docs/airport-expansion.md). Earlier verification reports and videos describe their pinned pre-expansion versions; they are not evidence for the new mechanics.
 
+**Expanded feature trailer:** [Watch the 2:24 vertical MP4](media/airport-trailer/production/airport-baggage-expanded-trailer-vertical.mp4). [Capture sources, storyboard, evidence and rebuild commands](media/airport-trailer/README.md) are included; fetch media with `git lfs pull`. The trailer uses fresh actual gameplay, original music and labeled automated/scripted scenarios.
+
 ## Weighted throws and two-player catches
 
 Bag mass now adds the shell and each item still inside; 8/16/28 kg are explicit legacy throw-test fixtures, not the randomized gameplay weight classes. **G throws a carried bag or item**, or gives the dog a gentle harmless cartoon hop. **E catches airborne bags within reach**; **Q puts held objects down gently**. Animal carriers and shared heavy bags must be handled gently. Bag outlines, first-person carry hands and remote worker carry poses remain.

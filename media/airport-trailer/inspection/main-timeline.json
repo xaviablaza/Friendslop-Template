@@ -1,0 +1,136 @@
+{
+  "active_shot": {},
+  "fps": 24,
+  "native_size": [
+    1280,
+    720
+  ],
+  "shots": [
+    {
+      "crop_suggestion": "Full width; belt action center and manifest upper-right",
+      "end": 13.0,
+      "end_frame": 312,
+      "id": "random_arrivals",
+      "start": 0.0,
+      "start_frame": 0,
+      "visible_result": "Ordinary seeded random arrivals enter the actual moving intake; distinct bag manifests and true computed masses."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 21.8333333333333,
+      "end_frame": 524,
+      "id": "neutral_xray_legal_lookalike",
+      "start": 13.0,
+      "start_frame": 312,
+      "visible_result": "Unopened scan shows identical neutral unknown shapes, not categorical truth; approved-key timed challenge reveals cleared legal lookalike."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 31.2916666666667,
+      "end_frame": 751,
+      "id": "wrong_sequence_worn_key",
+      "start": 21.8333333333333,
+      "start_frame": 524,
+      "visible_result": "Wrong input consumes tool durability; repeated genuine wrong attempts wear the key to zero; exhausted key refuses a challenge."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 39.375,
+      "end_frame": 945,
+      "id": "pliers_and_close_relock",
+      "start": 31.2916666666667,
+      "start_frame": 751,
+      "visible_result": "Four-input timed pliers challenge cuts lock; bag opens, then closes and relocks with a seal."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 47.6666666666667,
+      "end_frame": 1144,
+      "id": "nonfirst_item_crossbag_repack",
+      "start": 39.375,
+      "start_frame": 945,
+      "visible_result": "Real item browser picks second item (electronics), dropdown chooses another open bag, repack adds exact item mass to destination and subtracts from source."
+    },
+    {
+      "crop_suggestion": "Center action plus inventory left; no HUD-only crop",
+      "end": 53.25,
+      "end_frame": 1278,
+      "id": "individual_item_throw",
+      "start": 47.6666666666667,
+      "start_frame": 1144,
+      "visible_result": "Select a specific item in real browser, close it, G launches individual item through actual host physics to floor."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 60.8333333333333,
+      "end_frame": 1460,
+      "id": "taxonomy_dispose_weapons",
+      "start": 53.25,
+      "start_frame": 1278,
+      "visible_result": "Real browser identifies weapons training prop; second item picked up, carried to secure disposal station; real button disposes object and earns $10."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 68.4166666666667,
+      "end_frame": 1642,
+      "id": "taxonomy_dispose_explosives",
+      "start": 60.8333333333333,
+      "start_frame": 1460,
+      "visible_result": "Real browser identifies explosives training prop; second item picked up, carried to secure disposal station; real button disposes object and earns $10."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 76.0,
+      "end_frame": 1824,
+      "id": "taxonomy_dispose_dangerous",
+      "start": 68.4166666666667,
+      "start_frame": 1642,
+      "visible_result": "Real browser identifies dangerous training prop; second item picked up, carried to secure disposal station; real button disposes object and earns $10."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 79.25,
+      "end_frame": 1902,
+      "id": "taxonomy_narcotics_organics_customs",
+      "start": 76.0,
+      "start_frame": 1824,
+      "visible_result": "Actual scrollable browser lists narcotics, organic moon fruit, and customs relic with masses and categories in one open inspected case."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 83.5416666666667,
+      "end_frame": 2005,
+      "id": "taxonomy_wildlife",
+      "start": 79.25,
+      "start_frame": 1902,
+      "visible_result": "Protected fictional cloud-lizard wildlife item is visible in real browser; attempting removal is safely refused, remains in its carrier."
+    },
+    {
+      "crop_suggestion": "Full native frame; real central UI and right manifest",
+      "end": 89.75,
+      "end_frame": 2154,
+      "id": "earned_funds_restock",
+      "start": 83.5416666666667,
+      "start_frame": 2005,
+      "visible_result": "$30 earned only by three actual specialist disposals funds a real $12 station restock; worn key restored to eight, pliers to five, seals to three."
+    },
+    {
+      "crop_suggestion": "Keep center stack and right damage manifest",
+      "end": 97.0,
+      "end_frame": 2328,
+      "id": "physical_stack_impact_damage",
+      "start": 89.75,
+      "start_frame": 2154,
+      "visible_result": "Three actual bag bodies settle under gravity into a supported stack; top impact increases damage. Removing bottom with E makes remaining stack visibly fall."
+    },
+    {
+      "crop_suggestion": "Full frame for incoming luggage and health; first-aid menu centered",
+      "end": 105.416666666667,
+      "end_frame": 2530,
+      "id": "nongraphic_impact_and_firstaid",
+      "start": 97.0,
+      "start_frame": 2328,
+      "visible_result": "Staged airborne luggage falls into operator; real collision reduces health without gore; nearby first-aid station button restores it to 100."
+    }
+  ]
+}

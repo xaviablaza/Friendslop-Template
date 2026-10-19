@@ -1,0 +1,297 @@
+{
+  "recorded_gameplay_revision": "663cb3a2fc8f61a664f3b1075cfd86485ad9cf37",
+  "kind": "Exact source and evidence archive plus normalized editorial inputs and delivered final trailer",
+  "excluded": "Raw AVI, raw half-speed captures, import caches, generated individual shots and temporary image probes",
+  "files": [
+    {
+      "path": "care/SCENES.md",
+      "bytes": 3044,
+      "sha256": "cf0bd9ee29f9b5d982ea87e6fb1c47acbd65fb4556a466aca972ada9a3887e4b"
+    },
+    {
+      "path": "care/assertions.json",
+      "bytes": 9981,
+      "sha256": "1787aa7b1aaf3cc49e6f0fbfb99c7a4cf0e68d9a27d1b731e84b7406468af6df"
+    },
+    {
+      "path": "care/capture.gd",
+      "bytes": 17014,
+      "sha256": "25e8d6cd86da81906620ee43679f738a048527da62a281b142d4d43a9fdf68bd"
+    },
+    {
+      "path": "care/care-source.mp4",
+      "bytes": 7708601,
+      "sha256": "4b8f0344644a27c6aaf5a2e034d332250858e2f5fe297f48ddba8fafb1e144a9"
+    },
+    {
+      "path": "care/encode_verify.py",
+      "bytes": 4478,
+      "sha256": "3ce962cfa6ffcc102f5af2bbb1c5114157b3d8fcd729ea163884d41655642beb"
+    },
+    {
+      "path": "care/probe.json",
+      "bytes": 300,
+      "sha256": "e8a58959908f6644cebd7692f223f09f79e8b33298dce87294a970e08911bd18"
+    },
+    {
+      "path": "care/timeline.json",
+      "bytes": 4712,
+      "sha256": "c669e7353fb8fc635e2539c20217042c40ad9b74ddd4b045a856cb30dddffe4a"
+    },
+    {
+      "path": "care/verification.json",
+      "bytes": 2207,
+      "sha256": "8300a3befdf6b6c083ff488389b3092b3e2945fe3a89b4368a3b144dcbcb219d"
+    },
+    {
+      "path": "coop/airborne-relay.mp4",
+      "bytes": 683952,
+      "sha256": "41ef756fc61561e9cff3eddd892d6dd666ea2f79e61761c98365030eb135d8f1"
+    },
+    {
+      "path": "coop/capture-clock.json",
+      "bytes": 85,
+      "sha256": "b27cea438d4f3f83f318a67bdadab686667b9f251f38d253ca01ab7a3d42db2e"
+    },
+    {
+      "path": "coop/heavy-shared-walk.mp4",
+      "bytes": 1923529,
+      "sha256": "7ce55ffa15a71499988dc3f3e98f7b5becf2376a7d5afb18fc41b95fa122a87c"
+    },
+    {
+      "path": "coop/normal-speed/capture-clock.json",
+      "bytes": 73,
+      "sha256": "c5c5242420d21b2bb52261180606bd66cf9c7c14b5a79bae9d35bcfbcfcf5784"
+    },
+    {
+      "path": "coop/normal-speed/throw-client.json",
+      "bytes": 2282,
+      "sha256": "e9c1cc400ad82fea0b0f0fd75e34da4c139ee64992b1fb38fb48227c04ebe8ed"
+    },
+    {
+      "path": "coop/normal-speed/throw-host.json",
+      "bytes": 23881,
+      "sha256": "804b29ddd0245b4580d48c533a2f3b80298400b1f51112e337e098a5d6bf1c40"
+    },
+    {
+      "path": "coop/provenance/airport_coop_capture.gd",
+      "bytes": 6812,
+      "sha256": "b5e158307aaea3c5cf1bef48abcb7985c2b9ad0d8d65a75f25e13b773b6fb1e5"
+    },
+    {
+      "path": "coop/provenance/capture-airport-coop.py",
+      "bytes": 10450,
+      "sha256": "ec938b2f78763ec15838f3b05639c14d1c3bff2c0c0923004be0f997bc3adaa0"
+    },
+    {
+      "path": "coop/provenance/isolated-worktree.patch",
+      "bytes": 829,
+      "sha256": "4afe9bbb8a5cd326c6f99e4563f8df30fe5450400854485b08f223278097d8ef"
+    },
+    {
+      "path": "coop/provenance/package-airport-coop.py",
+      "bytes": 5714,
+      "sha256": "420eacd9d92b5269ed6e772b142f2f5534dd3258c46978ad7f88223655713167"
+    },
+    {
+      "path": "coop/provenance/provenance.json",
+      "bytes": 1163,
+      "sha256": "b59f9f5aabba767f99b11e6263df2c014f408ad19e9f55a7bf215507be913a52"
+    },
+    {
+      "path": "coop/throw-client.json",
+      "bytes": 2277,
+      "sha256": "2703bc36249347a48997b8ce3c8184fe634edcf9735df92b6ebb20706801dd52"
+    },
+    {
+      "path": "coop/throw-host.json",
+      "bytes": 22444,
+      "sha256": "b4b1895fb76e83d17fcad1913e0f0ad968abcc4c1cab7b8b2c34f8d66a4afb6d"
+    },
+    {
+      "path": "coop/timeline.json",
+      "bytes": 7338,
+      "sha256": "61aa8d1f95fe3133e9e57fe6fba6e4596482a13e3706fbef8512ade39cc8636d"
+    },
+    {
+      "path": "inspection/assertions.json",
+      "bytes": 7143,
+      "sha256": "bce90b7ae0926b3831d4e8e278315857cd0f1518c06049efe5c0be41055f334e"
+    },
+    {
+      "path": "inspection/capture.gd",
+      "bytes": 17751,
+      "sha256": "c29f0ae4d844a074310ae6df07fe07d79ee94e78739e7dfd5012098d7d19e43b"
+    },
+    {
+      "path": "inspection/checks.json",
+      "bytes": 5594,
+      "sha256": "3652a79bae53eb17393ca20905f201001227b844ca9f5fe1738742429d598f84"
+    },
+    {
+      "path": "inspection/fixtures.json",
+      "bytes": 18641,
+      "sha256": "3b3cb4f1c8994d00b7db6a622ffe35510d5f926b54bd9859ee475556e6c9174e"
+    },
+    {
+      "path": "inspection/inspection-complete.mp4",
+      "bytes": 5115760,
+      "sha256": "801d8a882855057278c38c15a06fe74dbf1cd5bb6ca151a6a192fe9acf41c159"
+    },
+    {
+      "path": "inspection/main-timeline.json",
+      "bytes": 5718,
+      "sha256": "64156c7905b080556e5a58817d5b63650f57c1db54ac70d8d028f1834055b9d1"
+    },
+    {
+      "path": "inspection/media-probe.json",
+      "bytes": 300,
+      "sha256": "bcacd65a8a5df0e7658061f4cd45ff312c3cd9ecd9d2eb6f813944340ba1f029"
+    },
+    {
+      "path": "inspection/provenance.json",
+      "bytes": 3565,
+      "sha256": "187060af234447d2f722ddd1d6dfa26b8fb05aac1ff3c244b64d92deeedac02c"
+    },
+    {
+      "path": "inspection/supplement-checks.json",
+      "bytes": 916,
+      "sha256": "4eef9625553cb7e2f7aa783da2143b9e6ff793d58200155984765cbf364b6977"
+    },
+    {
+      "path": "inspection/supplement-timeline.json",
+      "bytes": 1232,
+      "sha256": "5ed1ca79662f55c344dbbf638ee229288dd4a96b4cb28786edbc8cb43243f7eb"
+    },
+    {
+      "path": "inspection/supplement.gd",
+      "bytes": 6036,
+      "sha256": "620f499da6353f3080015ec3493038c4361b70d92784098152a93edfe954aaf5"
+    },
+    {
+      "path": "inspection/timeline.json",
+      "bytes": 9598,
+      "sha256": "d22847842dc1d13bbc9d4a52789968fd7c2bcea7a72a0aa7314b3a3cf5a84849"
+    },
+    {
+      "path": "inspection/verify.py",
+      "bytes": 6312,
+      "sha256": "2263302972368dba2c3d280f26225743cb0b3c1c7867656d7ddf343d0dcd8bc5"
+    },
+    {
+      "path": "movement/capture-movement.gd",
+      "bytes": 10915,
+      "sha256": "d1153ec8be5337fbb04e722db2b5b9f08bc22b8ca187dbb7553b9a07c812da81"
+    },
+    {
+      "path": "movement/checks.json",
+      "bytes": 4400,
+      "sha256": "70569d0c2a9112bc4282f2a9b5122ef069c7b41f54b3908892c169c8c0b1ee20"
+    },
+    {
+      "path": "movement/movement-source.mp4",
+      "bytes": 3866057,
+      "sha256": "9dc897fd3690051df4de8e11a8e6b0228069fb72a1f1821a33fb9494ec846cf9"
+    },
+    {
+      "path": "movement/probe.json",
+      "bytes": 376,
+      "sha256": "773ce8818cd60238605e79ca53d74c1dd33e0f382d47e3305fbfc60867280654"
+    },
+    {
+      "path": "movement/timeline.json",
+      "bytes": 3990,
+      "sha256": "95012c3caa3e40eb04c73aa5d9538e1ee68ff8beacc5f8924b94f6b6cf1a13ee"
+    },
+    {
+      "path": "production/airport-baggage-expanded-trailer-vertical.mp4",
+      "bytes": 13851241,
+      "sha256": "610f9f831067f9546af17ce83d47a0fb028f093f635af3553275daf684955284"
+    },
+    {
+      "path": "production/build_trailer.py",
+      "bytes": 8201,
+      "sha256": "2e8ac7dad2cd91b53635e415bedebdb114d35460ecda1000cc3afa480d21fff3"
+    },
+    {
+      "path": "production/coop-scenes.json",
+      "bytes": 1328,
+      "sha256": "b7913d8c1a4891a5bf1791d6d91524631adac409b21237eb06e73b24ba8b15ee"
+    },
+    {
+      "path": "production/coverage-plan.json",
+      "bytes": 1414,
+      "sha256": "739a1a93787107b3ac25760770b6d633ed2201b40f6ab186800051acd2e97da1"
+    },
+    {
+      "path": "production/final-review-sheet-01.jpg",
+      "bytes": 228601,
+      "sha256": "393ba126c8b28d808ee5d827d2a247f00eb39fcd98310703ea865fc995052a2d"
+    },
+    {
+      "path": "production/final-review-sheet-02.jpg",
+      "bytes": 305757,
+      "sha256": "a1d54753aabe669f9825c7fad2725d7de02fd009ba9f36c4c4b67e3793690db2"
+    },
+    {
+      "path": "production/final-review-sheet-03.jpg",
+      "bytes": 310670,
+      "sha256": "2e42eff0c340602ddabd2f467f577566167658a12ad6e354a9cd926e362ef518"
+    },
+    {
+      "path": "production/final-review-sheet-04.jpg",
+      "bytes": 316372,
+      "sha256": "986ea32ca157c8b9c34387195914df360ea85f3738295f362005ee07c5f058e1"
+    },
+    {
+      "path": "production/final-review-sheet-05.jpg",
+      "bytes": 302305,
+      "sha256": "b78cf23515c131e43385f63fbca648d1a923435219102e19d383a725877ea29f"
+    },
+    {
+      "path": "production/final-review-sheet-06.jpg",
+      "bytes": 320866,
+      "sha256": "838d051476de3a7c6d0b854747218592d99460a2c539f20c5bb28e929aa0e67c"
+    },
+    {
+      "path": "production/final-review-sheet-07.jpg",
+      "bytes": 259581,
+      "sha256": "f849b35f233ff5d6324c4af8a99cd589728c8107df4fc93b20e831b048e2d931"
+    },
+    {
+      "path": "production/final-verification.json",
+      "bytes": 8356,
+      "sha256": "2549200ae36a2489e5fac48226e03673647d42c7fb8e44c739fa006270fa422c"
+    },
+    {
+      "path": "production/make_storyboard.py",
+      "bytes": 7541,
+      "sha256": "5dfa7fcd77ff53dfa38906a0e0b6e1f1652f43f78a9cf60b493368d31511096e"
+    },
+    {
+      "path": "production/review_shots.py",
+      "bytes": 1039,
+      "sha256": "c4f2976803eef27d1d5923bb44fe0829e50b6e26006f36120154a8fe338a6458"
+    },
+    {
+      "path": "production/storyboard-final.json",
+      "bytes": 36409,
+      "sha256": "17ee9f8c99bf31f92e9f5761f399e4abb87e7d4c600bc488b6a5bb2e7c54a97c"
+    },
+    {
+      "path": "production/storyboard.json",
+      "bytes": 33462,
+      "sha256": "d2491e86ceeae54f32135aa6b96141e184b05466c3d087590c80b3f82164378c"
+    },
+    {
+      "path": "production/trailer-evidence.json",
+      "bytes": 5003,
+      "sha256": "f090553a1620989aea9ed4387824ba776cc85c27b15dd96f23fd8e5c46b8f39c"
+    },
+    {
+      "path": "production/verify_trailer.py",
+      "bytes": 3442,
+      "sha256": "2ddbc43c151d9572de185dfe9270d92c5d3b803fc2c454f730ec106b07e9e506"
+    }
+  ]
+}
